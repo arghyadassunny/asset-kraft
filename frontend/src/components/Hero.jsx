@@ -80,13 +80,16 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Image */}
+          {/* Right Video */}
           <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-              <img 
-                src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=800&q=80" 
-                alt="Financial Growth" 
-                className="w-full h-auto object-cover"
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <video 
+                src="https://customer-assets.emergentagent.com/job_craft-wealth/artifacts/soswflym_Hero%20section%20video%20asset%20kraft.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto object-cover rounded-2xl"
               />
               {/* Overlay Card */}
               <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md rounded-xl p-6 shadow-xl border border-white/50">
