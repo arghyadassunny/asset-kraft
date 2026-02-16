@@ -2,21 +2,31 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Send, Bot } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { chatbotResponses } from '../data/mock';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: chatbotResponses.greeting,
+      text: "Hello! I'm your AssetKraft AI Assistant. How can I help you with your wealth planning today?",
       isBot: true,
       timestamp: new Date()
     }
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [sessionId, setSessionId] = useState(null);
   const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    // Generate session ID on component mount
+    if (!sessionId) {
+      setSessionId(`session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
+    }
+  }, [sessionId]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -26,25 +36,7 @@ const ChatBot = () => {
     scrollToBottom();
   }, [messages]);
 
-  const getBotResponse = (userMessage) => {
-    const message = userMessage.toLowerCase();
-    
-    if (message.includes('service') || message.includes('offer')) {
-      return chatbotResponses.services;
-    } else if (message.includes('contact') || message.includes('reach') || message.includes('call')) {
-      return chatbotResponses.contact;
-    } else if (message.includes('sip') || message.includes('mutual fund') || message.includes('invest')) {
-      return chatbotResponses.sip;
-    } else if (message.includes('team') || message.includes('who')) {
-      return chatbotResponses.team;
-    } else if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
-      return chatbotResponses.greeting;
-    } else {
-      return chatbotResponses.default;
-    }
-  };
-
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
 
     // Add user message
@@ -56,20 +48,39 @@ const ChatBot = () => {
     };
 
     setMessages([...messages, userMessage]);
+    const currentMessage = inputMessage;
     setInputMessage('');
     setIsTyping(true);
 
-    // Simulate bot typing and response
-    setTimeout(() => {
+    try {
+      // Call backend API
+      const response = await axios.post(`${BACKEND_URL}/api/chat`, {
+        message: currentMessage,
+        session_id: sessionId
+      });
+
+      // Add bot response
       const botResponse = {
         id: messages.length + 2,
-        text: getBotResponse(inputMessage),
+        text: response.data.response,
         isBot: true,
         timestamp: new Date()
       };
+
       setMessages(prev => [...prev, botResponse]);
+    } catch (error) {
+      console.error('Chat error:', error);
+      // Fallback response
+      const errorResponse = {
+        id: messages.length + 2,
+        text: "I'm having trouble connecting right now. Please call us at 9230968242 or email growth@assetkraft.com for immediate assistance.",
+        isBot: true,
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorResponse]);
+    } finally {
       setIsTyping(false);
-    }, 1500);
+    }
   };
 
   const handleKeyPress = (e) => {
@@ -83,6 +94,40 @@ const ChatBot = () => {
     { label: 'SIP Info', value: 'What is SIP?' },
     { label: 'Contact', value: 'How can I contact you?' }
   ];
+
+  const handleQuickAction = async (value) => {
+    setInputMessage(value);
+    // Trigger send
+    const userMessage = {
+      id: messages.length + 1,
+      text: value,
+      isBot: false,
+      timestamp: new Date()
+    };
+
+    setMessages([...messages, userMessage]);
+    setIsTyping(true);
+
+    try {
+      const response = await axios.post(`${BACKEND_URL}/api/chat`, {
+        message: value,
+        session_id: sessionId
+      });
+
+      const botResponse = {
+        id: messages.length + 2,
+        text: response.data.response,
+        isBot: true,
+        timestamp: new Date()
+      };
+
+      setMessages(prev => [...prev, botResponse]);
+    } catch (error) {
+      console.error('Chat error:', error);
+    } finally {
+      setIsTyping(false);
+    }
+  };
 
   return (
     <>
@@ -141,7 +186,7 @@ const ChatBot = () => {
                       <span className="text-xs font-semibold text-teal-600">AI Assistant</span>
                     </div>
                   )}
-                  <p className="text-sm leading-relaxed">{message.text}</p>
+                  <p className="text-sm leading-relaxed whitespace-pre-line">{message.text}</p>
                 </div>
               </div>
             ))}
@@ -168,10 +213,7 @@ const ChatBot = () => {
                 {quickActions.map((action, index) => (
                   <button
                     key={index}
-                    onClick={() => {
-                      setInputMessage(action.value);
-                      handleSendMessage();
-                    }}
+                    onClick={() => handleQuickAction(action.value)}
                     className="text-xs bg-teal-50 text-teal-700 px-3 py-1.5 rounded-full hover:bg-teal-100 transition-colors border border-teal-200"
                   >
                     {action.label}
@@ -194,7 +236,7 @@ const ChatBot = () => {
               />
               <Button
                 onClick={handleSendMessage}
-                disabled={!inputMessage.trim()}
+                disabled={!inputMessage.trim() || isTyping}
                 className="bg-teal-600 hover:bg-teal-700 text-white"
               >
                 <Send size={18} />
