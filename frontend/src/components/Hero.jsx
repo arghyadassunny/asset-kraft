@@ -82,7 +82,7 @@ const Hero = () => {
 
           {/* Right Video */}
           <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            <div className="rounded-2xl overflow-hidden">
               <video 
                 src="https://customer-assets.emergentagent.com/job_craft-wealth/artifacts/soswflym_Hero%20section%20video%20asset%20kraft.mp4"
                 autoPlay
@@ -91,23 +91,6 @@ const Hero = () => {
                 playsInline
                 className="w-full h-auto object-cover rounded-2xl"
               />
-              {/* Overlay Card */}
-              <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md rounded-xl p-6 shadow-xl border border-white/50">
-                <div className="flex items-center gap-4">
-                  <div className="bg-teal-100 rounded-full p-3">
-                    <Sparkles className="text-teal-600" size={24} />
-                  </div>
-                  <div>
-                    <div className="text-sm text-slate-600">Wealth Growth</div>
-                    <div className="text-2xl font-bold text-slate-900">Compounding Magic</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Floating Elements */}
-            <div className="absolute -top-6 -right-6 bg-yellow-400 rounded-full p-4 shadow-lg animate-bounce-slow">
-              <Sparkles className="text-white" size={32} />
             </div>
           </div>
         </div>
