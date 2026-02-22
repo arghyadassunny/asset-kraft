@@ -2,27 +2,61 @@ import React from 'react';
 import { Star, Quote } from 'lucide-react';
 
 const Testimonials = () => {
-  // Empty testimonials array - ready for content to be added
-  const testimonials = [];
+  // Sample testimonials - ready to be replaced with real client testimonials
+  const testimonials = [
+    {
+      id: 1,
+      name: 'Rajesh Kumar',
+      role: 'Business Owner, Mumbai',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+      quote: 'With AssetKraft, I found the right partner for my family\'s financial future. Their personalized approach made all the difference.',
+      rating: 5
+    },
+    {
+      id: 2,
+      name: 'Priya Sharma',
+      role: 'IT Professional, Bangalore',
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
+      quote: 'AssetKraft brought simplicity and clarity to my investments. I finally understand where my money is going and why.',
+      rating: 5
+    },
+    {
+      id: 3,
+      name: 'Amit Patel',
+      role: 'Entrepreneur, Delhi',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
+      quote: 'I am sure AssetKraft will help me achieve my financial goals better than I could alone. Their expertise is unmatched.',
+      rating: 5
+    }
+  ];
+
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <section id="testimonials" className="py-24 bg-slate-50">
+    <section id="testimonials" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">
-            What Our <span className="text-teal-600">Clients Say</span>
-          </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Hear from the families and individuals who trust us with their financial future
-          </p>
+        <div className="flex justify-between items-start mb-16 flex-wrap gap-6">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight">
+              Trusted by <span className="text-teal-600">wealth creators</span> like you
+            </h2>
+          </div>
+          <button
+            onClick={scrollToContact}
+            className="bg-white text-slate-900 border-2 border-slate-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-slate-900 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            📞 Book a free call
+          </button>
         </div>
 
-        {/* Content Area */}
+        {/* Testimonials Grid */}
         {testimonials.length === 0 ? (
-          // Placeholder for when testimonials are empty
+          // Placeholder when no testimonials
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl p-12 text-center border-2 border-dashed border-slate-300">
+            <div className="bg-slate-50 rounded-2xl p-12 text-center border-2 border-dashed border-slate-300">
               <div className="bg-teal-50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                 <Quote className="text-teal-600" size={40} />
               </div>
@@ -30,72 +64,45 @@ const Testimonials = () => {
                 Client Testimonials Coming Soon
               </h3>
               <p className="text-slate-600 text-lg mb-8">
-                We're collecting feedback from our 5000+ happy investors to share their success stories with you. 
-                Check back soon!
+                We're collecting feedback from our 5000+ happy investors to share their success stories with you.
               </p>
-              <div className="flex items-center justify-center gap-8 pt-6 border-t border-slate-200">
-                <div>
-                  <div className="text-3xl font-bold text-teal-600">5000+</div>
-                  <div className="text-sm text-slate-600">Happy Clients</div>
-                </div>
-                <div className="h-12 w-px bg-slate-300"></div>
-                <div>
-                  <div className="text-3xl font-bold text-yellow-600">20+</div>
-                  <div className="text-sm text-slate-600">Years Trust</div>
-                </div>
-                <div className="h-12 w-px bg-slate-300"></div>
-                <div>
-                  <div className="text-3xl font-bold text-teal-600">700+</div>
-                  <div className="text-sm text-slate-600">Crores AUM</div>
-                </div>
-              </div>
             </div>
           </div>
         ) : (
-          // Testimonials Grid (when testimonials are added)
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
               <div 
                 key={testimonial.id}
-                className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-2"
+                className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 hover:border-teal-300 hover:-translate-y-2"
               >
-                {/* Rating */}
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star 
-                      key={i} 
-                      size={18} 
-                      className={i < testimonial.rating ? 'text-yellow-400 fill-yellow-400' : 'text-slate-300'}
-                    />
-                  ))}
+                {/* Image/Video Thumbnail */}
+                <div className="relative h-64 overflow-hidden bg-slate-100">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
                 </div>
 
-                {/* Quote */}
-                <Quote className="text-teal-200 mb-4" size={32} />
-                
-                {/* Testimonial Text */}
-                <p className="text-slate-700 leading-relaxed mb-6">
-                  "{testimonial.text}"
-                </p>
+                {/* Content */}
+                <div className="p-8 bg-slate-50">
+                  {/* Quote */}
+                  <div className="mb-6">
+                    <Quote className="text-teal-200 mb-3" size={32} />
+                    <p className="text-slate-800 text-lg leading-relaxed font-medium">
+                      "{testimonial.quote}"
+                    </p>
+                  </div>
 
-                {/* Author */}
-                <div className="flex items-center gap-4 pt-4 border-t border-slate-200">
-                  {testimonial.image ? (
-                    <img 
-                      src={testimonial.image} 
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-100 to-yellow-100 flex items-center justify-center">
-                      <span className="text-teal-700 font-bold text-lg">
-                        {testimonial.name.charAt(0)}
-                      </span>
+                  {/* Author Info */}
+                  <div className="pt-6 border-t border-slate-200">
+                    <div className="font-bold text-slate-900 text-lg mb-1">
+                      {testimonial.name}
                     </div>
-                  )}
-                  <div>
-                    <div className="font-semibold text-slate-900">{testimonial.name}</div>
-                    <div className="text-sm text-slate-600">{testimonial.role}</div>
+                    <div className="text-slate-600 text-sm">
+                      {testimonial.role}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -103,18 +110,20 @@ const Testimonials = () => {
           </div>
         )}
 
-        {/* CTA */}
-        <div className="mt-12 text-center">
-          <p className="text-slate-600 mb-6">
-            Ready to start your success story with AssetKraft?
-          </p>
-          <button
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-yellow-500 hover:bg-yellow-600 text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-yellow-500/30 hover:scale-105"
-          >
-            Begin Your Journey
-          </button>
-        </div>
+        {/* Bottom CTA */}
+        {testimonials.length > 0 && (
+          <div className="mt-16 text-center">
+            <p className="text-slate-600 text-lg mb-6">
+              Join 5000+ investors who trust AssetKraft with their wealth
+            </p>
+            <button
+              onClick={scrollToContact}
+              className="bg-teal-600 hover:bg-teal-700 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-teal-600/30 hover:scale-105"
+            >
+              Start Your Journey Today
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
