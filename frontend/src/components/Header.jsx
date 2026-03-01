@@ -35,21 +35,13 @@ const Header = () => {
         {/* Logo */}
         <button 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="flex items-center gap-3 group"
+          className="flex items-center group"
         >
           <img 
             src={companyInfo.logo} 
-            alt="AssetKraft" 
-            className="h-10 w-auto"
+            alt="AssetKraft - AMFI Registered Mutual Fund Distributor" 
+            className="h-12 w-auto"
           />
-          <div className="flex flex-col leading-tight">
-            <span className="text-[18px] font-bold text-[#1a2e2a] tracking-tight">
-              Asset Kraft
-            </span>
-            <span className="text-[9px] text-[#6b7a75] tracking-wide">
-              AMFI Registered Mutual Fund Distributor
-            </span>
-          </div>
         </button>
 
         {/* Desktop Navigation */}
