@@ -48,31 +48,31 @@ const Header = () => {
         <div className="hidden lg:flex items-center gap-9">
           <button 
             onClick={() => scrollToSection('home')} 
-            className="relative text-sm font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
+            className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
           >
             Home
           </button>
           <button 
             onClick={() => scrollToSection('services')} 
-            className="relative text-sm font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
+            className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
           >
             Services
           </button>
           <button 
             onClick={() => scrollToSection('portfolio')} 
-            className="relative text-sm font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
+            className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
           >
             Portfolio
           </button>
           <button 
             onClick={() => scrollToSection('calculator')} 
-            className="relative text-sm font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
+            className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
           >
             Calculator
           </button>
           <button 
             onClick={() => scrollToSection('team')} 
-            className="relative text-sm font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
+            className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
           >
             Our Team
           </button>
@@ -81,7 +81,7 @@ const Header = () => {
         {/* CTA Button */}
         <Button 
           onClick={() => scrollToSection('contact')}
-          className="hidden lg:block bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 shadow-[0_4px_14px_rgba(29,168,150,0.35)] hover:shadow-[0_6px_20px_rgba(29,168,150,0.45)] hover:-translate-y-[1px]"
+          className="hidden lg:block bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-lg font-semibold text-[15px] transition-all duration-200 shadow-[0_4px_14px_rgba(29,168,150,0.35)] hover:shadow-[0_6px_20px_rgba(29,168,150,0.45)] hover:-translate-y-[1px]"
         >
           Contact Us
         </Button>
