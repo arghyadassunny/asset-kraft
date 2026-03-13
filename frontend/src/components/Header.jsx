@@ -80,7 +80,7 @@ const Header = () => {
 
         {/* CTA Button */}
         <Button 
-          onClick={() => scrollToSection('contact')}
+          onClick={() => window.open('https://orufybookings.com/asset-kraft/30-min-intro-call', '_blank')}
           className="hidden lg:block bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-lg font-semibold text-[15px] transition-all duration-200 shadow-[0_4px_14px_rgba(29,168,150,0.35)] hover:shadow-[0_6px_20px_rgba(29,168,150,0.45)] hover:-translate-y-[1px]"
         >
           Contact Us
@@ -134,7 +134,7 @@ const Header = () => {
             <a href="/our-team" className="block w-full">Our Team</a>
           </button>
           <Button 
-            onClick={() => { scrollToSection('contact'); document.getElementById('mobile-menu')?.classList.add('hidden'); }}
+            onClick={() => window.open('https://orufybookings.com/asset-kraft/30-min-intro-call', '_blank')}
             className="w-full bg-teal-600 hover:bg-teal-700 text-white"
           >
             Contact Us

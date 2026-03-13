@@ -314,7 +314,9 @@ const OurTeamPage = () => {
             We're always looking for passionate individuals to join our mission of creating financial freedom for families
           </p>
           <a 
-            href="mailto:growth@assetkraft.com"
+            href="https://orufybookings.com/asset-kraft/30-min-intro-call"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-white text-teal-600 px-10 py-4 rounded-full font-semibold text-lg hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300 shadow-xl"
           >
             Get in Touch

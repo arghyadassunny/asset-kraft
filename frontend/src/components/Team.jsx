@@ -60,7 +60,7 @@ const Team = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => window.open('https://orufybookings.com/asset-kraft/30-min-intro-call', '_blank')}
               className="bg-white text-teal-600 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Schedule a Consultation

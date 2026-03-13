@@ -44,7 +44,7 @@ const Hero = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
-                onClick={scrollToContact}
+                onClick={() => window.open('https://orufybookings.com/asset-kraft/30-min-intro-call', '_blank')}
                 size="lg"
                 className="bg-teal-600 hover:bg-teal-700 text-white text-lg px-8 py-6 transition-all duration-300 hover:shadow-xl hover:shadow-teal-600/30 hover:scale-105"
               >
