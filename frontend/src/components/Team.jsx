@@ -2,7 +2,7 @@ import React from 'react';
 import { Linkedin } from 'lucide-react';
 import { team } from '../data/mock';
 
-const Team = () => {
+const Team = ({ openBookingModal }) => {
   return (
     <section id="team" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,7 +60,7 @@ const Team = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
-              onClick={() => window.open('https://orufybookings.com/asset-kraft/30-min-intro-call', '_blank')}
+              onClick={openBookingModal}
               className="bg-white text-teal-600 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Schedule a Consultation

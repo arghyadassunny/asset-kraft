@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { companyInfo } from '../data/mock';
 
-const Header = () => {
+const Header = ({ openBookingModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const Header = () => {
 
         {/* CTA Button */}
         <Button 
-          onClick={() => window.open('https://orufybookings.com/asset-kraft/30-min-intro-call', '_blank')}
+          onClick={openBookingModal}
           className="hidden lg:block bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-lg font-semibold text-[15px] transition-all duration-200 shadow-[0_4px_14px_rgba(29,168,150,0.35)] hover:shadow-[0_6px_20px_rgba(29,168,150,0.45)] hover:-translate-y-[1px]"
         >
           Contact Us
@@ -134,7 +134,7 @@ const Header = () => {
             <a href="/our-team" className="block w-full">Our Team</a>
           </button>
           <Button 
-            onClick={() => window.open('https://orufybookings.com/asset-kraft/30-min-intro-call', '_blank')}
+            onClick={openBookingModal}
             className="w-full bg-teal-600 hover:bg-teal-700 text-white"
           >
             Contact Us
