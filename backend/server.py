@@ -396,6 +396,25 @@ async def get_chat_history(session_id: str):
         raise HTTPException(status_code=500, detail="Failed to fetch chat history")
 
 
+# Backend API Endpoints
+@api_router.get("/team")
+async def get_team_members():
+    """Get all team members organized by department"""
+    try:
+        team_data = {
+            "leadership": [
+                {"name": "Ashis Kumar Dey", "role": "Managing Director & CEO", "image": "https://www.assetkraft.com/ashis_kumar_dey.jpg"},
+                {"name": "Amit Rathi", "role": "Director", "image": "https://www.assetkraft.com/amit_rathi.jpg"},
+                {"name": "Sanjeev Kumar Mundhra", "role": "Director", "image": "https://www.assetkraft.com/sanjeev_mundhra.jpg"}
+            ],
+            "total_members": 28
+        }
+        return team_data
+    except Exception as e:
+        logger.error(f"Error fetching team: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch team data")
+
+
 # Include the router in the main app
 app.include_router(api_router)
 
