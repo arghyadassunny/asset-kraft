@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { companyInfo } from '../data/mock';
 
-const Header = () => {
+const Header = ({ openBookingModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -74,13 +74,13 @@ const Header = () => {
             onClick={() => scrollToSection('team')} 
             className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
           >
-            Our Team
+            <a href="/our-team" className="block">Our Team</a>
           </button>
         </div>
 
         {/* CTA Button */}
         <Button 
-          onClick={() => scrollToSection('contact')}
+          onClick={openBookingModal}
           className="hidden lg:block bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-lg font-semibold text-[15px] transition-all duration-200 shadow-[0_4px_14px_rgba(29,168,150,0.35)] hover:shadow-[0_6px_20px_rgba(29,168,150,0.45)] hover:-translate-y-[1px]"
         >
           Contact Us
@@ -131,10 +131,10 @@ const Header = () => {
             onClick={() => { scrollToSection('team'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
             className="text-left px-4 py-2 text-sm font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
           >
-            Our Team
+            <a href="/our-team" className="block w-full">Our Team</a>
           </button>
           <Button 
-            onClick={() => { scrollToSection('contact'); document.getElementById('mobile-menu')?.classList.add('hidden'); }}
+            onClick={openBookingModal}
             className="w-full bg-teal-600 hover:bg-teal-700 text-white"
           >
             Contact Us

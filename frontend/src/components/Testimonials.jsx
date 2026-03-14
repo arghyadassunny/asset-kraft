@@ -1,7 +1,7 @@
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
 
-const Testimonials = () => {
+const Testimonials = ({ openBookingModal }) => {
   // Sample testimonials - ready to be replaced with real client testimonials
   const testimonials = [
     {
@@ -45,7 +45,7 @@ const Testimonials = () => {
             </h2>
           </div>
           <button
-            onClick={scrollToContact}
+            onClick={openBookingModal}
             className="bg-white text-slate-900 border-2 border-slate-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-slate-900 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             📞 Book a free call
@@ -117,7 +117,7 @@ const Testimonials = () => {
               Join 5000+ investors who trust AssetKraft with their wealth
             </p>
             <button
-              onClick={scrollToContact}
+              onClick={openBookingModal}
               className="bg-teal-600 hover:bg-teal-700 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-teal-600/30 hover:scale-105"
             >
               Start Your Journey Today

@@ -2,13 +2,13 @@ import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from './ui/button';
 
-const Hero = () => {
+const Hero = ({ openBookingModal }) => {
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="home" className="relative bg-white pt-20 pb-32 overflow-hidden">
+    <section id="home" className="relative bg-white pt-32 pb-32 overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-teal-100/30 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-100/30 rounded-full blur-3xl"></div>
@@ -44,7 +44,7 @@ const Hero = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
-                onClick={scrollToContact}
+                onClick={openBookingModal}
                 size="lg"
                 className="bg-teal-600 hover:bg-teal-700 text-white text-lg px-8 py-6 transition-all duration-300 hover:shadow-xl hover:shadow-teal-600/30 hover:scale-105"
               >
