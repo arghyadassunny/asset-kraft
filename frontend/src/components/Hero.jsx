@@ -1,11 +1,41 @@
-import React from 'react';
+
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from './ui/button';
+
+import React, { useEffect, useRef, useState } from 'react';
+
+function useCountUp(target, duration = 1400) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        const start = performance.now();
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          setCount(Math.round(ease * target));
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+        observer.disconnect();
+      }
+    });
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return { count, ref };
+}
 
 const Hero = ({ openBookingModal }) => {
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
+  const aum = useCountUp(700, 1200);
+  const investors = useCountUp(5000, 1400);
+  const years = useCountUp(20, 1000);
 
   return (
     <section id="home" className="relative bg-white pt-32 pb-32 overflow-hidden">
@@ -62,23 +92,23 @@ const Hero = ({ openBookingModal }) => {
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex items-center gap-8 pt-8 border-t border-slate-200">
-              <div>
-                <div className="text-3xl font-bold text-teal-600">700+</div>
-                <div className="text-sm text-slate-600">Crores AUM</div>
-              </div>
-              <div className="h-12 w-px bg-slate-300"></div>
-              <div>
-                <div className="text-3xl font-bold text-yellow-600">5000+</div>
-                <div className="text-sm text-slate-600">Happy Investors</div>
-              </div>
-              <div className="h-12 w-px bg-slate-300"></div>
-              <div>
-                <div className="text-3xl font-bold text-teal-600">20+</div>
-                <div className="text-sm text-slate-600">Years Experience</div>
-              </div>
-            </div>
-          </div>
+ <div className="flex items-center gap-8 pt-8 border-t border-slate-200">
+  <div ref={aum.ref}>
+    <div className="text-3xl font-bold text-teal-600">{aum.count}+</div>
+    <div className="text-sm text-slate-600">Crores AUM</div>
+  </div>
+  <div className="h-12 w-px bg-slate-300"></div>
+  <div ref={investors.ref}>
+    <div className="text-3xl font-bold text-yellow-600">{investors.count}+</div>
+    <div className="text-sm text-slate-600">Happy Investors</div>
+  </div>
+  <div className="h-12 w-px bg-slate-300"></div>
+  <div ref={years.ref}>
+    <div className="text-3xl font-bold text-teal-600">{years.count}+</div>
+    <div className="text-sm text-slate-600">Years Experience</div>
+  </div>
+</div>
+</div>
 
           {/* Right Video - Larger and Seamless */}
           <div className="w-full">
