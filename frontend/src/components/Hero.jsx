@@ -25,20 +25,20 @@ const Hero = ({ openBookingModal }) => {
 
             {/* Main Heading */}
             <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
-              Your Ambitions,{' '}
-              <span className="text-teal-600">Our Blueprint</span>
+              A Partnership{' '}
+              <span className="text-teal-600">Built On Your Success</span>
             </h1>
 
             {/* Subheading */}
             <p className="text-xl text-slate-600 leading-relaxed">
-              We create <span className="font-semibold text-yellow-600">Endless Possibilities</span> for your Financial Future.
+              We focus on the <span className="font-semibold text-yellow-600">Craftsmanship</span> of Your Wealth.
             </p>
 
             {/* Description */}
             <p className="text-lg text-slate-600 leading-relaxed">
-              Unlock your business's full potential with a guidance partner dedicated to your future financial growth. 
-              At Asset Kraft Investments, we combine insight-driven strategies, innovation, and industry expertise 
-              to help you turn ambitious goals into measurable success.
+              Your business has the spark; we provide the fuel.  
+              At Asset Kraft, we navigate the noise of the markets to find the signal of your success. 
+              Stop guessing and start growing with a guidance partner that treats your financial future like the mission-critical objective it is.
             </p>
 
             {/* CTA Buttons */}
