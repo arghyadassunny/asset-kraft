@@ -112,13 +112,13 @@ const ServicesCarousel = ({ services, iconComponents }) => {
 
             {/* ── Slide content ── */}
             <div className="relative z-10 h-full flex items-center">
-              <div className="max-w-7xl mx-auto w-full px-8 sm:px-12 lg:px-20 flex items-center gap-16">
+              <div className="max-w-7xl mx-auto w-full px-8 sm:px-12 lg:px-20 flex items-center justify-center">
 
-                {/* Text side */}
-                <div className="flex-1 min-w-0 max-w-2xl">
+                {/* Text – centred */}
+                <div className="w-full flex flex-col items-center text-center">
 
                   {/* Title with inline icon */}
-                  <div className="flex items-center gap-4 mb-5">
+                  <div className="flex items-center justify-center gap-4 mb-5 whitespace-nowrap">
                     <div
                       className="flex-none w-12 h-12 rounded-xl flex items-center justify-center"
                       style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.25)' }}
@@ -126,7 +126,7 @@ const ServicesCarousel = ({ services, iconComponents }) => {
                       <Icon className="text-white" size={24} />
                     </div>
                     <h3
-                      className="font-bold text-white leading-tight"
+                      className="font-bold text-white leading-none whitespace-nowrap"
                       style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}
                     >
                       {service.title}
@@ -135,7 +135,7 @@ const ServicesCarousel = ({ services, iconComponents }) => {
 
                   {/* Description */}
                   <p
-                    className="leading-relaxed mb-8 font-light"
+                    className="leading-relaxed mb-8 font-light max-w-xl"
                     style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)', color: 'rgba(226,232,240,0.92)' }}
                   >
                     {service.description}
