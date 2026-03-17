@@ -115,34 +115,27 @@ const ServicesCarousel = ({ services, iconComponents }) => {
               <div className="max-w-7xl mx-auto w-full px-8 sm:px-12 lg:px-20 flex items-center gap-16">
 
                 {/* Text side */}
-                <div className="flex-1 min-w-0">
-                  {/* Service tag */}
-                  <div className="flex items-center gap-3 mb-5">
+                <div className="flex-1 min-w-0 max-w-2xl">
+
+                  {/* Title with inline icon */}
+                  <div className="flex items-center gap-4 mb-5">
                     <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center"
+                      className="flex-none w-12 h-12 rounded-xl flex items-center justify-center"
                       style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.25)' }}
                     >
                       <Icon className="text-white" size={24} />
                     </div>
-                    <span
-                      className="text-xs font-semibold tracking-[0.2em] uppercase"
-                      style={{ color: 'rgba(167,243,208,1)' }}
+                    <h3
+                      className="font-bold text-white leading-tight"
+                      style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}
                     >
-                      {service.tag || 'Our Service'}
-                    </span>
+                      {service.title}
+                    </h3>
                   </div>
-
-                  {/* Title */}
-                  <h3
-                    className="font-bold text-white mb-5 leading-tight"
-                    style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}
-                  >
-                    {service.title}
-                  </h3>
 
                   {/* Description */}
                   <p
-                    className="leading-relaxed mb-8 max-w-lg font-light"
+                    className="leading-relaxed mb-8 font-light"
                     style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)', color: 'rgba(226,232,240,0.92)' }}
                   >
                     {service.description}
@@ -172,28 +165,6 @@ const ServicesCarousel = ({ services, iconComponents }) => {
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </a>
-                </div>
-
-                {/* Image panel – hidden on small screens */}
-                <div className="flex-none hidden lg:block">
-                  <div
-                    className="relative w-72 h-72 rounded-3xl overflow-hidden"
-                    style={{
-                      boxShadow: '0 32px 64px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.12)',
-                    }}
-                  >
-                    <img
-                      src={img}
-                      alt={service.title}
-                      className="w-full h-full object-cover"
-                      style={{ transform: 'scale(1.05)' }}
-                    />
-                    {/* Subtle teal shimmer */}
-                    <div
-                      className="absolute inset-0"
-                      style={{ background: 'linear-gradient(135deg, rgba(13,148,136,0.25) 0%, transparent 60%)' }}
-                    />
-                  </div>
                 </div>
 
               </div>
