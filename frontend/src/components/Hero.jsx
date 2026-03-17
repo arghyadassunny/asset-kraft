@@ -55,13 +55,13 @@ const Hero = ({ openBookingModal }) => {
 
             {/* Main Heading */}
             <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
-              A Partnership{' '}
-              <span className="text-teal-600">Built On Your Success</span>
+              Invest In Your Future{' '}
+              <span className="text-teal-600">Live Your Present</span>
             </h1>
 
             {/* Subheading */}
             <p className="text-xl text-slate-600 leading-relaxed">
-              We focus on the <span className="font-semibold text-yellow-600">Craftsmanship</span> of Your Wealth.
+              And Leave Your <span className="font-semibold text-yellow-600">Financial Decision</span> To Us.
             </p>
 
             {/* Description */}
