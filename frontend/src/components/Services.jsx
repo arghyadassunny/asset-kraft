@@ -8,7 +8,7 @@ const iconComponents = {
 
 // Finance-themed Unsplash images – one per service (loops if more services than images)
 const slideImages = [
-  'https://images.pexels.com/photos/28682358/pexels-photo-28682358.jpeghttps://images.pexels.com/photos/28682358/pexels-photo-28682358.jpeg', // trading screen
+  'https://images.pexels.com/photos/28682358/pexels-photo-28682358.jpeg', // trading screen
   'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1800&q=80', // calculator/finance
   'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1800&q=80', // financial planning
   'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1800&q=80', // business agreement
