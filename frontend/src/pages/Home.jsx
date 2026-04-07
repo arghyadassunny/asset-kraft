@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Stats from '../components/Stats';
@@ -14,26 +15,37 @@ import BookingModal from '../components/BookingModal';
 
 const Home = () => {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [siteData, setSiteData] = useState({});
 
-  const openBookingModal = () => setIsBookingModalOpen(true);
-  const closeBookingModal = () => setIsBookingModalOpen(false);
+  useEffect(() => {
+    axios.get('/api/content')
+      .then(res => {
+        const dataMap = {};
+        res.data.forEach(item => { dataMap[item.content_key] = item.content_value; });
+        setSiteData(dataMap);
+      })
+      .catch(err => console.error("Database fetch failed", err));
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
-      <Header openBookingModal={openBookingModal} />
+      <Header openBookingModal={() => setIsBookingModalOpen(true)} />
       <main>
-        <Hero openBookingModal={openBookingModal} />
+        <Hero 
+          openBookingModal={() => setIsBookingModalOpen(true)} 
+          dynamicTitle={siteData.hero_title} 
+        />
         <Stats />
         <Services />
         <Portfolio />
         <Calculator />
-        <Team openBookingModal={openBookingModal} />
-        <Testimonials openBookingModal={openBookingModal} />
+        <Team openBookingModal={() => setIsBookingModalOpen(true)} />
+        <Testimonials openBookingModal={() => setIsBookingModalOpen(true)} />
         <ContactForm />
       </main>
       <Footer />
       <ChatBot />
-      <BookingModal isOpen={isBookingModalOpen} onClose={closeBookingModal} />
+      <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
     </div>
   );
 };
