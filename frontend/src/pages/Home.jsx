@@ -21,7 +21,10 @@ const Home = () => {
     axios.get('/api/content')
       .then(res => {
         const dataMap = {};
-        res.data.forEach(item => { dataMap[item.content_key] = item.content_value; });
+        // This takes the database rows and turns them into a simple object: { key: value }
+        res.data.forEach(item => { 
+          dataMap[item.content_key] = item.content_value; 
+        });
         setSiteData(dataMap);
       })
       .catch(err => console.error("Database fetch failed", err));
@@ -30,22 +33,38 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header openBookingModal={() => setIsBookingModalOpen(true)} />
+      
       <main>
+        {/* Pass the whole object to Hero too! */}
         <Hero 
           openBookingModal={() => setIsBookingModalOpen(true)} 
-          dynamicTitle={siteData.hero_title} 
+          dynamicData={siteData} 
         />
-        <Stats />
-        <Services />
+
+        {/* Instead of mapping 6 lines, we just pass the whole siteData object */}
+        <Stats dynamicStats={siteData} />
+
+        {/* You can now do the same for Services and others! */}
+        <Services dynamicData={siteData} />
+        
         <Portfolio />
         <Calculator />
-        <Team openBookingModal={() => setIsBookingModalOpen(true)} />
+        
+        <Team 
+          openBookingModal={() => setIsBookingModalOpen(true)} 
+          dynamicData={siteData} 
+        />
+        
         <Testimonials openBookingModal={() => setIsBookingModalOpen(true)} />
         <ContactForm />
       </main>
+
       <Footer />
       <ChatBot />
-      <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
+      <BookingModal 
+        isOpen={isBookingModalOpen} 
+        onClose={() => setIsBookingModalOpen(false)} 
+      />
     </div>
   );
 };
