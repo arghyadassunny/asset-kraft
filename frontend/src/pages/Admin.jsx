@@ -1,22 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Plus, Trash2, Save } from 'lucide-react';
+import { Plus, Trash2, Save, Send } from 'lucide-react';
 
 const Admin = () => {
   const [status, setStatus] = useState('');
   const [heroTitle, setHeroTitle] = useState('');
   const [statsData, setStatsData] = useState({});
-  
-  // Testimonials State
   const [testimonials, setTestimonials] = useState([]);
 
-  // Fetch existing data on load to populate the lists
+  // FETCH EVERYTHING ON LOAD
   useEffect(() => {
     axios.get('/api/content').then(res => {
       const data = res.data;
-      const testiRow = data.find(item => item.content_key === 'testimonials_data');
+      
+      // Load Hero
+      const heroRow = data.find(i => i.content_key === 'hero_title');
+      if (heroRow) setHeroTitle(heroRow.content_value);
+
+      // Load Stats
+      const statsMap = {};
+      data.forEach(item => {
+        if (item.content_key.startsWith('stat_')) {
+          statsMap[item.content_key] = item.content_value;
+        }
+      });
+      setStatsData(statsMap);
+
+      // Load Testimonials
+      const testiRow = data.find(i => i.content_key === 'testimonials_data');
       if (testiRow) setTestimonials(JSON.parse(testiRow.content_value));
-    });
+    }).catch(() => setStatus('Failed to load data from TiDB.'));
   }, []);
 
   const handleUpdate = async (key, value) => {
@@ -30,78 +43,94 @@ const Admin = () => {
     }
   };
 
-  // Testimonial Helpers
-  const addTestimonial = () => {
-    setTestimonials([...testimonials, { id: Date.now(), name: '', role: '', quote: '', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop' }]);
-  };
-
-  const deleteTestimonial = (id) => {
-    setTestimonials(testimonials.filter(t => t.id !== id));
-  };
-
-  const updateTestiField = (id, field, value) => {
-    setTestimonials(testimonials.map(t => t.id === id ? { ...t, [field]: value } : t));
-  };
-
   return (
-    <div className="p-10 max-w-5xl mx-auto font-sans bg-slate-50 min-h-screen">
-      <h1 className="text-3xl font-bold mb-8 text-slate-800">Asset Kraft Control Panel</h1>
+    <div className="p-10 max-w-5xl mx-auto font-sans bg-slate-50 min-h-screen pb-32">
+      <h1 className="text-4xl font-extrabold mb-10 text-slate-900 border-b pb-4">Asset Kraft Control Panel</h1>
 
-      {/* TESTIMONIALS MANAGEMENT */}
-      <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 mb-10">
+      {/* SECTION 1: HERO */}
+      <div className="bg-white p-8 rounded-2xl shadow-sm border mb-8">
+        <h2 className="text-xl font-bold mb-4 text-teal-700">1. Hero Section</h2>
+        <div className="flex gap-4">
+          <input 
+            className="border p-3 flex-grow rounded-xl"
+            placeholder="Main Title"
+            value={heroTitle}
+            onChange={(e) => setHeroTitle(e.target.value)}
+          />
+          <button onClick={() => handleUpdate('hero_title', heroTitle)} className="bg-teal-600 text-white px-6 rounded-xl hover:bg-teal-700 transition flex items-center gap-2">
+            <Send size={18} /> Update Hero
+          </button>
+        </div>
+      </div>
+
+      {/* SECTION 2: STATS */}
+      <div className="bg-white p-8 rounded-2xl shadow-sm border mb-8">
+        <h2 className="text-xl font-bold mb-6 text-teal-700">2. Website Statistics</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            { label: 'AUM (Crores)', key: 'stat_aum' },
+            { label: 'Happy Investors', key: 'stat_investors' },
+            { label: 'Insurance Book', key: 'stat_insurance' },
+            { label: 'Team Members', key: 'stat_team' },
+            { label: 'Office Locations', key: 'stat_offices' },
+            { label: 'Years of Experience', key: 'stat_experience' }
+          ].map((item) => (
+            <div key={item.key} className="space-y-2">
+              <label className="text-sm font-bold text-slate-500 uppercase">{item.label}</label>
+              <div className="flex gap-2">
+                <input 
+                  className="border p-2 flex-grow rounded-lg"
+                  value={statsData[item.key] || ''}
+                  placeholder="e.g. 5000+"
+                  onChange={(e) => setStatsData({...statsData, [item.key]: e.target.value})}
+                />
+                <button onClick={() => handleUpdate(item.key, statsData[item.key])} className="bg-slate-800 text-white px-4 rounded-lg text-sm">Save</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* SECTION 3: TESTIMONIALS */}
+      <div className="bg-white p-8 rounded-2xl shadow-sm border mb-8">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-teal-700">Client Testimonials</h2>
-          <button onClick={addTestimonial} className="flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition">
-            <Plus size={18} /> Add Testimonial
+          <h2 className="text-xl font-bold text-teal-700">3. Client Testimonials</h2>
+          <button 
+            onClick={() => setTestimonials([...testimonials, { id: Date.now(), name: '', role: '', quote: '' }])}
+            className="bg-teal-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-teal-700"
+          >
+            <Plus size={18} /> Add New
           </button>
         </div>
 
         <div className="space-y-6">
           {testimonials.map((t, index) => (
-            <div key={t.id} className="p-6 bg-slate-50 rounded-xl border border-slate-200 relative group">
+            <div key={t.id} className="p-6 bg-slate-50 rounded-xl border border-slate-200 relative">
               <button 
-                onClick={() => deleteTestimonial(t.id)}
-                className="absolute top-4 right-4 text-red-400 hover:text-red-600 transition"
+                onClick={() => setTestimonials(testimonials.filter(item => item.id !== t.id))}
+                className="absolute top-4 right-4 text-red-400 hover:text-red-600"
               >
                 <Trash2 size={20} />
               </button>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1">
-                  <label className="text-xs font-bold text-slate-500 uppercase">Client Name</label>
-                  <input 
-                    className="border p-2 rounded-lg"
-                    value={t.name}
-                    onChange={(e) => updateTestiField(t.id, 'name', e.target.value)}
-                    placeholder="e.g. Rajesh Kumar"
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label className="text-xs font-bold text-slate-500 uppercase">Position / Role</label>
-                  <input 
-                    className="border p-2 rounded-lg"
-                    value={t.role}
-                    onChange={(e) => updateTestiField(t.id, 'role', e.target.value)}
-                    placeholder="e.g. Business Owner, Mumbai"
-                  />
-                </div>
-                <div className="flex flex-col gap-1 col-span-full">
-                  <label className="text-xs font-bold text-slate-500 uppercase">Image URL</label>
-                  <input 
-                    className="border p-2 rounded-lg text-sm text-slate-500"
-                    value={t.image}
-                    onChange={(e) => updateTestiField(t.id, 'image', e.target.value)}
-                  />
-                </div>
-                <div className="flex flex-col gap-1 col-span-full">
-                  <label className="text-xs font-bold text-slate-500 uppercase">Client Comment</label>
-                  <textarea 
-                    className="border p-2 rounded-lg h-24"
-                    value={t.quote}
-                    onChange={(e) => updateTestiField(t.id, 'quote', e.target.value)}
-                    placeholder="Enter testimonial text here..."
-                  />
-                </div>
+              <div className="grid grid-cols-2 gap-4">
+                <input 
+                  className="border p-2 rounded-lg" 
+                  placeholder="Client Name" 
+                  value={t.name}
+                  onChange={(e) => setTestimonials(testimonials.map(item => item.id === t.id ? {...item, name: e.target.value} : item))}
+                />
+                <input 
+                  className="border p-2 rounded-lg" 
+                  placeholder="Position/Role" 
+                  value={t.role}
+                  onChange={(e) => setTestimonials(testimonials.map(item => item.id === t.id ? {...item, role: e.target.value} : item))}
+                />
+                <textarea 
+                  className="border p-2 rounded-lg col-span-2 h-20" 
+                  placeholder="Client Quote" 
+                  value={t.quote}
+                  onChange={(e) => setTestimonials(testimonials.map(item => item.id === t.id ? {...item, quote: e.target.value} : item))}
+                />
               </div>
             </div>
           ))}
@@ -110,17 +139,15 @@ const Admin = () => {
         {testimonials.length > 0 && (
           <button 
             onClick={() => handleUpdate('testimonials_data', testimonials)}
-            className="w-full mt-8 bg-slate-900 text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-black transition"
+            className="w-full mt-6 bg-slate-900 text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-black transition"
           >
             <Save size={20} /> Save All Testimonials
           </button>
         )}
       </div>
 
-      {/* Hero and Stats sections go here (same as before) ... */}
-
-      <div className="fixed bottom-10 right-10 bg-white border-l-4 border-teal-500 p-4 shadow-xl rounded-r-lg">
-        <p className="text-slate-700 font-medium">{status || "Ready to Edit"}</p>
+      <div className="fixed bottom-10 right-10 bg-teal-900 text-white px-8 py-4 rounded-full shadow-2xl font-bold animate-pulse">
+        {status || "System Ready"}
       </div>
     </div>
   );
