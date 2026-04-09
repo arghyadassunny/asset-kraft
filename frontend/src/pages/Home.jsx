@@ -55,7 +55,10 @@ const Home = () => {
           dynamicData={siteData} 
         />
         
-        <Testimonials openBookingModal={() => setIsBookingModalOpen(true)} />
+        <Testimonials 
+  openBookingModal={() => setIsBookingModalOpen(true)} 
+  dynamicData={siteData} 
+/>
         <ContactForm />
       </main>
 
