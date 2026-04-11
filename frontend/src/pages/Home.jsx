@@ -71,10 +71,11 @@ const Home = () => {
         <Calculator />
         
         {/* TEAM: Can be made dynamic in the future */}
-        <Team 
-          openBookingModal={openBookingModal} 
-          dynamicData={siteData}
-        />
+<Team 
+  openBookingModal={() => setIsBookingModalOpen(true)} 
+  dynamicData={siteData} 
+  isLoading={isLoading}
+/>
         
         {/* TESTIMONIALS: Uses the Carousel with Unlimited logic */}
         <Testimonials 
