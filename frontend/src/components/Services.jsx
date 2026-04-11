@@ -54,9 +54,6 @@ const ServicesCarousel = ({ services, iconComponents }) => {
   }, [current]);
 
   return (
-    /* MOBILE: h-[380px] (Decreased from 480px)
-       DESKTOP: lg:h-[520px] (Remains same)
-    */
     <div className="relative w-full overflow-hidden h-[380px] lg:h-[520px]">
       {services.map((service, i) => {
         const Icon = iconComponents[service.icon];
@@ -79,7 +76,6 @@ const ServicesCarousel = ({ services, iconComponents }) => {
             <div className="relative z-10 h-full flex items-center justify-center px-4">
               <div className="max-w-xl w-full flex flex-col items-center text-center">
                 
-                {/* Icon & Title Group: mb-2 for mobile to save space */}
                 <div className="flex flex-col items-center gap-2 mb-2 lg:flex-row lg:gap-5 lg:mb-6">
                   <div className="bg-white/15 backdrop-blur-md border border-white/25 w-10 h-10 lg:w-14 lg:h-14 rounded-xl flex items-center justify-center shadow-xl">
                     <Icon className="text-white w-5 h-5 lg:w-7 lg:h-7" />
@@ -89,12 +85,10 @@ const ServicesCarousel = ({ services, iconComponents }) => {
                   </h3>
                 </div>
 
-                {/* Description: mb-5 for mobile to keep button visible in shorter height */}
                 <p className="text-sm sm:text-base lg:text-lg text-slate-200/90 font-light leading-relaxed mb-5 lg:mb-8 max-w-[260px] sm:max-w-md lg:max-w-xl">
                   {service.description}
                 </p>
 
-                {/* CTA */}
                 <a href="#" className="bg-white/10 backdrop-blur-md border border-white/40 hover:bg-white/20 text-white px-6 py-2 rounded-full text-[11px] lg:text-sm font-semibold transition-all">
                   Start Your Journey
                 </a>
@@ -153,8 +147,9 @@ const Services = () => {
         <ServicesCarousel services={services} iconComponents={iconComponents} />
       </div>
 
-      {/* Philosophy and Values parts remain same for desktop stability */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* ── Value Vision boxes (MOBILE: smaller width/text) ── */}
         <div className="mb-24">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 px-2">
@@ -168,25 +163,37 @@ const Services = () => {
             return (
               <div className="space-y-4 lg:space-y-6">
                 {Array.from({ length: rows }).map((_, i) => (
-                  <div key={i} className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+                  <div key={i} className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center justify-items-center">
+                    {/* What We Do */}
                     {doValues[i] && (
-                      <div className="bg-teal-50/50 rounded-xl p-5 border border-teal-200">
-                        <div className="flex items-start gap-4">
-                          <Check className="text-teal-600 mt-1 flex-shrink-0" size={18} />
+                      <div className="bg-teal-50/50 rounded-xl p-4 lg:p-5 border border-teal-200 w-full max-w-[300px] lg:max-w-none">
+                        <div className="flex items-start gap-3 lg:gap-4">
+                          <Check className="text-teal-600 mt-1 flex-shrink-0" size={16} />
                           <div>
-                            <h3 className="text-lg font-bold text-slate-900 mb-1">{doValues[i].title}</h3>
-                            <p className="text-sm text-slate-700 leading-relaxed">{doValues[i].description}</p>
+                            {/* Title: smaller font-base on mobile, lg:font-lg on desktop */}
+                            <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">
+                              {doValues[i].title}
+                            </h3>
+                            {/* Description: smaller text-[13px] on mobile, lg:text-sm on desktop */}
+                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed">
+                              {doValues[i].description}
+                            </p>
                           </div>
                         </div>
                       </div>
                     )}
+                    {/* What We Don't Do */}
                     {dontValues[i] && (
-                      <div className="bg-slate-50 rounded-xl p-5 border border-slate-200">
-                        <div className="flex items-start gap-4">
-                          <X className="text-slate-600 mt-1 flex-shrink-0" size={18} />
+                      <div className="bg-slate-50 rounded-xl p-4 lg:p-5 border border-slate-200 w-full max-w-[300px] lg:max-w-none">
+                        <div className="flex items-start gap-3 lg:gap-4">
+                          <X className="text-slate-600 mt-1 flex-shrink-0" size={16} />
                           <div>
-                            <h3 className="text-lg font-bold text-slate-900 mb-1">{dontValues[i].title}</h3>
-                            <p className="text-sm text-slate-700 leading-relaxed">{dontValues[i].description}</p>
+                            <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">
+                              {dontValues[i].title}
+                            </h3>
+                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed">
+                              {dontValues[i].description}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -198,6 +205,7 @@ const Services = () => {
           })()}
         </div>
 
+        {/* ── Philosophy boxes ── */}
         <div>
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
