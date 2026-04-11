@@ -22,17 +22,17 @@ const Header = ({ openBookingModal }) => {
 
   return (
     <header 
-      className={`fixed top-3 left-4 right-4 z-50 transition-all duration-400 ${
+      className={`fixed top-2 lg:top-3 left-4 right-4 z-50 transition-all duration-400 ${
         isScrolled 
           ? 'bg-white/45 shadow-[0_4px_40px_rgba(0,0,0,0.10),0_1px_0_rgba(255,255,255,0.8)_inset]' 
           : 'bg-white/28 shadow-[0_2px_32px_rgba(0,0,0,0.06),0_1px_0_rgba(255,255,255,0.7)_inset]'
-      } backdrop-blur-[24px] backdrop-saturate-[180%] border border-white/45 rounded-[14px] px-8 md:px-12 py-4`}
+      } backdrop-blur-[24px] backdrop-saturate-[180%] border border-white/45 rounded-[14px] px-6 lg:px-12 py-2 lg:py-4`}
       style={{
         width: 'calc(100% - 32px)',
       }}
     >
       <nav className="flex justify-between items-center">
-        {/* Logo */}
+        {/* Logo - h-7 on mobile, h-12 on desktop */}
         <button 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="flex items-center group"
@@ -40,7 +40,7 @@ const Header = ({ openBookingModal }) => {
           <img 
             src={companyInfo.logo} 
             alt="AssetKraft - AMFI Registered Mutual Fund Distributor" 
-            className="h-12 w-auto"
+            className="h-7 lg:h-12 w-auto transition-all"
           />
         </button>
 
@@ -92,50 +92,50 @@ const Header = ({ openBookingModal }) => {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu?.classList.toggle('hidden');
           }}
-          className="lg:hidden p-2 rounded-lg hover:bg-teal-50 transition-colors"
+          className="lg:hidden p-1.5 rounded-lg hover:bg-teal-50 transition-colors"
         >
-          <svg className="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </nav>
 
       {/* Mobile Menu */}
-      <div id="mobile-menu" className="hidden lg:hidden mt-4 pt-4 border-t border-white/30">
-        <div className="flex flex-col gap-3">
+      <div id="mobile-menu" className="hidden lg:hidden mt-2 pt-2 border-t border-white/30">
+        <div className="flex flex-col gap-1.5">
           <button 
             onClick={() => { scrollToSection('home'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
-            className="text-left px-4 py-2 text-sm font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
+            className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
           >
             Home
           </button>
           <button 
             onClick={() => { scrollToSection('services'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
-            className="text-left px-4 py-2 text-sm font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
+            className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
           >
             Services
           </button>
           <button 
             onClick={() => { scrollToSection('portfolio'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
-            className="text-left px-4 py-2 text-sm font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
+            className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
           >
             Portfolio
           </button>
           <button 
             onClick={() => { scrollToSection('calculator'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
-            className="text-left px-4 py-2 text-sm font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
+            className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
           >
             Calculator
           </button>
           <button 
             onClick={() => { scrollToSection('team'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
-            className="text-left px-4 py-2 text-sm font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
+            className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
           >
             <a href="/our-team" className="block w-full">Our Team</a>
           </button>
           <Button 
             onClick={openBookingModal}
-            className="w-full bg-teal-600 hover:bg-teal-700 text-white"
+            className="w-full bg-teal-600 hover:bg-teal-700 text-white text-xs py-2"
           >
             Contact Us
           </Button>
