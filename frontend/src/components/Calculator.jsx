@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calculator as CalcIcon, TrendingUp, DollarSign, Calendar, GraduationCap, Heart, Home as HomeIcon, Car } from 'lucide-react';
+import { Calculator as CalcIcon, TrendingUp, IndianRupee, Calendar, GraduationCap, Heart, Home as HomeIcon, Car } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
@@ -285,7 +285,7 @@ const Calculator = () => {
                         <div className="space-y-4">
                           <div className="flex justify-between items-center p-4 bg-white rounded-xl">
                             <div className="flex items-center gap-3">
-                              <DollarSign className="text-teal-600" size={24} />
+                              <IndianRupee className="text-teal-600" size={24} />
                               <span className="text-slate-700 font-medium">Total Investment</span>
                             </div>
                             <span className="text-xl font-bold text-slate-900">

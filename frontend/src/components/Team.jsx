@@ -35,7 +35,7 @@ const Team = ({ openBookingModal, dynamicData, isLoading }) => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-900 mb-4">
-            Meet the Experts <span className="text-teal-600">Behind Your Wealth</span>
+            Meet the <span className="text-teal-600">Founders</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Backed by 20+ years of experience and a passionate team of 30+ professionals
