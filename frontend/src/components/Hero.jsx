@@ -62,7 +62,7 @@ const Hero = ({ openBookingModal }) => {
               </span>
             </div>
 
-            <h1 className="text-4xl lg:text-6xl font-bold text-slate-900 leading-tight text-center lg:text-left">
+            <h1 className="text-4xl lg:text-6xl font-extrabold text-slate-900 leading-tight text-center lg:text-left">
               Invest In Your Future{' '}
               <span className="text-teal-600">Live Your Present</span>
             </h1>
