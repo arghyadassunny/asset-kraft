@@ -2,22 +2,51 @@ import React, { useCallback } from 'react';
 import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 
-const Testimonials = ({ openBookingModal, dynamicData }) => {
+const Testimonials = ({ openBookingModal, dynamicData, isLoading }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
-  // Fallback Data
+  // 1. Loading State (Skeleton UI)
+  if (isLoading) {
+    return (
+      <section className="py-24 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 animate-pulse">
+            <div className="h-12 w-3/4 md:w-1/2 bg-slate-200 rounded-lg mx-auto mb-4"></div>
+            <div className="h-6 w-1/3 bg-slate-100 rounded-lg mx-auto"></div>
+          </div>
+          <div className="flex gap-6 overflow-hidden">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="flex-[0_0_100%] md:flex-[0_0_48%] lg:flex-[0_0_32%] min-w-0">
+                <div className="bg-slate-50 rounded-3xl p-10 h-64 border border-slate-100 animate-pulse">
+                  <div className="w-12 h-12 bg-slate-200 rounded-full mb-6"></div>
+                  <div className="h-4 w-full bg-slate-200 rounded mb-2"></div>
+                  <div className="h-4 w-2/3 bg-slate-200 rounded"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // 2. Data Logic
   const defaultTestimonials = [
-    { id: 1, name: 'Rajesh Kumar', role: 'Business Owner, Mumbai', quote: 'With AssetKraft, I found the right partner for my family\'s financial future.' },
-    { id: 2, name: 'Priya Sharma', role: 'IT Professional, Bangalore', quote: 'AssetKraft brought simplicity and clarity to my investments.' }
+    { id: 1, name: 'Rajesh Kumar', role: 'Business Owner, Mumbai', quote: 'With AssetKraft, I found the right partner for my family\'s financial future. Their personalized approach made all the difference.' },
+    { id: 2, name: 'Priya Sharma', role: 'IT Professional, Bangalore', quote: 'AssetKraft brought simplicity and clarity to my investments. I finally understand where my money is going and why.' },
+    { id: 3, name: 'Amit Patel', role: 'Entrepreneur, Delhi', quote: 'I am sure AssetKraft will help me achieve my financial goals better than I could alone. Their expertise is unmatched.' }
   ];
 
   let displayTestimonials = defaultTestimonials;
   if (dynamicData?.testimonials_data) {
     try {
-      displayTestimonials = JSON.parse(dynamicData.testimonials_data);
+      const parsed = JSON.parse(dynamicData.testimonials_data);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        displayTestimonials = parsed;
+      }
     } catch (e) {
       displayTestimonials = defaultTestimonials;
     }
@@ -40,7 +69,6 @@ const Testimonials = ({ openBookingModal, dynamicData }) => {
           <div className="embla__container flex gap-6">
             {displayTestimonials.map((testimonial) => (
               <div key={testimonial.id} className="embla__slide flex-[0_0_100%] md:flex-[0_0_48%] lg:flex-[0_0_32%] min-w-0">
-                {/* Clean Card without Image */}
                 <div className="bg-slate-50 rounded-3xl p-10 shadow-sm border border-slate-100 h-full flex flex-col justify-between hover:shadow-xl transition-all duration-300">
                   <div>
                     <div className="bg-teal-100 w-12 h-12 rounded-full flex items-center justify-center mb-6">
@@ -61,7 +89,7 @@ const Testimonials = ({ openBookingModal, dynamicData }) => {
           </div>
         </div>
 
-        {/* Arrows and Controls - Now in the Middle-Bottom */}
+        {/* Arrows and Controls */}
         <div className="flex flex-col items-center gap-8 mt-12">
           <div className="flex gap-4">
             <button 
