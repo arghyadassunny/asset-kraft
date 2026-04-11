@@ -8,10 +8,10 @@ const iconComponents = {
 
 // Finance-themed Unsplash images – one per service (loops if more services than images)
 const slideImages = [
-  'https://images.pexels.com/photos/28682358/pexels-photo-28682358.jpeg', // trading screen
-  'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1800&q=80', // calculator/finance
-  'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1800&q=80', // financial planning
-  'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1800&q=80', // business agreement
+  'https://res.cloudinary.com/djm5rsjwl/image/upload/v1775941268/mutual_funds_pic_qb9mr4.png', // trading screen
+  'https://res.cloudinary.com/djm5rsjwl/image/upload/v1775941241/insurance_ejewjz.png', // calculator/finance
+  'https://res.cloudinary.com/djm5rsjwl/image/upload/v1775941241/finance_kvn7zh.png', // financial planning
+  'https://res.cloudinary.com/djm5rsjwl/image/upload/v1775941242/legacy_planning_qwasl4.png', // business agreement
 ];
 
 const DURATION = 4500; // ms per slide
