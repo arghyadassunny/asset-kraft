@@ -76,8 +76,8 @@ const Hero = ({ openBookingModal }) => {
             </div>
 
             {/* Main Heading - Forced 2 lines on mobile using 'block' */}
-            <h1 className="text-[28px] leading-[1.2] sm:text-4xl lg:text-6xl font-bold text-slate-900 text-center lg:text-left mt-0">
-              <span className="inline-block">Invest In Your Future</span>{' '}
+            <h1 className="text-[34px] leading-[1.1] sm:text-4xl lg:text-6xl font-extrabold text-slate-900 text-center lg:text-left mt-0 tracking-tight">
+              <span className="block">Invest In Your Future</span>{' '}
               <span className="block text-teal-600">Live Your Present</span>
             </h1>
 
