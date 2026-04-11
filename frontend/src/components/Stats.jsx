@@ -24,7 +24,7 @@ const dbKeyMap = {
 
 const Stats = ({ dynamicStats }) => {
   return (
-    <section className="pt-4 pb-16 lg:py-20 bg-slate-50">
+    <section className="pt-0 pb-16 lg:py-20 bg-slate-50 -mt-10 lg:mt-0 relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
