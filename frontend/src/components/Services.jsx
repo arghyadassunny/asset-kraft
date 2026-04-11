@@ -160,7 +160,7 @@ const ServicesCarousel = ({ services, iconComponents }) => {
                       e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)';
                     }}
                   >
-                    Learn More
+                    Start Your Journey
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
