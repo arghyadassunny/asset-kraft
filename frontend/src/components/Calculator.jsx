@@ -387,7 +387,7 @@ const Calculator = () => {
                         <div className="space-y-4">
                           <div className="flex justify-between items-center p-4 bg-white rounded-xl">
                             <div className="flex items-center gap-3">
-                              <DollarSign className="text-teal-600" size={24} />
+                              <IndianRupee className="text-teal-600" size={24} />
                               <span className="text-slate-700 font-medium">Total Investment</span>
                             </div>
                             <span className="text-xl font-bold text-slate-900">
@@ -539,7 +539,7 @@ const Calculator = () => {
 
                           <div className="flex justify-between items-center p-4 bg-teal-600 text-white rounded-xl shadow-lg">
                             <div className="flex items-center gap-3">
-                              <DollarSign size={24} />
+                              <IndianRupee size={24} />
                               <span className="font-medium text-sm">Monthly Investment for {goalResult.years} years</span>
                             </div>
                             <span className="text-2xl font-bold">
