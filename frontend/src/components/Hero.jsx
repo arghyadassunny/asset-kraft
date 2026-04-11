@@ -1,8 +1,8 @@
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from './ui/button';
-
 import React, { useEffect, useRef, useState } from 'react';
 
+// 1. Custom Hook for the counter animation
 function useCountUp(target, duration = 1400) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
@@ -29,14 +29,11 @@ function useCountUp(target, duration = 1400) {
 }
 
 const Hero = ({ openBookingModal }) => {
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
   const aum = useCountUp(700, 1200);
   const investors = useCountUp(5000, 1400);
   const years = useCountUp(20, 1000);
 
-  // Reusable Video Component
+  // Reusable Video Component to maintain consistency
   const HeroVideo = () => (
     <video 
       src="https://customer-assets.emergentagent.com/job_craft-wealth/artifacts/soswflym_Hero%20section%20video%20asset%20kraft.mp4"
@@ -50,7 +47,8 @@ const Hero = ({ openBookingModal }) => {
   );
 
   return (
-    <section id="home" className="relative bg-white pt-24 lg:pt-32 pb-24 lg:pb-32 overflow-hidden">
+    // Mobile: pt-40 (more gap from header) | Desktop: pt-32 (original gap)
+    <section id="home" className="relative bg-white pt-40 lg:pt-32 pb-24 lg:pb-32 overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-teal-100/30 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-100/30 rounded-full blur-3xl"></div>
@@ -61,10 +59,12 @@ const Hero = ({ openBookingModal }) => {
           {/* Left Content Column */}
           <div className="flex flex-col items-center lg:items-start space-y-6 lg:space-y-8">
             
-            {/* Badge - Mid-aligned on mobile, Left on Desktop */}
+            {/* Badge - Much smaller text on mobile (text-[10px]), original on desktop */}
             <div className="inline-flex items-center gap-2 bg-teal-50 border border-teal-200 rounded-full px-4 py-2 text-teal-700 font-medium animate-fade-in">
-              <Sparkles size={16} className="text-yellow-500" />
-              <span className="text-xs sm:text-sm lg:text-base">AMFI Registered Mutual Fund Distributor</span>
+              <Sparkles size={12} className="text-yellow-500 lg:w-4 lg:h-4" />
+              <span className="text-[10px] sm:text-sm lg:text-base uppercase tracking-wider lg:normal-case lg:tracking-normal">
+                AMFI Registered Mutual Fund Distributor
+              </span>
             </div>
 
             {/* Main Heading - Mid-aligned on mobile */}
@@ -73,7 +73,7 @@ const Hero = ({ openBookingModal }) => {
               <span className="text-teal-600">Live Your Present</span>
             </h1>
 
-            {/* Mobile Video - Appears only on mobile after the heading */}
+            {/* Mobile Video - Inserted here so it shows after the header on mobile only */}
             <div className="w-full lg:hidden">
               <HeroVideo />
             </div>
@@ -91,7 +91,7 @@ const Hero = ({ openBookingModal }) => {
               </p>
             </div>
 
-            {/* CTA Buttons - Half-width & Mid-aligned on mobile */}
+            {/* CTA Buttons - Half-width & Mid-aligned on mobile, original layout on desktop */}
             <div className="flex flex-row justify-center lg:justify-start gap-3 w-full pt-2 lg:pt-4">
               <Button 
                 onClick={openBookingModal}
@@ -109,7 +109,7 @@ const Hero = ({ openBookingModal }) => {
               </Button>
             </div>
 
-            {/* Trust Indicators - Responsive alignment */}
+            {/* Trust Indicators - Responsive alignment & smaller mobile labels */}
             <div className="flex items-center justify-center lg:justify-start gap-4 sm:gap-8 pt-8 border-t border-slate-200 w-full">
               <div ref={aum.ref} className="text-center lg:text-left">
                 <div className="text-2xl lg:text-3xl font-bold text-teal-600">{aum.count}+</div>
@@ -128,7 +128,7 @@ const Hero = ({ openBookingModal }) => {
             </div>
           </div>
 
-          {/* Desktop Video - Hidden on mobile, takes right column on desktop */}
+          {/* Desktop Video - Only visible on Large screens (Right Column) */}
           <div className="hidden lg:block w-full">
             <HeroVideo />
           </div>
