@@ -65,24 +65,24 @@ const Hero = ({ openBookingModal }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
-          <div className="flex flex-col items-center lg:items-start space-y-4 lg:space-y-8">
+          <div className="flex flex-col items-center lg:items-start space-y-6 lg:space-y-8">
             
-            {/* AMFI Badge */}
-<div className="inline-flex items-center gap-1 bg-teal-50 border border-teal-200 rounded-full px-2 py-0.5 lg:px-2.5 lg:py-0.5 text-teal-700 font-medium animate-fade-in">
-  {/* Icon scaled to 3.5 (14px) for desktop */}
-  <Sparkles className="text-yellow-500 w-2 h-2 lg:w-3.5 lg:h-3.5" />
-  
-  {/* Text scaled to sm (14px) for desktop */}
-  <span className="text-[7px] sm:text-xs lg:text-sm uppercase tracking-tighter lg:normal-case lg:tracking-normal">
-    AMFI Registered Mutual Fund Distributor
-  </span>
-</div>
+            {/* Tighter Sub-container for Badge and Heading */}
+            <div className="flex flex-col items-center lg:items-start space-y-1 lg:space-y-2">
+              {/* AMFI Badge - Compact size for both mobile and desktop */}
+              <div className="inline-flex items-center gap-1 bg-teal-50 border border-teal-200 rounded-full px-2 py-0.5 lg:px-2.5 text-teal-700 font-medium animate-fade-in">
+                <Sparkles className="text-yellow-500 w-2 h-2 lg:w-3.5 lg:h-3.5" />
+                <span className="text-[7px] sm:text-xs lg:text-sm uppercase tracking-tighter lg:normal-case lg:tracking-normal">
+                  AMFI Registered Mutual Fund Distributor
+                </span>
+              </div>
 
-            {/* Main Heading - Forced 2 lines on mobile using 'block' */}
-            <h1 className="text-[34px] leading-[1.1] sm:text-4xl lg:text-6xl font-extrabold text-slate-900 text-center lg:text-left mt-0 tracking-tight">
-              <span className="block">Invest In Your Future</span>{' '}
-              <span className="block text-teal-600">Live Your Present</span>
-            </h1>
+              {/* Main Heading */}
+              <h1 className="text-[34px] leading-[1.1] sm:text-4xl lg:text-6xl font-bold text-slate-900 text-center lg:text-left tracking-tight">
+                <span className="block">Invest In Your Future</span>
+                <span className="block text-teal-600">Live Your Present</span>
+              </h1>
+            </div>
 
             {/* Mobile Video */}
             <div className="w-full lg:hidden">
@@ -136,7 +136,6 @@ const Hero = ({ openBookingModal }) => {
             </div>
           </div>
 
-          {/* Desktop Video */}
           <div className="hidden lg:block w-full">
             <HeroVideo />
           </div>

@@ -38,7 +38,7 @@ const Header = ({ openBookingModal }) => {
           className="flex items-center group"
         >
           <img 
-            src={companyInfo.logo} 
+            src={"https://res.cloudinary.com/djm5rsjwl/image/upload/v1775998066/Asset_kraft_logo_krtwkg.png"} 
             alt="AssetKraft - AMFI Registered Mutual Fund Distributor" 
             className="h-7 lg:h-12 w-auto transition-all"
           />
