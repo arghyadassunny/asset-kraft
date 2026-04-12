@@ -66,7 +66,6 @@ const portfolioStrategies = [
 
 const Portfolio = () => {
   return (
-    // Mobile: py-16 | Desktop: lg:py-24 (Original)
     <section id="portfolio" className="py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -93,24 +92,23 @@ const Portfolio = () => {
             return (
               <div 
                 key={strategy.id}
-                className={`group bg-gradient-to-br ${bgColor} rounded-2xl p-6 lg:p-8 border ${borderColor} hover:shadow-xl transition-all duration-300 flex flex-col items-center lg:items-start text-center lg:text-left`}
+                /* MOBILE: max-w-[280px] and mx-auto added to shrink card width
+                   DESKTOP: lg:max-w-none to fill grid column
+                */
+                className={`group bg-gradient-to-br ${bgColor} rounded-2xl p-6 lg:p-8 border ${borderColor} hover:shadow-xl transition-all duration-300 flex flex-col items-center lg:items-start text-center lg:text-left max-w-[280px] mx-auto lg:max-w-none`}
               >
-                {/* Icon Container: Centered on mobile, original size for desktop */}
                 <div className={`bg-white rounded-xl w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center mb-5 shadow-sm group-hover:scale-110 transition-transform duration-300`}>
                   <Icon className={iconColor} size={window.innerWidth < 1024 ? 24 : 32} />
                 </div>
 
-                {/* Title */}
                 <h3 className="text-lg lg:text-xl font-bold text-slate-900 mb-2 lg:mb-3">
                   {strategy.title}
                 </h3>
 
-                {/* Description */}
                 <p className="text-sm lg:text-base text-slate-600 mb-5 leading-relaxed">
                   {strategy.description}
                 </p>
 
-                {/* Details */}
                 <div className="w-full space-y-2.5 pt-4 border-t border-slate-200/60">
                   <div className="flex justify-between items-center text-xs lg:text-sm">
                     <span className="text-slate-500">Risk Level:</span>
@@ -137,7 +135,7 @@ const Portfolio = () => {
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-8 lg:mt-12 bg-slate-50 rounded-xl p-4 lg:p-6 border border-slate-200">
+        <div className="mt-8 lg:mt-12 bg-slate-50 rounded-xl p-4 lg:p-6 border border-slate-200 max-w-[320px] mx-auto lg:max-w-none">
           <p className="text-xs lg:text-sm text-slate-600 leading-relaxed text-center lg:text-left">
             <strong className="text-slate-900">Note:</strong> Past performance is not indicative of future returns. 
             Indicative returns are subject to market risks. We recommend consulting with our 

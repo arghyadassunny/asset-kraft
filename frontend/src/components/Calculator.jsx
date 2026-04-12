@@ -179,7 +179,7 @@ const Calculator = () => {
   const GoalIcon = currentGoal.icon;
 
   return (
-    <section id="calculator" className="py-12 lg:py-24 bg-slate-50">
+    <section id="calculator" className="pt-4 pb-12 lg:pt-10 lg:pb-24 bg-slate-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-8 lg:mb-12">
