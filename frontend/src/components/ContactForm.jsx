@@ -30,7 +30,6 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      // Hit the Vercel Serverless Function directly
       const response = await axios.post('/api/contact', formData);
       
       if (response.data.success) {
@@ -50,56 +49,58 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-slate-50">
+    <section id="contact" className="py-12 lg:py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">
+        
+        {/* Section Header */}
+        <div className="text-center mb-10 lg:mb-16">
+          <h2 className="text-2xl lg:text-4xl font-bold text-slate-900 mb-3 lg:mb-4">
             Get in <span className="text-teal-600">Touch</span>
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="text-sm lg:text-lg text-slate-600 max-w-2xl mx-auto px-4">
             Ready to start your wealth journey? Reach out to us and let's discuss your financial goals
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          
+          {/* Contact Details Column */}
+          <div className="space-y-6 lg:space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left">
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Let's Connect</h3>
-              <p className="text-slate-600 text-lg leading-relaxed mb-8">
-                Our team is here to guide you through every step of your financial journey. 
-                Whether you have questions about our services or want to schedule a consultation, 
-                we're just a message away.
+              <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-3 lg:mb-6">Let's Connect</h3>
+              <p className="text-sm lg:text-lg text-slate-600 leading-relaxed mb-2 lg:mb-8 max-w-[320px] lg:max-w-none">
+                Our team is here to guide you through every step of your financial journey.
               </p>
             </div>
 
-            <div className="space-y-4">
-              <a href={`tel:${companyInfo.phone}`} className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100 hover:border-teal-300 group">
-                <div className="bg-teal-100 rounded-lg p-3 group-hover:bg-teal-600 transition-colors">
-                  <Phone className="text-teal-600 group-hover:text-white" size={24} />
+            <div className="space-y-4 w-full max-w-[340px] lg:max-w-none">
+              <a href={`tel:${companyInfo.phone}`} className="flex items-center lg:items-start gap-4 p-4 lg:p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100 hover:border-teal-300 group">
+                <div className="bg-teal-100 rounded-lg p-2.5 lg:p-3 group-hover:bg-teal-600 transition-colors">
+                  <Phone className="text-teal-600 group-hover:text-white w-5 h-5 lg:w-6 lg:h-6" />
                 </div>
-                <div>
-                  <div className="text-sm text-slate-600 mb-1">Call Us</div>
-                  <div className="text-xl font-semibold text-slate-900">{companyInfo.phone}</div>
-                </div>
-              </a>
-
-              <a href={`mailto:${companyInfo.email}`} className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100 hover:border-yellow-300 group">
-                <div className="bg-yellow-100 rounded-lg p-3 group-hover:bg-yellow-500 transition-colors">
-                  <Mail className="text-yellow-600 group-hover:text-white" size={24} />
-                </div>
-                <div>
-                  <div className="text-sm text-slate-600 mb-1">Email Us</div>
-                  <div className="text-xl font-semibold text-slate-900">{companyInfo.email}</div>
+                <div className="text-left">
+                  <div className="text-[10px] lg:text-sm text-slate-500 mb-0.5 uppercase tracking-wide">Call Us</div>
+                  <div className="text-base lg:text-xl font-semibold text-slate-900">{companyInfo.phone}</div>
                 </div>
               </a>
 
-              <div className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm border border-slate-100">
-                <div className="bg-slate-100 rounded-lg p-3">
-                  <MapPin className="text-slate-600" size={24} />
+              <a href={`mailto:${companyInfo.email}`} className="flex items-center lg:items-start gap-4 p-4 lg:p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100 hover:border-yellow-300 group">
+                <div className="bg-yellow-100 rounded-lg p-2.5 lg:p-3 group-hover:bg-yellow-500 transition-colors">
+                  <Mail className="text-yellow-600 group-hover:text-white w-5 h-5 lg:w-6 lg:h-6" />
                 </div>
-                <div>
-                  <div className="text-sm text-slate-600 mb-1">Our Offices</div>
-                  <div className="text-xl font-semibold text-slate-900">{companyInfo.locations.join(' & ')}</div>
+                <div className="text-left">
+                  <div className="text-[10px] lg:text-sm text-slate-500 mb-0.5 uppercase tracking-wide">Email Us</div>
+                  <div className="text-base lg:text-xl font-semibold text-slate-900">{companyInfo.email}</div>
+                </div>
+              </a>
+
+              <div className="flex items-center lg:items-start gap-4 p-4 lg:p-6 bg-white rounded-xl shadow-sm border border-slate-100">
+                <div className="bg-slate-100 rounded-lg p-2.5 lg:p-3">
+                  <MapPin className="text-slate-600 w-5 h-5 lg:w-6 lg:h-6" />
+                </div>
+                <div className="text-left">
+                  <div className="text-[10px] lg:text-sm text-slate-500 mb-0.5 uppercase tracking-wide">Our Offices</div>
+                  <div className="text-base lg:text-xl font-semibold text-slate-900">{companyInfo.locations.join(' & ')}</div>
                 </div>
               </div>
             </div>
@@ -109,35 +110,36 @@ const ContactForm = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8 border border-slate-100">
+          {/* Form Column */}
+          <div className="bg-white rounded-2xl shadow-xl p-5 lg:p-8 border border-slate-100 w-full max-w-[360px] mx-auto lg:max-w-none">
             {isSubmitted ? (
-              <div className="flex flex-col items-center justify-center h-full text-center py-12">
-                <div className="bg-teal-100 rounded-full p-4 mb-6">
-                  <CheckCircle className="text-teal-600" size={48} />
+              <div className="flex flex-col items-center justify-center h-full text-center py-10 lg:py-12">
+                <div className="bg-teal-100 rounded-full p-3 lg:p-4 mb-4 lg:mb-6">
+                  <CheckCircle className="text-teal-600 w-8 h-8 lg:w-12 lg:h-12" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">Thank You!</h3>
-                <p className="text-slate-600 text-lg">We've received your message and will get back to you within 24 hours.</p>
+                <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-2 lg:mb-3">Thank You!</h3>
+                <p className="text-sm lg:text-lg text-slate-600">Our team will get back to you within 24 hours.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
                 <div>
-                  <Label htmlFor="name" className="text-base font-semibold text-slate-700 mb-2 block">Full Name *</Label>
-                  <Input id="name" name="name" type="text" value={formData.name} onChange={handleChange} required placeholder="Enter your full name" className="h-12 text-base" />
+                  <Label htmlFor="name" className="text-sm lg:text-base font-semibold text-slate-700 mb-1.5 lg:mb-2 block">Full Name *</Label>
+                  <Input id="name" name="name" type="text" value={formData.name} onChange={handleChange} required placeholder="Enter your full name" className="h-10 lg:h-12 text-sm lg:text-base" />
                 </div>
                 <div>
-                  <Label htmlFor="email" className="text-base font-semibold text-slate-700 mb-2 block">Email Address *</Label>
-                  <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required placeholder="your.email@example.com" className="h-12 text-base" />
+                  <Label htmlFor="email" className="text-sm lg:text-base font-semibold text-slate-700 mb-1.5 lg:mb-2 block">Email Address *</Label>
+                  <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required placeholder="your.email@example.com" className="h-10 lg:h-12 text-sm lg:text-base" />
                 </div>
                 <div>
-                  <Label htmlFor="phone" className="text-base font-semibold text-slate-700 mb-2 block">Phone Number *</Label>
-                  <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} required placeholder="+91 98765 43210" className="h-12 text-base" />
+                  <Label htmlFor="phone" className="text-sm lg:text-base font-semibold text-slate-700 mb-1.5 lg:mb-2 block">Phone Number *</Label>
+                  <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} required placeholder="+91 98765 43210" className="h-10 lg:h-12 text-sm lg:text-base" />
                 </div>
                 <div>
-                  <Label htmlFor="message" className="text-base font-semibold text-slate-700 mb-2 block">Your Message *</Label>
-                  <Textarea id="message" name="message" value={formData.message} onChange={handleChange} required placeholder="Tell us about your financial goals..." className="min-h-32 text-base" />
+                  <Label htmlFor="message" className="text-sm lg:text-base font-semibold text-slate-700 mb-1.5 lg:mb-2 block">Your Message *</Label>
+                  <Textarea id="message" name="message" value={formData.message} onChange={handleChange} required placeholder="Tell us about your goals..." className="min-h-24 lg:min-h-32 text-sm lg:text-base" />
                 </div>
-                <Button type="submit" disabled={isSubmitting} className="w-full bg-teal-600 hover:bg-teal-700 text-white h-12 text-lg transition-all duration-300 hover:shadow-lg">
-                  {isSubmitting ? <span>Sending...</span> : <><span>Send Message</span><Send className="ml-2" size={20} /></>}
+                <Button type="submit" disabled={isSubmitting} className="w-full bg-teal-600 hover:bg-teal-700 text-white h-10 lg:h-12 text-base lg:text-lg transition-all duration-300 hover:shadow-lg">
+                  {isSubmitting ? <span>Sending...</span> : <div className="flex items-center"><span>Send Message</span><Send className="ml-2 w-4 h-4 lg:w-5 lg:h-5" /></div>}
                 </Button>
               </form>
             )}
