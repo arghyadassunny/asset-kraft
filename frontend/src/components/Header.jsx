@@ -26,13 +26,13 @@ const Header = ({ openBookingModal }) => {
         isScrolled 
           ? 'bg-white/45 shadow-[0_4px_40px_rgba(0,0,0,0.10),0_1px_0_rgba(255,255,255,0.8)_inset]' 
           : 'bg-white/28 shadow-[0_2px_32px_rgba(0,0,0,0.06),0_1px_0_rgba(255,255,255,0.7)_inset]'
-      } backdrop-blur-[24px] backdrop-saturate-[180%] border border-white/45 rounded-[14px] px-6 lg:px-12 py-2 lg:py-4`}
+      } backdrop-blur-[24px] backdrop-saturate-[180%] border border-white/45 rounded-[14px] px-3 lg:px-6 py-2 lg:py-4`}
       style={{
         width: 'calc(100% - 32px)',
       }}
     >
       <nav className="flex justify-between items-center">
-        {/* Logo - h-7 on mobile, h-12 on desktop */}
+        {/* Logo - Scaled down and padding-left reduced via the header px class */}
         <button 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="flex items-center group"
@@ -40,11 +40,11 @@ const Header = ({ openBookingModal }) => {
           <img 
             src={"https://res.cloudinary.com/djm5rsjwl/image/upload/v1775998066/Asset_kraft_logo_krtwkg.png"} 
             alt="AssetKraft - AMFI Registered Mutual Fund Distributor" 
-            className="h-7 lg:h-12 w-auto transition-all"
+            className="h-5 lg:h-8 w-auto transition-all"
           />
         </button>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation - Unchanged spacing and typography */}
         <div className="hidden lg:flex items-center gap-9">
           <button 
             onClick={() => scrollToSection('home')} 
@@ -78,7 +78,7 @@ const Header = ({ openBookingModal }) => {
           </button>
         </div>
 
-        {/* CTA Button */}
+        {/* Desktop CTA Button - Unchanged */}
         <Button 
           onClick={openBookingModal}
           className="hidden lg:block bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-lg font-semibold text-[15px] transition-all duration-200 shadow-[0_4px_14px_rgba(29,168,150,0.35)] hover:shadow-[0_6px_20px_rgba(29,168,150,0.45)] hover:-translate-y-[1px]"
@@ -86,7 +86,7 @@ const Header = ({ openBookingModal }) => {
           Contact Us
         </Button>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button - Unchanged */}
         <button
           onClick={() => {
             const mobileMenu = document.getElementById('mobile-menu');
@@ -100,7 +100,7 @@ const Header = ({ openBookingModal }) => {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Unchanged */}
       <div id="mobile-menu" className="hidden lg:hidden mt-2 pt-2 border-t border-white/30">
         <div className="flex flex-col gap-1.5">
           <button 
