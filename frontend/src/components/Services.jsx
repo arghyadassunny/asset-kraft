@@ -102,7 +102,6 @@ const Services = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ── Value Vision boxes (Equal Height Fixed) ── */}
         <div className="mb-24">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 px-2">Where Our Value <span className="text-yellow-600">Meets Your Vision</span></h2>
@@ -144,22 +143,34 @@ const Services = () => {
           })()}
         </div>
 
-        {/* ── Philosophy boxes (Teal Theme Applied) ── */}
+        {/* ── Philosophy boxes (Centered and Enhanced) ── */}
         <div>
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">Our <span className="text-teal-600">Philosophy</span></h2>
             <p className="text-sm lg:text-lg text-slate-600 max-w-3xl mx-auto px-4">At the heart of everything we do is a deep commitment to trust, transparency, and long-term partnership</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          {/* Using flex-wrap and justify-center to ensure the second row is centered */}
+          <div className="flex flex-wrap justify-center gap-6">
             {philosophy.map((item) => {
               const Icon = iconComponents[item.icon];
               return (
-                <div key={item.id} className="group bg-teal-600 rounded-2xl p-6 lg:p-8 shadow-sm border border-teal-700 flex flex-col items-center text-center mx-auto w-full max-w-[280px] lg:max-w-none transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:border-white">
-                  <div className="bg-white rounded-xl w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center mb-4 lg:mb-5 group-hover:scale-110 transition-transform duration-300">
+                <div 
+                  key={item.id} 
+                  className="group bg-teal-600 rounded-2xl p-6 lg:p-8 border border-teal-700 transition-all duration-500 flex flex-col items-center text-center w-full max-w-[280px] lg:max-w-[340px] shadow-lg hover:shadow-[0_20px_50px_rgba(13,148,136,0.35)] hover:-translate-y-2 hover:border-white/50"
+                >
+                  <div className="bg-white rounded-xl w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center mb-4 lg:mb-5 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-inner">
                     <Icon className="text-yellow-600" size={24} />
                   </div>
-                  <h3 className="text-base lg:text-lg font-bold text-white mb-2 lg:mb-3 leading-tight">{item.title}</h3>
-                  <p className="text-[13px] lg:text-base text-white leading-relaxed opacity-95">{item.description}</p>
+                  
+                  {/* h3 enhanced with drop-shadow for high visibility */}
+                  <h3 className="text-base lg:text-lg font-bold text-white mb-2 lg:mb-3 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
+                    {item.title}
+                  </h3>
+                  
+                  <p className="text-[13px] lg:text-base text-white/90 leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
               );
             })}
