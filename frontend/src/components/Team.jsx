@@ -35,7 +35,7 @@ const Team = ({ openBookingModal, dynamicData, isLoading }) => {
     /* MOBILE: pt-4 (Reduced padding above heading) | pb-16
        DESKTOP: lg:py-24 (Unchanged)
     */
-    <section id="team" className="pt-4 pb-16 lg:py-24 bg-white">
+    <section id="team" className="pt-4 pb-16 lg:py-[40px] bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

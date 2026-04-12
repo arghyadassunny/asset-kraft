@@ -15,7 +15,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <img 
-              src={companyInfo.logo} 
+              src={"https://res.cloudinary.com/djm5rsjwl/image/upload/v1776006185/Asset_kraft_white_logo_fup2yb.png"} 
               alt="AssetKraft" 
               className="h-12 w-auto mb-6 brightness-0 invert"
             />
