@@ -66,20 +66,22 @@ const portfolioStrategies = [
 
 const Portfolio = () => {
   return (
-    <section id="portfolio" className="py-24 bg-white">
+    // Mobile: py-16 | Desktop: lg:py-24 (Original)
+    <section id="portfolio" className="py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">
+        <div className="text-center mb-10 lg:mb-16">
+          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 px-2">
             Our Investment <span className="text-teal-600">Portfolio Strategies</span>
           </h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+          <p className="text-sm lg:text-lg text-slate-600 max-w-3xl mx-auto px-4">
             Tailored investment approaches designed to match your risk appetite, financial goals, and time horizon
           </p>
         </div>
 
         {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {portfolioStrategies.map((strategy) => {
             const Icon = strategy.icon;
             const bgColor = strategy.color === 'teal' 
@@ -91,40 +93,40 @@ const Portfolio = () => {
             return (
               <div 
                 key={strategy.id}
-                className={`group bg-gradient-to-br ${bgColor} rounded-2xl p-8 border ${borderColor} hover:shadow-xl transition-all duration-300 hover:-translate-y-2`}
+                className={`group bg-gradient-to-br ${bgColor} rounded-2xl p-6 lg:p-8 border ${borderColor} hover:shadow-xl transition-all duration-300 flex flex-col items-center lg:items-start text-center lg:text-left`}
               >
-                {/* Icon */}
-                <div className={`bg-white rounded-xl w-16 h-16 flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon className={iconColor} size={32} />
+                {/* Icon Container: Centered on mobile, original size for desktop */}
+                <div className={`bg-white rounded-xl w-12 h-12 lg:w-16 lg:h-16 flex items-center justify-center mb-5 shadow-sm group-hover:scale-110 transition-transform duration-300`}>
+                  <Icon className={iconColor} size={window.innerWidth < 1024 ? 24 : 32} />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                <h3 className="text-lg lg:text-xl font-bold text-slate-900 mb-2 lg:mb-3">
                   {strategy.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-slate-600 mb-6 leading-relaxed">
+                <p className="text-sm lg:text-base text-slate-600 mb-5 leading-relaxed">
                   {strategy.description}
                 </p>
 
                 {/* Details */}
-                <div className="space-y-3 pt-4 border-t border-slate-200">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-slate-600">Risk Level:</span>
-                    <span className={`text-sm font-semibold ${strategy.riskLevel === 'High' ? 'text-red-600' : strategy.riskLevel === 'Moderate' ? 'text-yellow-600' : 'text-green-600'}`}>
+                <div className="w-full space-y-2.5 pt-4 border-t border-slate-200/60">
+                  <div className="flex justify-between items-center text-xs lg:text-sm">
+                    <span className="text-slate-500">Risk Level:</span>
+                    <span className={`font-semibold ${strategy.riskLevel === 'High' ? 'text-red-600' : strategy.riskLevel === 'Moderate' ? 'text-yellow-600' : 'text-green-600'}`}>
                       {strategy.riskLevel}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-slate-600">Expected Returns:</span>
-                    <span className="text-sm font-semibold text-teal-600">
+                  <div className="flex justify-between items-center text-xs lg:text-sm">
+                    <span className="text-slate-500">Expected Returns:</span>
+                    <span className="font-semibold text-teal-600">
                       {strategy.returns}
                     </span>
                   </div>
-                  <div className="pt-2">
-                    <span className="text-xs text-slate-500">Best for: </span>
-                    <span className="text-xs font-medium text-slate-700">
+                  <div className="pt-1">
+                    <span className="text-[10px] lg:text-xs text-slate-400 uppercase tracking-wider font-medium">Best for: </span>
+                    <span className="text-[11px] lg:text-xs font-semibold text-slate-700">
                       {strategy.suitableFor}
                     </span>
                   </div>
@@ -135,21 +137,21 @@ const Portfolio = () => {
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-12 bg-slate-50 rounded-xl p-6 border border-slate-200">
-          <p className="text-sm text-slate-600 leading-relaxed">
+        <div className="mt-8 lg:mt-12 bg-slate-50 rounded-xl p-4 lg:p-6 border border-slate-200">
+          <p className="text-xs lg:text-sm text-slate-600 leading-relaxed text-center lg:text-left">
             <strong className="text-slate-900">Note:</strong> Past performance is not indicative of future returns. 
-            The returns mentioned are indicative and subject to market risks. We recommend consulting with our 
-            financial advisors to choose the portfolio strategy that best aligns with your financial goals and risk profile.
+            Indicative returns are subject to market risks. We recommend consulting with our 
+            advisors to align with your specific risk profile.
           </p>
         </div>
 
         {/* CTA */}
-        <div className="mt-12 text-center">
+        <div className="mt-10 lg:mt-12 text-center">
           <button
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-teal-600/30 hover:scale-105"
+            className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-lg font-semibold text-base lg:text-lg transition-all duration-300 hover:shadow-xl hover:shadow-teal-600/30 hover:scale-105"
           >
-            Discuss Your Investment Strategy
+            Discuss Your Strategy
           </button>
         </div>
       </div>

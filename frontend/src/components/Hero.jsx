@@ -68,12 +68,15 @@ const Hero = ({ openBookingModal }) => {
           <div className="flex flex-col items-center lg:items-start space-y-4 lg:space-y-8">
             
             {/* AMFI Badge */}
-            <div className="inline-flex items-center gap-1 bg-teal-50 border border-teal-200 rounded-full px-2 py-0.5 text-teal-700 font-medium animate-fade-in">
-              <Sparkles size={8} className="text-yellow-500 lg:w-4 lg:h-4" />
-              <span className="text-[7px] sm:text-xs lg:text-base uppercase tracking-tighter lg:normal-case lg:tracking-normal">
-                AMFI Registered Mutual Fund Distributor
-              </span>
-            </div>
+<div className="inline-flex items-center gap-1 bg-teal-50 border border-teal-200 rounded-full px-2 py-0.5 lg:px-2.5 lg:py-0.5 text-teal-700 font-medium animate-fade-in">
+  {/* Icon scaled to 3.5 (14px) for desktop */}
+  <Sparkles className="text-yellow-500 w-2 h-2 lg:w-3.5 lg:h-3.5" />
+  
+  {/* Text scaled to sm (14px) for desktop */}
+  <span className="text-[7px] sm:text-xs lg:text-sm uppercase tracking-tighter lg:normal-case lg:tracking-normal">
+    AMFI Registered Mutual Fund Distributor
+  </span>
+</div>
 
             {/* Main Heading - Forced 2 lines on mobile using 'block' */}
             <h1 className="text-[34px] leading-[1.1] sm:text-4xl lg:text-6xl font-extrabold text-slate-900 text-center lg:text-left mt-0 tracking-tight">

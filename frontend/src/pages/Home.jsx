@@ -67,8 +67,9 @@ const Home = () => {
         <Services />
         
         {/* PORTFOLIO & CALCULATOR: Generally static logic */}
+        <Calculator /> 
         <Portfolio />
-        <Calculator />
+ 
         
         {/* TEAM: Can be made dynamic in the future */}
 <Team 
