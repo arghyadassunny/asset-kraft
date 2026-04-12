@@ -149,7 +149,7 @@ const Services = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* ── Value Vision boxes (MOBILE: smaller width/text) ── */}
+        {/* ── Value Vision boxes ── */}
         <div className="mb-24">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 px-2">
@@ -164,36 +164,24 @@ const Services = () => {
               <div className="space-y-4 lg:space-y-6">
                 {Array.from({ length: rows }).map((_, i) => (
                   <div key={i} className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center justify-items-center">
-                    {/* What We Do */}
                     {doValues[i] && (
                       <div className="bg-teal-50/50 rounded-xl p-4 lg:p-5 border border-teal-200 w-full max-w-[300px] lg:max-w-none">
                         <div className="flex items-start gap-3 lg:gap-4">
                           <Check className="text-teal-600 mt-1 flex-shrink-0" size={16} />
                           <div>
-                            {/* Title: smaller font-base on mobile, lg:font-lg on desktop */}
-                            <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">
-                              {doValues[i].title}
-                            </h3>
-                            {/* Description: smaller text-[13px] on mobile, lg:text-sm on desktop */}
-                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed">
-                              {doValues[i].description}
-                            </p>
+                            <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">{doValues[i].title}</h3>
+                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed">{doValues[i].description}</p>
                           </div>
                         </div>
                       </div>
                     )}
-                    {/* What We Don't Do */}
                     {dontValues[i] && (
                       <div className="bg-slate-50 rounded-xl p-4 lg:p-5 border border-slate-200 w-full max-w-[300px] lg:max-w-none">
                         <div className="flex items-start gap-3 lg:gap-4">
                           <X className="text-slate-600 mt-1 flex-shrink-0" size={16} />
                           <div>
-                            <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">
-                              {dontValues[i].title}
-                            </h3>
-                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed">
-                              {dontValues[i].description}
-                            </p>
+                            <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">{dontValues[i].title}</h3>
+                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed">{dontValues[i].description}</p>
                           </div>
                         </div>
                       </div>
@@ -205,7 +193,7 @@ const Services = () => {
           })()}
         </div>
 
-        {/* ── Philosophy boxes ── */}
+        {/* ── Philosophy boxes (UPDATED) ── */}
         <div>
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
@@ -219,12 +207,12 @@ const Services = () => {
             {philosophy.map((item) => {
               const Icon = iconComponents[item.icon];
               return (
-                <div key={item.id} className="bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-slate-100">
-                  <div className="bg-gradient-to-br from-yellow-50 to-teal-50 rounded-xl w-14 h-14 flex items-center justify-center mb-5">
-                    <Icon className="text-yellow-600" size={28} />
+                <div key={item.id} className="bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-slate-100 flex flex-col items-center text-center mx-auto max-w-[280px] lg:max-w-none lg:items-start lg:text-left transition-all duration-300">
+                  <div className="bg-gradient-to-br from-yellow-50 to-teal-50 rounded-xl w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center mb-4 lg:mb-5">
+                    <Icon className="text-yellow-600" size={24} lg={28} />
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-                  <p className="text-sm lg:text-base text-slate-600 leading-relaxed">{item.description}</p>
+                  <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-2 lg:mb-3 leading-tight">{item.title}</h3>
+                  <p className="text-[13px] lg:text-base text-slate-600 leading-relaxed">{item.description}</p>
                 </div>
               );
             })}
