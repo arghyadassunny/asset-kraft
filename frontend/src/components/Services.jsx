@@ -102,6 +102,7 @@ const Services = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ── Value Vision boxes (Equal Height Fixed) ── */}
         <div className="mb-24">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 px-2">Where Our Value <span className="text-yellow-600">Meets Your Vision</span></h2>
@@ -113,25 +114,25 @@ const Services = () => {
             return (
               <div className="space-y-4 lg:space-y-6">
                 {Array.from({ length: rows }).map((_, i) => (
-                  <div key={i} className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-center justify-items-center">
+                  <div key={i} className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-stretch">
                     {doValues[i] && (
-                      <div className="bg-teal-50/50 rounded-xl p-4 lg:p-5 border border-teal-200 w-full max-w-[300px] lg:max-w-none transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                        <div className="flex items-start gap-3 lg:gap-4">
+                      <div className="bg-teal-50/50 rounded-xl p-4 lg:p-5 border border-teal-200 w-full max-w-[300px] lg:max-w-none mx-auto transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col">
+                        <div className="flex items-start gap-3 lg:gap-4 h-full">
                           <Check className="text-teal-600 mt-1 flex-shrink-0" size={16} />
-                          <div>
+                          <div className="flex flex-col h-full">
                             <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">{doValues[i].title}</h3>
-                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed">{doValues[i].description}</p>
+                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed flex-grow">{doValues[i].description}</p>
                           </div>
                         </div>
                       </div>
                     )}
                     {dontValues[i] && (
-                      <div className="bg-slate-50 rounded-xl p-4 lg:p-5 border border-slate-200 w-full max-w-[300px] lg:max-w-none transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                        <div className="flex items-start gap-3 lg:gap-4">
+                      <div className="bg-slate-50 rounded-xl p-4 lg:p-5 border border-slate-200 w-full max-w-[300px] lg:max-w-none mx-auto transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col">
+                        <div className="flex items-start gap-3 lg:gap-4 h-full">
                           <X className="text-slate-600 mt-1 flex-shrink-0" size={16} />
-                          <div>
+                          <div className="flex flex-col h-full">
                             <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">{dontValues[i].title}</h3>
-                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed">{dontValues[i].description}</p>
+                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed flex-grow">{dontValues[i].description}</p>
                           </div>
                         </div>
                       </div>
@@ -143,6 +144,7 @@ const Services = () => {
           })()}
         </div>
 
+        {/* ── Philosophy boxes (Teal Theme Applied) ── */}
         <div>
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">Our <span className="text-teal-600">Philosophy</span></h2>
@@ -152,12 +154,12 @@ const Services = () => {
             {philosophy.map((item) => {
               const Icon = iconComponents[item.icon];
               return (
-                <div key={item.id} className="group bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-slate-100 flex flex-col items-center text-center mx-auto max-w-[280px] lg:max-w-none lg:items-start lg:text-left transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:border-teal-200">
-                  <div className="bg-gradient-to-br from-yellow-50 to-teal-50 rounded-xl w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center mb-4 lg:mb-5 group-hover:scale-110 transition-transform duration-300">
+                <div key={item.id} className="group bg-teal-600 rounded-2xl p-6 lg:p-8 shadow-sm border border-teal-700 flex flex-col items-center text-center mx-auto w-full max-w-[280px] lg:max-w-none transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:border-white">
+                  <div className="bg-white rounded-xl w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center mb-4 lg:mb-5 group-hover:scale-110 transition-transform duration-300">
                     <Icon className="text-yellow-600" size={24} />
                   </div>
-                  <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-2 lg:mb-3 leading-tight transition-colors group-hover:text-teal-600">{item.title}</h3>
-                  <p className="text-[13px] lg:text-base text-slate-600 leading-relaxed">{item.description}</p>
+                  <h3 className="text-base lg:text-lg font-bold text-white mb-2 lg:mb-3 leading-tight">{item.title}</h3>
+                  <p className="text-[13px] lg:text-base text-white leading-relaxed opacity-95">{item.description}</p>
                 </div>
               );
             })}

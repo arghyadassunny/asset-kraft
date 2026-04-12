@@ -90,7 +90,6 @@ const Home = () => {
 
       {/* Persistence Elements */}
       <Footer />
-      <ChatBot />
 
       {/* Modals */}
       <BookingModal 
