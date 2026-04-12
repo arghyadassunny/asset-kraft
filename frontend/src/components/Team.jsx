@@ -4,14 +4,16 @@ import { team as defaultTeam } from '../data/mock';
 
 const Team = ({ openBookingModal, dynamicData, isLoading }) => {
   
-  // 1. Loading Skeleton (Matches your card shapes)
+  // 1. Loading Skeleton (Updated to match new mobile card widths)
   if (isLoading) {
     return (
-      <section className="py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="h-12 w-64 bg-slate-100 rounded-lg mx-auto mb-16 animate-pulse"></div>
+          <div className="h-10 w-48 bg-slate-100 rounded-lg mx-auto mb-16 animate-pulse"></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map(i => <div key={i} className="h-[450px] bg-slate-50 rounded-2xl animate-pulse"></div>)}
+            {[1, 2, 3].map(i => (
+              <div key={i} className="h-[400px] max-w-[280px] mx-auto lg:max-w-none w-full bg-slate-50 rounded-2xl animate-pulse"></div>
+            ))}
           </div>
         </div>
       </section>
@@ -30,26 +32,31 @@ const Team = ({ openBookingModal, dynamicData, isLoading }) => {
   }
 
   return (
-    <section id="team" className="py-24 bg-white">
+    <section id="team" className="py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">
+        
+        {/* Section Header - Scaled for Mobile */}
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-3 lg:mb-4 px-2">
             Meet the <span className="text-teal-600">Founders</span>
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          {/* Subheading: text-sm on mobile, lg:text-lg on desktop */}
+          <p className="text-sm lg:text-lg text-slate-600 max-w-2xl mx-auto px-4">
             Backed by 20+ years of experience and a passionate team of 30+ professionals
           </p>
         </div>
 
-        {/* Team Grid - Visuals Identical to your Original */}
+        {/* Team Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {displayTeam.map((member) => (
             <div 
               key={member.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-teal-300 hover:-translate-y-2"
+              /* MOBILE: max-w-[280px] and mx-auto added to shrink card width
+                 DESKTOP: lg:max-w-none (original)
+              */
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-teal-300 hover:-translate-y-2 max-w-[280px] mx-auto lg:max-w-none"
             >
-              <div className="relative h-80 overflow-hidden bg-slate-100">
+              <div className="relative h-72 lg:h-80 overflow-hidden bg-slate-100">
                 <img 
                   src={member.image || 'https://via.placeholder.com/400x500?text=Member'} 
                   alt={member.name}
@@ -58,33 +65,33 @@ const Team = ({ openBookingModal, dynamicData, isLoading }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
-              <div className="p-6 bg-gradient-to-br from-teal-50 to-yellow-50">
-                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-teal-600 transition-colors">
+              <div className="p-5 lg:p-6 bg-gradient-to-br from-teal-50 to-yellow-50">
+                <h3 className="text-lg lg:text-xl font-bold text-slate-900 mb-1 lg:mb-2 group-hover:text-teal-600 transition-colors">
                   {member.name}
                 </h3>
-                <p className="text-teal-600 font-semibold mb-4">
+                <p className="text-teal-600 text-sm lg:text-base font-semibold mb-4">
                   {member.role}
                 </p>
                 <div className="flex items-center gap-2 text-slate-600 hover:text-teal-600 cursor-pointer transition-colors">
-                  <Linkedin size={18} />
-                  <span className="text-sm">Connect on LinkedIn</span>
+                  <Linkedin size={16} className="lg:w-[18px] lg:h-[18px]" />
+                  <span className="text-xs lg:text-sm">Connect on LinkedIn</span>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* CTA Card - UI Unchanged */}
-        <div className="bg-gradient-to-r from-teal-600 to-teal-700 rounded-2xl p-8 md:p-12 text-center text-white shadow-xl">
-          <h3 className="text-3xl font-bold mb-4">Join Our Growing Family of 5000+ Happy Investors</h3>
-          <p className="text-lg text-teal-50 mb-6 max-w-2xl mx-auto">
+        {/* CTA Card - UI Balanced for Mobile */}
+        <div className="bg-gradient-to-r from-teal-600 to-teal-700 rounded-2xl p-6 md:p-12 text-center text-white shadow-xl max-w-[340px] mx-auto lg:max-w-none">
+          <h3 className="text-xl lg:text-3xl font-bold mb-3 lg:mb-4">Join Our Growing Family of 5000+ Happy Investors</h3>
+          <p className="text-xs lg:text-lg text-teal-50 mb-6 max-w-2xl mx-auto px-2">
             Experience personalized wealth management with a team that truly cares about your financial future
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={openBookingModal} className="bg-white text-teal-600 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300 shadow-lg">
+          <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center">
+            <button onClick={openBookingModal} className="bg-white text-teal-600 px-6 lg:px-8 py-2.5 lg:py-3 rounded-lg text-sm lg:text-base font-semibold hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300 shadow-lg">
               Schedule a Consultation
             </button>
-            <button onClick={() => document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' })} className="bg-yellow-400 text-slate-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-all duration-300 shadow-lg">
+            <button onClick={() => document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' })} className="bg-yellow-400 text-slate-900 px-6 lg:px-8 py-2.5 lg:py-3 rounded-lg text-sm lg:text-base font-semibold hover:bg-yellow-300 transition-all duration-300 shadow-lg">
               Try Our Calculator
             </button>
           </div>

@@ -8,14 +8,14 @@ const Testimonials = ({ openBookingModal, dynamicData, isLoading }) => {
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
-  // 1. Loading State (Skeleton UI)
+  // 1. Loading State (Skeleton UI updated for mobile spacing)
   if (isLoading) {
     return (
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="pt-12 pb-24 lg:py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-pulse">
             <div className="h-12 w-3/4 md:w-1/2 bg-slate-200 rounded-lg mx-auto mb-4"></div>
-            <div className="h-6 w-1/3 bg-slate-100 rounded-lg mx-auto"></div>
+            <div className="h-4 w-1/3 bg-slate-100 rounded-lg mx-auto"></div>
           </div>
           <div className="flex gap-6 overflow-hidden">
             {[1, 2, 3].map((i) => (
@@ -53,15 +53,21 @@ const Testimonials = ({ openBookingModal, dynamicData, isLoading }) => {
   }
 
   return (
-    <section id="testimonials" className="py-24 bg-white overflow-hidden">
+    /* MOBILE: pt-12 (Decreased padding above heading) | pb-24
+       DESKTOP: lg:py-24 (Unchanged)
+    */
+    <section id="testimonials" className="pt-12 pb-24 lg:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 px-2">
             Trusted by <span className="text-teal-600">wealth creators</span> like you
           </h2>
-          <p className="text-slate-600 text-lg">Join 5000+ investors who trust AssetKraft</p>
+          {/* Subheading: text-sm on mobile, lg:text-lg on desktop */}
+          <p className="text-sm lg:text-lg text-slate-600 max-w-3xl mx-auto px-4">
+            Join 5000+ investors who trust AssetKraft
+          </p>
         </div>
 
         {/* Carousel Viewport */}
