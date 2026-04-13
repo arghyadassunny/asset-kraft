@@ -54,7 +54,7 @@ const ContactForm = () => {
         
         {/* Section Header */}
         <div className="text-center mb-10 lg:mb-16">
-          <h2 className="text-2xl lg:text-4xl font-bold text-slate-900 mb-3 lg:mb-4">
+          <h2 className="text-4xl lg:text-4xl font-bold text-slate-900 mb-3 lg:mb-4">
             Get in <span className="text-teal-600">Touch</span>
           </h2>
           <p className="text-sm lg:text-lg text-slate-600 max-w-2xl mx-auto px-4">
@@ -67,10 +67,12 @@ const ContactForm = () => {
           {/* Contact Details Column */}
           <div className="space-y-6 lg:space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left">
             <div>
+              <div className="hidden lg:block">
               <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-3 lg:mb-6">Let's Connect</h3>
               <p className="text-sm lg:text-lg text-slate-600 leading-relaxed mb-2 lg:mb-8 max-w-[320px] lg:max-w-none">
                 Our team is here to guide you through every step of your financial journey.
               </p>
+            </div>
             </div>
 
             <div className="space-y-4 w-full max-w-[340px] lg:max-w-none">

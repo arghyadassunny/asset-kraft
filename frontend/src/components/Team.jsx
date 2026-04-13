@@ -56,7 +56,7 @@ const Team = ({ openBookingModal, dynamicData, isLoading }) => {
               /* CONSTANT SIZE: w-[280px] h-[460px] for both mobile and desktop
                  flex-col ensures content fills the fixed height correctly
               */
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-teal-300 hover:-translate-y-2 w-[280px] h-[460px] flex flex-col"
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-teal-300 hover:-translate-y-2 w-[300px] h-[420px] lg:h-[460px] flex flex-col"
             >
               <div className="relative h-72 w-full overflow-hidden bg-slate-100 flex-shrink-0">
                 <img 
@@ -67,7 +67,7 @@ const Team = ({ openBookingModal, dynamicData, isLoading }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
-              <div className="p-5 lg:p-6 bg-gradient-to-br from-teal-50 to-yellow-50 flex-1 flex flex-col justify-between">
+              <div className="p-5 lg:p-6 bg-gradient-to-br from-teal-50 to-yellow-50 flex-1 flex flex-col justify-start lg:justify-between">
                 <div>
                   <h3 className="text-lg lg:text-xl font-bold text-slate-900 mb-1 lg:mb-2 group-hover:text-teal-600 transition-colors">
                     {member.name}

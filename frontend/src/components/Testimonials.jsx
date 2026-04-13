@@ -72,7 +72,7 @@ const Testimonials = ({ openBookingModal, dynamicData, isLoading }) => {
 
         {/* Carousel Viewport */}
         <div className="embla" ref={emblaRef}>
-          <div className="embla__container flex gap-6">
+          <div className="pt-2 lg:pt-1 embla__container flex gap-6">
             {displayTestimonials.map((testimonial) => (
               <div key={testimonial.id} className="embla__slide flex-[0_0_100%] md:flex-[0_0_48%] lg:flex-[0_0_32%] min-w-0">
                 <div className="bg-slate-50 rounded-3xl p-10 shadow-sm border border-slate-100 h-full flex flex-col justify-between hover:shadow-xl transition-all duration-300">
