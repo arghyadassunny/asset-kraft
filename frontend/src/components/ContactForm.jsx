@@ -114,9 +114,7 @@ const ContactForm = () => {
               </div>
             </div>
 
-            <div className="hidden lg:block rounded-2xl overflow-hidden shadow-xl">
-              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="Financial Planning" className="w-full h-64 object-cover" />
-            </div>
+ 
           </div>
 
           {/* Form Column */}
