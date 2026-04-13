@@ -30,15 +30,22 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post('/api/contact', formData);
-      
-      if (response.data.success) {
+      // REPLACE with your actual email address
+      const response = await axios.post('https://formsubmit.co/ajax/srija.ghosh100@gmail.com', {
+        Name: formData.name,
+        Email: formData.email,
+        Phone: formData.phone,
+        Message: formData.message,
+        _subject: "New Wealth Journey Inquiry"
+      });
+
+      if (response.status === 200) {
         setIsSubmitted(true);
         toast.success('Thank you! Our team will reach out within 24 hours.');
         setFormData({ name: '', email: '', phone: '', message: '' });
         setTimeout(() => setIsSubmitted(false), 5000);
       } else {
-        throw new Error('Server responded with failure');
+        throw new Error('Form submission failed');
       }
     } catch (error) {
       console.error('Contact form error:', error);
