@@ -31,7 +31,7 @@ const ContactForm = () => {
 
     try {
       // REPLACE with your actual email address
-      const response = await axios.post('https://formsubmit.co/ajax/srija.ghosh100@gmail.com', {
+      const response = await axios.post('https://formsubmit.co/ajax/arghyadas.sunny@gmail.com', {
         Name: formData.name,
         Email: formData.email,
         Phone: formData.phone,
