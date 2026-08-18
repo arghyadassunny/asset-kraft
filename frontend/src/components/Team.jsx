@@ -48,8 +48,8 @@ const Team = ({ openBookingModal, dynamicData, isLoading }) => {
           </p>
         </div>
 
-        {/* Team Grid - justify-items-center ensures fixed-width cards stay centered */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 justify-items-center">
+        {/* Center every row, including incomplete rows from backend data. */}
+        <div className="flex flex-wrap justify-center gap-8 mb-12">
           {displayTeam.map((member) => (
             <div 
               key={member.id}
