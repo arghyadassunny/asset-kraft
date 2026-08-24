@@ -35,11 +35,11 @@ const Hero = ({ openBookingModal }) => {
             
             {/* Main Heading */}
             <h1 className="text-white text-center lg:text-left tracking-tight">
-              <span className="block text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight">
-                You Enjoy!
-              </span>
               <span className="block text-lg sm:text-2xl lg:text-3xl font-medium mt-1 lg:mt-2 text-white/90">
-                While We Craft Your Wealth
+                You Enjoy! While We
+              </span>
+              <span className="block text-5xl sm:text-5xl lg:text-7xl font-extrabold leading-tight">
+                 Craft Your Wealth
               </span>
             </h1>
 
@@ -48,27 +48,27 @@ const Hero = ({ openBookingModal }) => {
               <HeroVideo />
             </div>
 
-            {/* Subheading & Description */}
-            <div className="space-y-4 lg:space-y-6 text-center lg:text-left">
-              <p className="text-sm lg:text-xl text-white leading-relaxed">
+  {/* Subheading & Description */}
+            <div className="space-y-3 lg:space-y-4 text-center lg:text-left">
+              <p className="text-xs lg:text-base text-white leading-relaxed">
                 At Asset Kraft, we navigate <span className="font-semibold text-white">the noise of the markets</span> to find the signal of your success.
               </p>
-              <p className="text-xs lg:text-lg text-white/90 leading-relaxed max-w-md lg:max-w-none mx-auto lg:mx-0">
+              <p className="text-[11px] lg:text-sm text-white/90 leading-relaxed max-w-md lg:max-w-none mx-auto lg:mx-0">
                 We are an AMFI-registered mutual fund distributor helping 5,000+ families build wealth through goal-based mutual fund investing, insurance, and financial planning.
               </p>
 
               {/* Bullet Points */}
-              <ul className="space-y-2.5 pt-1 text-left inline-block">
-                <li className="flex items-center gap-2.5 text-xs lg:text-lg text-white/95">
-                  <CheckCircle2 className="w-4 h-4 lg:w-5 lg:h-5 text-white shrink-0" />
+              <ul className="space-y-2 pt-1 text-left inline-block">
+                <li className="flex items-center gap-2 text-[11px] lg:text-sm text-white/95">
+                  <CheckCircle2 className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-white shrink-0" />
                   <span>Helps in achieving your financial goals</span>
                 </li>
-                <li className="flex items-center gap-2.5 text-xs lg:text-lg text-white/95">
-                  <CheckCircle2 className="w-4 h-4 lg:w-5 lg:h-5 text-white shrink-0" />
+                <li className="flex items-center gap-2 text-[11px] lg:text-sm text-white/95">
+                  <CheckCircle2 className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-white shrink-0" />
                   <span>End-to-End Wealth Management</span>
                 </li>
-                <li className="flex items-center gap-2.5 text-xs lg:text-lg text-white/95">
-                  <CheckCircle2 className="w-4 h-4 lg:w-5 lg:h-5 text-white shrink-0" />
+                <li className="flex items-center gap-2 text-[11px] lg:text-sm text-white/95">
+                  <CheckCircle2 className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-white shrink-0" />
                   <span>Personalised Investment Strategies</span>
                 </li>
               </ul>
