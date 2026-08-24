@@ -33,15 +33,15 @@ const Hero = ({ openBookingModal }) => {
           
           <div className="flex flex-col items-center lg:items-start space-y-6 lg:space-y-8">
             
-            {/* Main Heading */}
-            <h1 className="text-white text-center lg:text-left tracking-tight">
-              <span className="block text-lg sm:text-2xl lg:text-3xl font-medium mt-1 lg:mt-2 text-white/90">
-                You Enjoy! While We
-              </span>
-              <span className="block text-5xl sm:text-5xl lg:text-7xl font-extrabold leading-tight">
-                 Craft Your Wealth
-              </span>
-            </h1>
+    {/* Main Heading */}
+<h1 className="text-white text-center lg:text-left tracking-tight">
+  <span className="block text-lg sm:text-2xl lg:text-3xl font-medium mt-1 lg:mt-2 text-white/90">
+    You Enjoy! While We
+  </span>
+  <span className="block whitespace-nowrap text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight">
+    Craft Your Wealth
+  </span>
+</h1>
 
             {/* Mobile Image */}
             <div className="w-full lg:hidden">
