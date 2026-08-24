@@ -38,7 +38,7 @@ const Header = ({ openBookingModal }) => {
           className="flex items-center group"
         >
           <img 
-            src={"https://res.cloudinary.com/djm5rsjwl/image/upload/v1775998066/Asset_kraft_logo_krtwkg.png"} 
+            src={"https://res.cloudinary.com/djm5rsjwl/image/upload/v1787600727/Asset_Kraft_Logo_3_pnhmoh.png"} 
             alt="AssetKraft - AMFI Registered Mutual Fund Distributor" 
             className="h-5 lg:h-8 w-auto transition-all"
           />
@@ -59,17 +59,18 @@ const Header = ({ openBookingModal }) => {
             Services
           </button>
           <button 
-            onClick={() => scrollToSection('portfolio')} 
-            className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
-          >
-            Portfolio
-          </button>
-          <button 
             onClick={() => scrollToSection('calculator')} 
             className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
           >
             Calculator
           </button>
+          <button 
+            onClick={() => scrollToSection('portfolio')} 
+            className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
+          >
+            Portfolio
+          </button>
+          
           <button 
             onClick={() => scrollToSection('team')} 
             className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
