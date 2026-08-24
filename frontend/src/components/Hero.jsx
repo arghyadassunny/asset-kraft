@@ -24,22 +24,23 @@ const Hero = ({ openBookingModal }) => {
   };
 
   return (
-    <section id="home" className="relative bg-teal-600 pt-20 lg:pt-32 pb-12 lg:pb-32 overflow-hidden">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/30 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+    <section id="home" className="relative bg-white pt-20 lg:pt-32 pb-12 lg:pb-32 overflow-hidden">
+      {/* Background glow effects inverted */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-teal-100/60 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-50/70 rounded-full blur-3xl"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           <div className="flex flex-col items-center lg:items-start space-y-6 lg:space-y-8">
             
-   {/* Main Heading */}
-            <h1 className="text-white text-center lg:text-left tracking-tight">
-              <span className="block text-lg sm:text-2xl lg:text-3xl font-medium mt-1 lg:mt-2 text-white/90">
-                You Enjoy! While We
+            {/* Main Heading */}
+            <h1 className="text-teal-700 text-center lg:text-left tracking-tight">
+              <span className="block text-lg sm:text-2xl lg:text-3xl font-medium mt-1 lg:mt-2 text-teal-600/90">
+                You Enjoy, While We
               </span>
-              <span className="block text-5xl sm:text-5xl lg:text-7xl font-extrabold leading-tight">
-                 Craft Your Wealth
+              <span className="block text-5xl sm:text-5xl lg:text-7xl font-extrabold leading-tight text-teal-700">
+                Craft Your Wealth!
               </span>
             </h1>
 
@@ -48,40 +49,38 @@ const Hero = ({ openBookingModal }) => {
               <HeroVideo />
             </div>
 
-  {/* Subheading & Description */}
+            {/* Subheading & Description */}
             <div className="space-y-3 lg:space-y-4 text-center lg:text-left">
-              <p className="text-[11px] lg:text-sm text-white/90 leading-relaxed max-w-md lg:max-w-none mx-auto lg:mx-0">
+              <p className="text-[11px] lg:text-sm text-teal-800/80 leading-relaxed max-w-md lg:max-w-none mx-auto lg:mx-0">
                 We are an AMFI-registered mutual fund distributor helping 5,000+ families build wealth through goal-based mutual fund investing, insurance, and financial planning.
               </p>
 
-{/* Bullet Points */}
-<ul className="space-y-2.5 pt-1 text-left inline-block">
-  <li className="flex items-center gap-2.5 text-sm sm:text-base font-medium text-white/95">
-    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0" />
-    <span>Helps in achieving your financial goals</span>
-  </li>
-  <li className="flex items-center gap-2.5 text-sm sm:text-base font-medium text-white/95">
-    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0" />
-    <span>End-to-End Wealth Management</span>
-  </li>
-  <li className="flex items-center gap-2.5 text-sm sm:text-base font-medium text-white/95">
-    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0" />
-    <span>Personalised Investment Strategies</span>
-  </li>
-</ul>
-
+              {/* Bullet Points */}
+              <ul className="space-y-2.5 pt-1 text-left inline-block">
+                <li className="flex items-center gap-2.5 text-sm sm:text-base font-medium text-teal-800">
+                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 shrink-0" />
+                  <span>Helps in achieving your financial goals</span>
+                </li>
+                <li className="flex items-center gap-2.5 text-sm sm:text-base font-medium text-teal-800">
+                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 shrink-0" />
+                  <span>End-to-End Wealth Management</span>
+                </li>
+                <li className="flex items-center gap-2.5 text-sm sm:text-base font-medium text-teal-800">
+                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 shrink-0" />
+                  <span>Personalised Investment Strategies</span>
+                </li>
+              </ul>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-row justify-center lg:justify-start gap-3 w-full pt-2 lg:pt-4">
               <Button 
                 onClick={openBookingModal}
-                className="w-1/2 lg:w-auto bg-white hover:bg-slate-100 text-teal-700 font-semibold text-[10px] lg:text-lg px-2 lg:px-8 py-3 lg:py-6 transition-all"
+                className="w-1/2 lg:w-auto bg-teal-600 hover:bg-teal-700 text-white font-semibold text-[10px] lg:text-lg px-2 lg:px-8 py-3 lg:py-6 transition-all"
               >
-                Get Started
-                <ArrowRight className="ml-1 lg:ml-2" size={12} />
+                Book A Free Call
+                <ArrowRight className="ml-1 lg:ml-2 text-white" size={12} />
               </Button>
-              
             </div>
           </div>
 
