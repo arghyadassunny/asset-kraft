@@ -58,8 +58,8 @@ const Hero = ({ openBookingModal }) => {
   };
 
   return (
-    <section id="home" className="relative bg-teal-900 pt-20 lg:pt-32 pb-12 lg:pb-32 overflow-hidden">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-teal-700/30 rounded-full blur-3xl"></div>
+    <section id="home" className="relative bg-teal-600 pt-20 lg:pt-32 pb-12 lg:pb-32 overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/30 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-100/10 rounded-full blur-3xl"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -69,8 +69,8 @@ const Hero = ({ openBookingModal }) => {
             
             {/* Tighter Sub-container for Badge and Heading */}
             <div className="flex flex-col items-center lg:items-start space-y-1 lg:space-y-2">
-              {/* AMFI Badge - Compact size for both mobile and desktop */}
-              <div className="inline-flex items-center gap-1 bg-teal-800/60 border border-teal-600 rounded-full px-2 py-0.5 lg:px-2.5 text-teal-100 font-medium animate-fade-in">
+              {/* AMFI Badge - White box container */}
+              <div className="inline-flex items-center gap-1 bg-white border border-white rounded-full px-2 py-0.5 lg:px-2.5 text-teal-700 font-medium shadow-sm animate-fade-in">
                 <Sparkles className="text-yellow-500 w-2 h-2 lg:w-3.5 lg:h-3.5" />
                 <span className="text-[7px] sm:text-xs lg:text-sm uppercase tracking-tighter lg:normal-case lg:tracking-normal">
                   AMFI Registered Mutual Fund Distributor
@@ -80,7 +80,7 @@ const Hero = ({ openBookingModal }) => {
               {/* Main Heading */}
               <h1 className="text-[34px] leading-[1.1] sm:text-4xl lg:text-6xl font-bold text-white text-center lg:text-left tracking-tight">
                 <span className="block">Invest In Your Future</span>
-                <span className="block text-teal-300">Live Your Present</span>
+                <span className="block text-yellow-400">Live Your Present</span>
               </h1>
             </div>
 
@@ -91,10 +91,10 @@ const Hero = ({ openBookingModal }) => {
 
             {/* Subheading & Description */}
             <div className="space-y-4 lg:space-y-6 text-center lg:text-left">
-              <p className="text-sm lg:text-xl text-teal-50 leading-relaxed">
-                And Leave Your <span className="font-semibold text-yellow-500">Financial Decision</span> To Us.
+              <p className="text-sm lg:text-xl text-white leading-relaxed">
+                And Leave Your <span className="font-semibold text-yellow-400">Financial Decision</span> To Us.
               </p>
-              <p className="text-xs lg:text-lg text-teal-100/90 leading-relaxed max-w-md lg:max-w-none mx-auto lg:mx-0">
+              <p className="text-xs lg:text-lg text-white/90 leading-relaxed max-w-md lg:max-w-none mx-auto lg:mx-0">
                 Your business has the spark; we provide the fuel. At Asset Kraft, we navigate the noise of the markets to find the signal of your success.
               </p>
             </div>
@@ -103,7 +103,7 @@ const Hero = ({ openBookingModal }) => {
             <div className="flex flex-row justify-center lg:justify-start gap-3 w-full pt-2 lg:pt-4">
               <Button 
                 onClick={openBookingModal}
-                className="w-1/2 lg:w-auto bg-white hover:bg-slate-100 text-teal-900 font-medium text-[10px] lg:text-lg px-2 lg:px-8 py-3 lg:py-6 transition-all"
+                className="w-1/2 lg:w-auto bg-white hover:bg-slate-100 text-teal-700 font-semibold text-[10px] lg:text-lg px-2 lg:px-8 py-3 lg:py-6 transition-all"
               >
                 Get Started
                 <ArrowRight className="ml-1 lg:ml-2" size={12} />
@@ -111,27 +111,27 @@ const Hero = ({ openBookingModal }) => {
               <Button 
                 onClick={() => document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' })}
                 variant="outline"
-                className="w-1/2 lg:w-auto border-2 border-yellow-500 text-yellow-400 hover:bg-yellow-500/10 text-[10px] lg:text-lg px-2 lg:px-8 py-3 lg:py-6 transition-all"
+                className="w-1/2 lg:w-auto border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400/10 text-[10px] lg:text-lg px-2 lg:px-8 py-3 lg:py-6 transition-all"
               >
                 Try Calculator
               </Button>
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex items-center justify-center lg:justify-start gap-4 sm:gap-8 pt-8 border-t border-teal-800 w-full">
+            <div className="flex items-center justify-center lg:justify-start gap-4 sm:gap-8 pt-8 border-t border-teal-500/50 w-full">
               <div ref={aum.ref} className="text-center lg:text-left">
                 <div className="text-xl lg:text-3xl font-bold text-white">{aum.count}+</div>
-                <div className="text-[8px] lg:text-sm text-teal-200 uppercase">Crores AUM</div>
+                <div className="text-[8px] lg:text-sm text-white/80 uppercase">Crores AUM</div>
               </div>
-              <div className="h-8 lg:h-12 w-px bg-teal-800"></div>
+              <div className="h-8 lg:h-12 w-px bg-teal-500/50"></div>
               <div ref={investors.ref} className="text-center lg:text-left">
-                <div className="text-xl lg:text-3xl font-bold text-yellow-500">{investors.count}+</div>
-                <div className="text-[8px] lg:text-sm text-teal-200 uppercase">Happy Investors</div>
+                <div className="text-xl lg:text-3xl font-bold text-yellow-400">{investors.count}+</div>
+                <div className="text-[8px] lg:text-sm text-white/80 uppercase">Happy Investors</div>
               </div>
-              <div className="h-8 lg:h-12 w-px bg-teal-800"></div>
+              <div className="h-8 lg:h-12 w-px bg-teal-500/50"></div>
               <div ref={years.ref} className="text-center lg:text-left">
                 <div className="text-xl lg:text-3xl font-bold text-white">{years.count}+</div>
-                <div className="text-[8px] lg:text-sm text-teal-200 uppercase">Years Experience</div>
+                <div className="text-[8px] lg:text-sm text-white/80 uppercase">Years Experience</div>
               </div>
             </div>
           </div>
