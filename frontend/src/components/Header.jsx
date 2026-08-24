@@ -81,11 +81,11 @@ const Header = ({ openBookingModal }) => {
 
         {/* Desktop CTA Button - Unchanged */}
         <Button 
-          onClick={openBookingModal}
-          className="hidden lg:block bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-lg font-semibold text-[15px] transition-all duration-200 shadow-[0_4px_14px_rgba(29,168,150,0.35)] hover:shadow-[0_6px_20px_rgba(29,168,150,0.45)] hover:-translate-y-[1px]"
-        >
-          Contact Us
-        </Button>
+  onClick={openBookingModal}
+  className="hidden lg:inline-flex items-center justify-center bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-lg font-semibold text-base leading-none transition-all duration-200 shadow-[0_4px_14px_rgba(29,168,150,0.35)] hover:shadow-[0_6px_20px_rgba(29,168,150,0.45)] hover:-translate-y-[1px]"
+>
+  Book A Call
+</Button>
 
         {/* Mobile Menu Button - Unchanged */}
         <button
@@ -117,17 +117,18 @@ const Header = ({ openBookingModal }) => {
             Services
           </button>
           <button 
-            onClick={() => { scrollToSection('portfolio'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
-            className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
-          >
-            Portfolio
-          </button>
-          <button 
             onClick={() => { scrollToSection('calculator'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
             className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
           >
             Calculator
           </button>
+          <button 
+            onClick={() => { scrollToSection('portfolio'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
+            className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
+          >
+            Portfolio
+          </button>
+          
           <button 
             onClick={() => { scrollToSection('team'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
             className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
@@ -135,11 +136,11 @@ const Header = ({ openBookingModal }) => {
             <a href="/our-team" className="block w-full">Our Team</a>
           </button>
           <Button 
-            onClick={openBookingModal}
-            className="w-full bg-teal-600 hover:bg-teal-700 text-white text-xs py-2"
-          >
-            Contact Us
-          </Button>
+  onClick={openBookingModal}
+  className="w-full bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium inline-flex items-center justify-center leading-none py-2.5"
+>
+  Book A Call
+</Button>
         </div>
       </div>
     </header>
