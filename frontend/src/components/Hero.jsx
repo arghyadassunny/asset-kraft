@@ -70,6 +70,8 @@ const Hero = ({ openBookingModal }) => {
   </li>
 </ul>
 
+            </div>
+
             {/* CTA Buttons */}
             <div className="flex flex-row justify-center lg:justify-start gap-3 w-full pt-2 lg:pt-4">
               <Button 
