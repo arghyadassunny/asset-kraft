@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -42,12 +42,12 @@ const Hero = ({ openBookingModal }) => {
       }
     }, []);
 
-return (
+    return (
       <img
         src="https://res.cloudinary.com/djm5rsjwl/image/upload/v1787602336/Hero_image_1_sshheu.png"
         alt="Hero asset"
-        className="w-full h-auto object-contain"
-        style={{ maxHeight: '600px' }}
+        className="w-full h-auto object-contain lg:scale-110 lg:origin-center"
+        style={{ maxHeight: '750px' }}
       />
     );
   };
@@ -62,24 +62,13 @@ return (
           
           <div className="flex flex-col items-center lg:items-start space-y-6 lg:space-y-8">
             
-            {/* Tighter Sub-container for Badge and Heading */}
-            <div className="flex flex-col items-center lg:items-start space-y-1 lg:space-y-2">
-              {/* AMFI Badge - White box container */}
-              <div className="inline-flex items-center gap-1 bg-white border border-white rounded-full px-2 py-0.5 lg:px-2.5 text-teal-700 font-medium shadow-sm animate-fade-in">
-                <Sparkles className="text-teal-600 w-2 h-2 lg:w-3.5 lg:h-3.5" />
-                <span className="text-[7px] sm:text-xs lg:text-sm uppercase tracking-tighter lg:normal-case lg:tracking-normal">
-                  AMFI Registered Mutual Fund Distributor
-                </span>
-              </div>
+            {/* Main Heading */}
+            <h1 className="text-[34px] leading-[1.1] sm:text-4xl lg:text-6xl font-bold text-white text-center lg:text-left tracking-tight">
+              <span className="block">You Enjoy!</span>
+              <span className="block text-white">While We Craft Your Wealth</span>
+            </h1>
 
-              {/* Main Heading */}
-              <h1 className="text-[34px] leading-[1.1] sm:text-4xl lg:text-6xl font-bold text-white text-center lg:text-left tracking-tight">
-                <span className="block">Invest In Your Future</span>
-                <span className="block text-white">Live Your Present</span>
-              </h1>
-            </div>
-
-            {/* Mobile Video */}
+            {/* Mobile Image */}
             <div className="w-full lg:hidden">
               <HeroVideo />
             </div>
@@ -87,10 +76,10 @@ return (
             {/* Subheading & Description */}
             <div className="space-y-4 lg:space-y-6 text-center lg:text-left">
               <p className="text-sm lg:text-xl text-white leading-relaxed">
-                And Leave Your <span className="font-semibold text-white">Financial Decision</span> To Us.
+                At Asset Kraft, we navigate <span className="font-semibold text-white">the noise of the markets</span> to find the signal of your success.
               </p>
               <p className="text-xs lg:text-lg text-white/90 leading-relaxed max-w-md lg:max-w-none mx-auto lg:mx-0">
-                Your business has the spark; we provide the fuel. At Asset Kraft, we navigate the noise of the markets to find the signal of your success.
+                We are an AMFI-registered mutual fund distributor helping 5,000+ families build wealth through goal-based mutual fund investing, insurance, and financial planning.
               </p>
             </div>
 
