@@ -15,7 +15,7 @@ const Hero = ({ openBookingModal }) => {
 
     return (
       <img
-        src="https://res.cloudinary.com/djm5rsjwl/image/upload/v1787605933/Hero_image_2_tbkrbz.png"
+        src="https://res.cloudinary.com/djm5rsjwl/image/upload/v1787606758/Hero_image_3_uvz18u.png"
         alt="Hero asset"
         className="w-full h-auto object-contain lg:scale-110 lg:origin-center"
         style={{ maxHeight: '750px' }}
