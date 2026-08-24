@@ -42,15 +42,10 @@ const Hero = ({ openBookingModal }) => {
       }
     }, []);
 
-    return (
-      <video 
-        ref={videoRef}
-        src="https://customer-assets.emergentagent.com/job_craft-wealth/artifacts/soswflym_Hero%20section%20video%20asset%20kraft.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        webkit-playsinline="true"
+return (
+      <img
+        src="https://res.cloudinary.com/djm5rsjwl/image/upload/v1787602336/Hero_image_1_sshheu.png"
+        alt="Hero asset"
         className="w-full h-auto object-contain"
         style={{ maxHeight: '600px' }}
       />
@@ -60,7 +55,7 @@ const Hero = ({ openBookingModal }) => {
   return (
     <section id="home" className="relative bg-teal-600 pt-20 lg:pt-32 pb-12 lg:pb-32 overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-teal-500/30 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-100/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -71,7 +66,7 @@ const Hero = ({ openBookingModal }) => {
             <div className="flex flex-col items-center lg:items-start space-y-1 lg:space-y-2">
               {/* AMFI Badge - White box container */}
               <div className="inline-flex items-center gap-1 bg-white border border-white rounded-full px-2 py-0.5 lg:px-2.5 text-teal-700 font-medium shadow-sm animate-fade-in">
-                <Sparkles className="text-yellow-500 w-2 h-2 lg:w-3.5 lg:h-3.5" />
+                <Sparkles className="text-teal-600 w-2 h-2 lg:w-3.5 lg:h-3.5" />
                 <span className="text-[7px] sm:text-xs lg:text-sm uppercase tracking-tighter lg:normal-case lg:tracking-normal">
                   AMFI Registered Mutual Fund Distributor
                 </span>
@@ -80,7 +75,7 @@ const Hero = ({ openBookingModal }) => {
               {/* Main Heading */}
               <h1 className="text-[34px] leading-[1.1] sm:text-4xl lg:text-6xl font-bold text-white text-center lg:text-left tracking-tight">
                 <span className="block">Invest In Your Future</span>
-                <span className="block text-yellow-400">Live Your Present</span>
+                <span className="block text-white">Live Your Present</span>
               </h1>
             </div>
 
@@ -92,7 +87,7 @@ const Hero = ({ openBookingModal }) => {
             {/* Subheading & Description */}
             <div className="space-y-4 lg:space-y-6 text-center lg:text-left">
               <p className="text-sm lg:text-xl text-white leading-relaxed">
-                And Leave Your <span className="font-semibold text-yellow-400">Financial Decision</span> To Us.
+                And Leave Your <span className="font-semibold text-white">Financial Decision</span> To Us.
               </p>
               <p className="text-xs lg:text-lg text-white/90 leading-relaxed max-w-md lg:max-w-none mx-auto lg:mx-0">
                 Your business has the spark; we provide the fuel. At Asset Kraft, we navigate the noise of the markets to find the signal of your success.
@@ -111,7 +106,7 @@ const Hero = ({ openBookingModal }) => {
               <Button 
                 onClick={() => document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' })}
                 variant="outline"
-                className="w-1/2 lg:w-auto border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400/10 text-[10px] lg:text-lg px-2 lg:px-8 py-3 lg:py-6 transition-all"
+                className="w-1/2 lg:w-auto border-2 border-white text-white hover:bg-white/10 text-[10px] lg:text-lg px-2 lg:px-8 py-3 lg:py-6 transition-all"
               >
                 Try Calculator
               </Button>
@@ -125,7 +120,7 @@ const Hero = ({ openBookingModal }) => {
               </div>
               <div className="h-8 lg:h-12 w-px bg-teal-500/50"></div>
               <div ref={investors.ref} className="text-center lg:text-left">
-                <div className="text-xl lg:text-3xl font-bold text-yellow-400">{investors.count}+</div>
+                <div className="text-xl lg:text-3xl font-bold text-white">{investors.count}+</div>
                 <div className="text-[8px] lg:text-sm text-white/80 uppercase">Happy Investors</div>
               </div>
               <div className="h-8 lg:h-12 w-px bg-teal-500/50"></div>
