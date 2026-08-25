@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Calendar, CheckCircle2 } from 'lucide-react';
 import { Button } from './ui/button';
 import React, { useEffect, useRef } from 'react';
 
@@ -24,7 +24,7 @@ const Hero = ({ openBookingModal }) => {
   };
 
   return (
-    <section id="home" className="relative bg-white pt-20 lg:pt-32 pb-12 lg:pb-32 overflow-hidden">
+    <section id="home" className="relative bg-white pt-20 lg:pt-32 pb-12 lg:pb-32 overflow-hidden lg:-mb-20 -mb-8">
       {/* Background glow effects inverted */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-teal-100/60 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-50/70 rounded-full blur-3xl"></div>
@@ -49,11 +49,11 @@ const Hero = ({ openBookingModal }) => {
               <HeroVideo />
             </div>
 
-            {/* Subheading & Description */}
-            <div className="space-y-3 lg:space-y-4 text-center lg:text-left">
-              <p className="text-[11px] lg:text-sm text-teal-800/80 leading-relaxed max-w-md lg:max-w-none mx-auto lg:mx-0">
-                We are an AMFI-registered mutual fund distributor helping 5,000+ families build <br></br> wealth through goal-based mutual fund investing, insurance, and financial planning.
-              </p>
+{/* Subheading & Description */}
+<div className="space-y-3 lg:space-y-4 text-center lg:text-left">
+  <p className="text-[9px] px-6 lg:px-0 lg:text-sm text-teal-800/80 leading-relaxed max-w-md lg:max-w-none mx-auto lg:mx-0">
+    We are an AMFI-registered mutual fund distributor helping 5,000+ families build <br className="hidden lg:inline" />wealth through goal-based mutual fund investing, insurance, and financial planning.
+  </p>
 
               {/* Bullet Points */}
               <ul className="space-y-2.5 pt-1 text-left inline-block">
@@ -76,10 +76,10 @@ const Hero = ({ openBookingModal }) => {
             <div className="flex flex-row justify-center lg:justify-start gap-3 w-full pt-2 lg:pt-4">
               <Button 
                 onClick={openBookingModal}
-                className="w-1/2 lg:w-auto bg-teal-600 hover:bg-teal-700 text-white font-semibold text-[10px] lg:text-lg px-2 lg:px-8 py-3 lg:py-6 transition-all"
+                className="mt-0 lg:-mt-4 w-1/2 lg:w-auto bg-teal-600 hover:bg-teal-700 text-white font-semibold text-[13px] lg:text-lg px-2 lg:px-8 py-3 lg:py-6 transition-all"
               >
                 Book A Free Call
-                <ArrowRight className="ml-1 lg:ml-2 text-white" size={12} />
+                <Calendar className="ml-1 lg:ml-2 text-white" size={12} />
               </Button>
             </div>
           </div>
