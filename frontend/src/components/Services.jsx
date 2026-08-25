@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TrendingUp, Shield, Target, FileText, Handshake, CheckCircle, BookOpen, Lock, Sparkles, Check, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { services, philosophy, values } from '../data/mock';
 
@@ -13,167 +13,235 @@ const slideImages = [
   'https://res.cloudinary.com/djm5rsjwl/image/upload/v1775941242/legacy_planning_qwasl4.png',
 ];
 
-const DURATION = 4500;
-
-const ServicesCarousel = ({ services, iconComponents }) => {
+const RotatingCardCarousel = ({ services, iconComponents }) => {
   const [current, setCurrent] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const progRef = useRef(null);
-  const timerRef = useRef(null);
-  const startRef = useRef(Date.now());
+  const [isPaused, setIsPaused] = useState(false);
+  const total = services.length;
 
-  const goTo = (n) => {
-    setCurrent((n + services.length) % services.length);
-    setProgress(0);
-    startRef.current = Date.now();
-  };
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % total);
+  const prevSlide = () => setCurrent((prev) => (prev - 1 + total) % total);
 
   useEffect(() => {
-    startRef.current = Date.now();
-    setProgress(0);
-    const tick = () => {
-      const elapsed = Date.now() - startRef.current;
-      const pct = Math.min((elapsed / DURATION) * 100, 100);
-      setProgress(pct);
-      if (pct < 100) {
-        progRef.current = requestAnimationFrame(tick);
-      } else {
-        timerRef.current = setTimeout(() => goTo(current + 1), 80);
-      }
-    };
-    progRef.current = requestAnimationFrame(tick);
-    return () => {
-      cancelAnimationFrame(progRef.current);
-      clearTimeout(timerRef.current);
-    };
-  }, [current]);
+    if (isPaused) return;
+    const interval = setInterval(nextSlide, 4000);
+    return () => clearInterval(interval);
+  }, [isPaused, total]);
 
   return (
-    <div className="relative w-full overflow-hidden h-[380px] lg:h-[520px]">
-      {services.map((service, i) => {
-        const Icon = iconComponents[service.icon];
-        const img = slideImages[i % slideImages.length];
-        const isActive = i === current;
-        return (
-          <div
-            key={service.id}
-            className="absolute inset-0 transition-opacity duration-700 ease-in-out"
-            style={{ opacity: isActive ? 1 : 0, zIndex: isActive ? 1 : 0, pointerEvents: isActive ? 'auto' : 'none' }}
-          >
-            <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: `url(${img})` }} />
-            <div className="absolute inset-0 bg-gradient-to-br from-teal-900/80 via-teal-800/60 to-slate-900/80" />
-            <div className="relative z-10 h-full flex items-center justify-center px-4">
-              <div className="max-w-xl w-full flex flex-col items-center text-center">
-                <div className="flex flex-col items-center gap-2 mb-2 lg:flex-row lg:gap-5 lg:mb-6">
-                  <div className="bg-white/15 backdrop-blur-md border border-white/25 w-10 h-10 lg:w-14 lg:h-14 rounded-xl flex items-center justify-center shadow-xl">
-                    <Icon className="text-white w-5 h-5 lg:w-7 lg:h-7" />
+    <div 
+      className="relative w-full max-w-6xl mx-auto px-4 py-8 flex flex-col items-center select-none"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Card Stage with 3D Perspective */}
+      <div className="relative w-full h-[460px] sm:h-[480px] flex items-center justify-center [perspective:1200px] overflow-hidden sm:overflow-visible">
+        {services.map((service, i) => {
+          const Icon = iconComponents[service.icon] || Sparkles;
+          const img = slideImages[i % slideImages.length];
+
+          // Compute shortest directional offset from active slide
+          let offset = (i - current) % total;
+          if (offset > total / 2) offset -= total;
+          if (offset < -total / 2) offset += total;
+
+          const isCenter = offset === 0;
+          const isImmediate = Math.abs(offset) === 1;
+          const isVisible = Math.abs(offset) <= 2;
+
+          if (!isVisible) return null;
+
+          return (
+            <div
+              key={service.id || i}
+              onClick={() => setCurrent(i)}
+              className={`absolute top-0 w-[290px] sm:w-[350px] lg:w-[380px] h-[440px] rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ease-out cursor-pointer ${
+                isCenter ? 'ring-2 ring-teal-400/50 shadow-teal-900/40' : 'hover:brightness-110'
+              }`}
+              style={{
+                transform: `translateX(${offset * 58}%) scale(${isCenter ? 1 : isImmediate ? 0.85 : 0.7}) rotateY(${offset * -18}deg)`,
+                zIndex: 30 - Math.abs(offset) * 10,
+                opacity: isCenter ? 1 : isImmediate ? 0.65 : 0.25,
+                filter: isCenter ? 'none' : 'blur(1px)',
+              }}
+            >
+              {/* Background Image & Overlays */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700" 
+                style={{ backgroundImage: `url(${img})` }} 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-teal-950/80 to-slate-900/40" />
+
+              {/* Card Content */}
+              <div className="relative z-10 h-full p-6 sm:p-8 flex flex-col justify-between text-white">
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg">
+                    <Icon className="w-6 h-6 text-teal-300" />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white tracking-tight leading-tight">{service.title}</h3>
+                  <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white/70">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
                 </div>
-                <p className="text-sm sm:text-base lg:text-lg text-slate-200/90 font-light leading-relaxed mb-5 lg:mb-8 max-w-[260px] sm:max-w-md lg:max-w-xl">{service.description}</p>
-                <a href="#" className="bg-white/10 backdrop-blur-md border border-white/40 hover:bg-white/20 text-white px-6 py-2 rounded-full text-[11px] lg:text-sm font-semibold transition-all">Start Your Journey</a>
+
+                <div>
+                  <h3 className="text-2xl font-bold mb-3 tracking-tight text-white line-clamp-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-slate-300 leading-relaxed line-clamp-4 mb-6">
+                    {service.description}
+                  </p>
+                  <a
+                    href="#contact"
+                    onClick={(e) => !isCenter && e.preventDefault()}
+                    className={`inline-flex items-center justify-center w-full py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all ${
+                      isCenter
+                        ? 'bg-teal-500 hover:bg-teal-400 text-slate-950 shadow-lg shadow-teal-500/30'
+                        : 'bg-white/10 backdrop-blur-sm border border-white/20 text-white pointer-events-none'
+                    }`}
+                  >
+                    Start Your Journey
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
-      <div className="absolute top-0 left-0 right-0 h-[3px] bg-white/10 z-20">
-        <div className="h-full bg-gradient-to-r from-emerald-400 to-teal-500 transition-none" style={{ width: `${progress}%` }} />
+          );
+        })}
       </div>
-      <button onClick={() => goTo(current - 1)} className="absolute left-2 lg:left-8 top-1/2 -translate-y-1/2 z-30 p-1.5 lg:p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white"><ChevronLeft size={18} className="lg:w-6 lg:h-6" /></button>
-      <button onClick={() => goTo(current + 1)} className="absolute right-2 lg:right-8 top-1/2 -translate-y-1/2 z-30 p-1.5 lg:p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white"><ChevronRight size={18} className="lg:w-6 lg:h-6" /></button>
-      <div className="absolute top-4 right-6 z-20 text-[9px] lg:text-xs text-white/50 font-mono">{String(current + 1).padStart(2, '0')} / {String(services.length).padStart(2, '0')}</div>
+
+      {/* Controls & Pagination */}
+      <div className="flex items-center gap-6 mt-6 z-40">
+        <button
+          onClick={prevSlide}
+          className="p-3 rounded-full bg-slate-100 hover:bg-teal-50 text-slate-700 hover:text-teal-600 transition-colors shadow-md border border-slate-200"
+          aria-label="Previous Slide"
+        >
+          <ChevronLeft size={20} />
+        </button>
+
+        <div className="flex gap-2">
+          {services.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrent(idx)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                idx === current ? 'w-8 bg-teal-600' : 'w-2 bg-slate-300 hover:bg-slate-400'
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={nextSlide}
+          className="p-3 rounded-full bg-slate-100 hover:bg-teal-50 text-slate-700 hover:text-teal-600 transition-colors shadow-md border border-slate-200"
+          aria-label="Next Slide"
+        >
+          <ChevronRight size={20} />
+        </button>
+      </div>
     </div>
   );
 };
 
 const Services = () => {
   return (
-    <section id="services" className="pt-6 pb-20 lg:py-24 bg-white lg:-mt-10">
+    <section id="services" className="pt-6 pb-20 lg:py-24 bg-white lg:-mt-10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 lg:mb-12">
         <div className="text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-3">Our <span className="text-teal-600">Services</span></h2>
-          <p className="text-sm lg:text-lg text-slate-600 max-w-2xl mx-auto px-4">Comprehensive wealth management solutions tailored to your goals</p>
+          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-3">
+            Our <span className="text-teal-600">Services</span>
+          </h2>
+          <p className="text-sm lg:text-lg text-slate-600 max-w-2xl mx-auto px-4">
+            Comprehensive wealth management solutions tailored to your goals
+          </p>
         </div>
       </div>
 
+      {/* Rotating Card Carousel Section */}
       <div className="mb-16 lg:mb-24">
-        <ServicesCarousel services={services} iconComponents={iconComponents} />
+        <RotatingCardCarousel services={services} iconComponents={iconComponents} />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  <div className="mb-24">
-    <div className="text-center mb-12 lg:mb-16">
-      <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 px-2">
-        Where Our Value <span className="text-teal-600">Meets Your Vision</span>
-      </h2>
-    </div>
+        <div className="mb-24">
+          <div className="text-center mb-12 lg:mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 px-2">
+              Where Our Value <span className="text-teal-600">Meets Your Vision</span>
+            </h2>
+          </div>
 
-    {(() => {
-      const doValues = values.filter(v => v.type === 'do');
-      const dontValues = values.filter(v => v.type === 'dont');
-      const rows = Math.max(doValues.length, dontValues.length);
+          {(() => {
+            const doValues = values.filter((v) => v.type === 'do');
+            const dontValues = values.filter((v) => v.type === 'dont');
+            const rows = Math.max(doValues.length, dontValues.length);
 
-      return (
-        /* Changed to flex flex-col with direct vertical gaps */
-        <div className="flex flex-col gap-4 lg:gap-8">
-          {Array.from({ length: rows }).map((_, i) => (
-            <div key={i} className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-stretch">
-              {doValues[i] && (
-                <div className="bg-teal-50 rounded-xl p-4 lg:p-5 border border-teal-200 w-full max-w-[300px] lg:max-w-none mx-auto transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col">
-                  <div className="flex items-start gap-3 lg:gap-4 h-full">
-                    <Check className="text-teal-600 mt-1 flex-shrink-0" size={16} />
-                    <div className="flex flex-col h-full">
-                      <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">{doValues[i].title}</h3>
-                      <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed flex-grow">{doValues[i].description}</p>
-                    </div>
+            return (
+              <div className="flex flex-col gap-4 lg:gap-8">
+                {Array.from({ length: rows }).map((_, i) => (
+                  <div key={i} className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-stretch">
+                    {doValues[i] && (
+                      <div className="bg-teal-50 rounded-xl p-4 lg:p-5 border border-teal-200 w-full max-w-[300px] lg:max-w-none mx-auto transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col">
+                        <div className="flex items-start gap-3 lg:gap-4 h-full">
+                          <Check className="text-teal-600 mt-1 flex-shrink-0" size={16} />
+                          <div className="flex flex-col h-full">
+                            <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">
+                              {doValues[i].title}
+                            </h3>
+                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed flex-grow">
+                              {doValues[i].description}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {dontValues[i] && (
+                      <div className="bg-slate-50 rounded-xl p-4 lg:p-5 border border-slate-200 w-full max-w-[300px] lg:max-w-none mx-auto transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col">
+                        <div className="flex items-start gap-3 lg:gap-4 h-full">
+                          <X className="text-slate-600 mt-1 flex-shrink-0" size={16} />
+                          <div className="flex flex-col h-full">
+                            <h3 className="text-base lg:text-lg font-bold text-red-600 mb-1 leading-tight">
+                              {dontValues[i].title}
+                            </h3>
+                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed flex-grow">
+                              {dontValues[i].description}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </div>
-              )}
-              {dontValues[i] && (
-                <div className="bg-slate-50 rounded-xl p-4 lg:p-5 border border-slate-200 w-full max-w-[300px] lg:max-w-none mx-auto transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col">
-                  <div className="flex items-start gap-3 lg:gap-4 h-full">
-                    <X className="text-slate-600 mt-1 flex-shrink-0" size={16} />
-                    <div className="flex flex-col h-full">
-                      <h3 style={{ color: 'red' }} className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">{dontValues[i].title}</h3>
-                      <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed flex-grow">{dontValues[i].description}</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
+                ))}
+              </div>
+            );
+          })()}
         </div>
-      );
-    })()}
-  </div>
 
-
-        {/* ── Philosophy boxes (Centered and Enhanced) ── */}
+        {/* Philosophy boxes */}
         <div>
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">Our <span className="text-teal-600">Philosophy</span></h2>
-            <p className="text-sm lg:text-lg text-slate-600 max-w-3xl mx-auto px-4">At the heart of everything we do is a deep commitment to trust, transparency, and long-term partnership</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+              Our <span className="text-teal-600">Philosophy</span>
+            </h2>
+            <p className="text-sm lg:text-lg text-slate-600 max-w-3xl mx-auto px-4">
+              At the heart of everything we do is a deep commitment to trust, transparency, and long-term partnership
+            </p>
           </div>
-          
-          {/* Using flex-wrap and justify-center to ensure the second row is centered */}
+
           <div className="flex flex-wrap justify-center gap-6">
             {philosophy.map((item) => {
-              const Icon = iconComponents[item.icon];
+              const Icon = iconComponents[item.icon] || Sparkles;
               return (
-                <div 
-                  key={item.id} 
+                <div
+                  key={item.id}
                   className="group bg-teal-600 rounded-2xl p-6 lg:p-8 border border-teal-700 transition-all duration-500 flex flex-col items-center text-center w-full max-w-[280px] lg:max-w-[340px] shadow-lg hover:shadow-[0_20px_50px_rgba(13,148,136,0.35)] hover:-translate-y-2 hover:border-white/50"
                 >
                   <div className="bg-white rounded-xl w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center mb-4 lg:mb-5 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-inner">
                     <Icon className="text-yellow-600" size={24} />
                   </div>
-                  
-                  {/* h3 enhanced with drop-shadow for high visibility */}
+
                   <h3 className="text-base lg:text-lg font-bold text-white mb-2 lg:mb-3 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
                     {item.title}
                   </h3>
-                  
+
                   <p className="text-[13px] lg:text-base text-white/90 leading-relaxed">
                     {item.description}
                   </p>
