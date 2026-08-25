@@ -80,6 +80,12 @@ export const services = [
     title: "Legacy Planning",
     description: "Assisting you in preparing a simple and effective Will, ensuring a lasting legacy for your loved ones.",
     icon: "FileText"
+  },
+  {
+    id: 5,
+    title: "Portfolio Review",
+    description: "Regular assessment and rebalancing of your investment portfolio to ensure it remains aligned with your financial goals.",
+    icon: "Sun"
   }
 ];
 

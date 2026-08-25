@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { TrendingUp, Shield, Target, FileText, Handshake, CheckCircle, BookOpen, Lock, Sparkles, Check, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { services, philosophy, values } from '../data/mock';
 
@@ -11,35 +11,86 @@ const slideImages = [
   'https://res.cloudinary.com/djm5rsjwl/image/upload/v1775941241/insurance_ejewjz.png',
   'https://res.cloudinary.com/djm5rsjwl/image/upload/v1775941241/finance_kvn7zh.png',
   'https://res.cloudinary.com/djm5rsjwl/image/upload/v1775941242/legacy_planning_qwasl4.png',
+  'https://res.cloudinary.com/djm5rsjwl/image/upload/v1775941241/finance_kvn7zh.png'
 ];
+
+const AUTOPLAY_DELAY = 4000;
 
 const RotatingCardCarousel = ({ services, iconComponents }) => {
   const [current, setCurrent] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const total = services.length;
 
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % total);
-  const prevSlide = () => setCurrent((prev) => (prev - 1 + total) % total);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+  const timerRef = useRef(null);
 
+  const nextSlide = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % total);
+  }, [total]);
+
+  const prevSlide = useCallback(() => {
+    setCurrent((prev) => (prev - 1 + total) % total);
+  }, [total]);
+
+  const goToSlide = (idx) => {
+    setCurrent((idx + total) % total);
+  };
+
+  // Continuous Autoplay Engine: Resumes smoothly even after manual clicks/swipes
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(nextSlide, 4000);
-    return () => clearInterval(interval);
-  }, [isPaused, total]);
+    if (isHovered) return;
+
+    timerRef.current = setInterval(() => {
+      nextSlide();
+    }, AUTOPLAY_DELAY);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [current, isHovered, nextSlide]);
+
+  // Touch Swipe Handlers for Mobile
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const diff = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 45; // Threshold in px
+
+    if (diff > minSwipeDistance) {
+      nextSlide();
+    } else if (diff < -minSwipeDistance) {
+      prevSlide();
+    }
+
+    // Reset touch coordinates
+    touchStartX.current = 0;
+    touchEndX.current = 0;
+  };
 
   return (
     <div 
       className="relative w-full max-w-6xl mx-auto px-4 py-8 flex flex-col items-center select-none"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
-      {/* Card Stage with 3D Perspective */}
-      <div className="relative w-full h-[460px] sm:h-[480px] flex items-center justify-center [perspective:1200px] overflow-hidden sm:overflow-visible">
+      {/* 3D Stage Viewport */}
+      <div className="relative w-full h-[480px] sm:h-[500px] flex items-center justify-center [perspective:1200px] overflow-hidden sm:overflow-visible">
         {services.map((service, i) => {
           const Icon = iconComponents[service.icon] || Sparkles;
           const img = slideImages[i % slideImages.length];
 
-          // Compute shortest directional offset from active slide
+          // Compute cyclic relative offset from active card
           let offset = (i - current) % total;
           if (offset > total / 2) offset -= total;
           if (offset < -total / 2) offset += total;
@@ -53,9 +104,11 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
           return (
             <div
               key={service.id || i}
-              onClick={() => setCurrent(i)}
-              className={`absolute top-0 w-[290px] sm:w-[350px] lg:w-[380px] h-[440px] rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ease-out cursor-pointer ${
-                isCenter ? 'ring-2 ring-teal-400/50 shadow-teal-900/40' : 'hover:brightness-110'
+              onClick={() => goToSlide(i)}
+              className={`group absolute top-0 w-[290px] sm:w-[350px] lg:w-[380px] h-[450px] rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ease-out cursor-pointer ${
+                isCenter 
+                  ? 'ring-2 ring-teal-400/50 shadow-teal-950/40 lg:hover:scale-[1.04]' 
+                  : 'hover:brightness-110'
               }`}
               style={{
                 transform: `translateX(${offset * 58}%) scale(${isCenter ? 1 : isImmediate ? 0.85 : 0.7}) rotateY(${offset * -18}deg)`,
@@ -64,9 +117,9 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
                 filter: isCenter ? 'none' : 'blur(1px)',
               }}
             >
-              {/* Background Image & Overlays */}
+              {/* Background Image with desktop zoom effect */}
               <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700" 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110" 
                 style={{ backgroundImage: `url(${img})` }} 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-teal-950/80 to-slate-900/40" />
@@ -74,7 +127,7 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
               {/* Card Content */}
               <div className="relative z-10 h-full p-6 sm:p-8 flex flex-col justify-between text-white">
                 <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg">
+                  <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:rotate-6">
                     <Icon className="w-6 h-6 text-teal-300" />
                   </div>
                   <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white/70">
@@ -107,11 +160,11 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
         })}
       </div>
 
-      {/* Controls & Pagination */}
+      {/* Navigation Controls */}
       <div className="flex items-center gap-6 mt-6 z-40">
         <button
           onClick={prevSlide}
-          className="p-3 rounded-full bg-slate-100 hover:bg-teal-50 text-slate-700 hover:text-teal-600 transition-colors shadow-md border border-slate-200"
+          className="p-3 rounded-full bg-slate-100 hover:bg-teal-50 text-slate-700 hover:text-teal-600 active:scale-95 transition shadow-md border border-slate-200"
           aria-label="Previous Slide"
         >
           <ChevronLeft size={20} />
@@ -121,7 +174,7 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
           {services.map((_, idx) => (
             <button
               key={idx}
-              onClick={() => setCurrent(idx)}
+              onClick={() => goToSlide(idx)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 idx === current ? 'w-8 bg-teal-600' : 'w-2 bg-slate-300 hover:bg-slate-400'
               }`}
@@ -132,7 +185,7 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
 
         <button
           onClick={nextSlide}
-          className="p-3 rounded-full bg-slate-100 hover:bg-teal-50 text-slate-700 hover:text-teal-600 transition-colors shadow-md border border-slate-200"
+          className="p-3 rounded-full bg-slate-100 hover:bg-teal-50 text-slate-700 hover:text-teal-600 active:scale-95 transition shadow-md border border-slate-200"
           aria-label="Next Slide"
         >
           <ChevronRight size={20} />
@@ -156,7 +209,7 @@ const Services = () => {
         </div>
       </div>
 
-      {/* Rotating Card Carousel Section */}
+      {/* Rotating 3D Card Carousel */}
       <div className="mb-16 lg:mb-24">
         <RotatingCardCarousel services={services} iconComponents={iconComponents} />
       </div>
