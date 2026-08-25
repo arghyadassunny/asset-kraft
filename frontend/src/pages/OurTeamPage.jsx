@@ -1,28 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Linkedin } from 'lucide-react';
+
+// Components
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import BookingModal from '../components/BookingModal';
 
 const teamData = {
   leadership: [
-    {
-      id: 1,
-      name: 'Ashis Kumar Dey',
-      role: 'Managing Director & CEO',
-      image: 'https://www.assetkraft.com/ashis_kumar_dey.jpg',
-      linkedin: '#'
-    },
+
     {
       id: 2,
-      name: 'Amit Rathi',
-      role: 'Director',
-      image: 'https://www.assetkraft.com/amit_rathi.jpg',
-      linkedin: '#'
-    },
-    {
-      id: 3,
       name: 'Sanjeev Kumar Mundhra',
       role: 'Director',
       image: 'https://www.assetkraft.com/sanjeev_mundhra.jpg',
       linkedin: '#'
+    },
+    {
+      id: 3,
+      name: 'Amit Rathi',
+      role: 'Director',
+      image: 'https://www.assetkraft.com/amit_rathi.jpg',
+      linkedin: '#'
+      
     }
   ],
   growthTeam: [
@@ -199,7 +199,7 @@ const TeamMemberCard = ({ member }) => (
         alt={member.name}
         className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
         onError={(e) => {
-          e.target.src = 'https://via.placeholder.com/400x400?text=' + member.name.split(' ')[0];
+          e.target.src = 'https://via.placeholder.com/400x400?text=' + encodeURIComponent(member.name.split(' ')[0]);
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -214,6 +214,8 @@ const TeamMemberCard = ({ member }) => (
       {member.linkedin && (
         <a 
           href={member.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-slate-600 hover:text-teal-600 transition-colors text-sm"
         >
           <Linkedin size={16} />
@@ -224,105 +226,127 @@ const TeamMemberCard = ({ member }) => (
   </div>
 );
 
-const TeamSection = ({ title, members, columns = 3 }) => (
-  <div className="mb-16">
-    <h2 className="text-3xl font-bold text-slate-900 mb-8 pb-3 border-b-2 border-teal-600 inline-block">
-      {title}
-    </h2>
-    <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${columns} gap-8 mt-8`}>
-      {members.map((member) => (
-        <TeamMemberCard key={member.id} member={member} />
-      ))}
+const TeamSection = ({ title, members, columns = 3 }) => {
+  const gridColsClass = columns === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
+
+  return (
+    <div className="mb-16">
+      <h2 className="text-3xl font-bold text-slate-900 mb-8 pb-3 border-b-2 border-teal-600 inline-block">
+        {title}
+      </h2>
+      <div className={`grid grid-cols-1 md:grid-cols-2 ${gridColsClass} gap-8 mt-8`}>
+        {members.map((member) => (
+          <TeamMemberCard key={member.id} member={member} />
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const OurTeamPage = () => {
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  const openBookingModal = () => setIsBookingModalOpen(true);
+  const closeBookingModal = () => setIsBookingModalOpen(false);
+
   return (
-    <div className="min-h-screen bg-white pt-28 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-slate-900 mb-4">
-            Meet <span className="text-teal-600">Our Team</span>
-          </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            30+ dedicated professionals with 20+ years of combined experience, committed to your financial success
-          </p>
+    <div className="min-h-screen bg-white flex flex-col justify-between">
+      {/* Header with Only Home Link */}
+      <Header openBookingModal={openBookingModal} showOnlyHome={true} />
+
+      <main className="pt-28 lg:pt-36 pb-16 flex-grow">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Page Heading */}
+          <div className="text-center mb-16">
+            <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+              Meet <span className="text-teal-600">Our Team</span>
+            </h1>
+            <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto">
+              30+ dedicated professionals with 20+ years of combined experience, committed to your financial success
+            </p>
+          </div>
+
+          {/* Leadership */}
+          <TeamSection 
+            title="Leadership" 
+            members={teamData.leadership} 
+            columns={3} 
+          />
+
+          {/* Growth Team */}
+          <TeamSection 
+            title="Growth Team" 
+            members={teamData.growthTeam} 
+            columns={4} 
+          />
+
+          {/* Next Line */}
+          <TeamSection 
+            title="Next Line" 
+            members={teamData.nextLine} 
+            columns={3} 
+          />
+
+          {/* Behind the Scene */}
+          <TeamSection 
+            title="Behind the Scene" 
+            members={teamData.behindTheScene} 
+            columns={4} 
+          />
+
+          {/* Insurance Claim Desk */}
+          <TeamSection 
+            title="Insurance Claim Desk" 
+            members={teamData.insuranceClaim} 
+            columns={3} 
+          />
+
+          {/* Equity Desk */}
+          <TeamSection 
+            title="Equity Desk" 
+            members={teamData.equityDesk} 
+            columns={3} 
+          />
+
+          {/* HR & Accounts */}
+          <TeamSection 
+            title="HR & Accounts" 
+            members={teamData.hrAccounts} 
+            columns={3} 
+          />
+
+          {/* Support Team */}
+          <TeamSection 
+            title="Support Team" 
+            members={teamData.support} 
+            columns={3} 
+          />
+
+          {/* CTA Section */}
+          <div className="mt-20 bg-gradient-to-r from-teal-600 to-teal-700 rounded-3xl p-8 lg:p-12 text-center text-white">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Want to Join Our Team?</h2>
+            <p className="text-lg lg:text-xl text-teal-50 mb-8 max-w-2xl mx-auto">
+              We're always looking for passionate individuals to join our mission of creating financial freedom for families
+            </p>
+            <button 
+              onClick={openBookingModal}
+              className="inline-block bg-white text-teal-600 px-8 lg:px-10 py-3.5 lg:py-4 rounded-full font-semibold text-base lg:text-lg hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300 shadow-xl"
+            >
+              Get in Touch
+            </button>
+          </div>
         </div>
+      </main>
 
-        {/* Leadership */}
-        <TeamSection 
-          title="Leadership" 
-          members={teamData.leadership}
-          columns={3}
-        />
+      {/* Persistence Footer */}
+      <Footer />
 
-        {/* Growth Team */}
-        <TeamSection 
-          title="Growth Team" 
-          members={teamData.growthTeam}
-          columns={4}
-        />
-
-        {/* Next Line */}
-        <TeamSection 
-          title="Next Line" 
-          members={teamData.nextLine}
-          columns={3}
-        />
-
-        {/* Behind the Scene */}
-        <TeamSection 
-          title="Behind the Scene" 
-          members={teamData.behindTheScene}
-          columns={4}
-        />
-
-        {/* Insurance Claim Desk */}
-        <TeamSection 
-          title="Insurance Claim Desk" 
-          members={teamData.insuranceClaim}
-          columns={3}
-        />
-
-        {/* Equity Desk */}
-        <TeamSection 
-          title="Equity Desk" 
-          members={teamData.equityDesk}
-          columns={3}
-        />
-
-        {/* HR & Accounts */}
-        <TeamSection 
-          title="HR & Accounts" 
-          members={teamData.hrAccounts}
-          columns={3}
-        />
-
-        {/* Support Team */}
-        <TeamSection 
-          title="Support Team" 
-          members={teamData.support}
-          columns={3}
-        />
-
-        {/* CTA Section */}
-        <div className="mt-20 bg-gradient-to-r from-teal-600 to-teal-700 rounded-3xl p-12 text-center text-white">
-          <h2 className="text-4xl font-bold mb-4">Want to Join Our Team?</h2>
-          <p className="text-xl text-teal-50 mb-8 max-w-2xl mx-auto">
-            We're always looking for passionate individuals to join our mission of creating financial freedom for families
-          </p>
-          <a 
-            href="https://orufybookings.com/asset-kraft/30-min-intro-call"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-white text-teal-600 px-10 py-4 rounded-full font-semibold text-lg hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300 shadow-xl"
-          >
-            Get in Touch
-          </a>
-        </div>
-      </div>
+      {/* Booking Modal */}
+      <BookingModal 
+        isOpen={isBookingModalOpen} 
+        onClose={closeBookingModal} 
+      />
     </div>
   );
 };

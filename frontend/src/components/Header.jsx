@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { companyInfo } from '../data/mock';
 
-const Header = ({ openBookingModal }) => {
+const Header = ({ openBookingModal, showOnlyHome = false }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -32,62 +32,72 @@ const Header = ({ openBookingModal }) => {
       }}
     >
       <nav className="flex justify-between items-center">
-        {/* Logo - Scaled down and padding-left reduced via the header px class */}
-        <button 
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        {/* Logo */}
+        <a 
+          href="/"
           className="flex items-center group"
         >
           <img 
-            src={"https://res.cloudinary.com/djm5rsjwl/image/upload/v1775998066/Asset_kraft_logo_krtwkg.png"} 
+            src="https://res.cloudinary.com/djm5rsjwl/image/upload/v1775998066/Asset_kraft_logo_krtwkg.png" 
             alt="AssetKraft - AMFI Registered Mutual Fund Distributor" 
             className="h-5 lg:h-8 w-auto transition-all"
           />
-        </button>
+        </a>
 
-        {/* Desktop Navigation - Unchanged spacing and typography */}
+        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-9">
-          <button 
-            onClick={() => scrollToSection('home')} 
-            className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
-          >
-            Home
-          </button>
-          <button 
-            onClick={() => scrollToSection('services')} 
-            className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
-          >
-            Services
-          </button>
-          <button 
-            onClick={() => scrollToSection('calculator')} 
-            className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
-          >
-            Calculator
-          </button>
-          <button 
-            onClick={() => scrollToSection('portfolio')} 
-            className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
-          >
-            Portfolio
-          </button>
-          
-          <button 
-            onClick={() => scrollToSection('team')} 
-            className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
-          >
-            <a href="/our-team" className="block">Our Team</a>
-          </button>
+          {showOnlyHome ? (
+            <a 
+              href="/"
+              className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
+            >
+              Home
+            </a>
+          ) : (
+            <>
+              <button 
+                onClick={() => scrollToSection('home')} 
+                className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
+              >
+                Home
+              </button>
+              <button 
+                onClick={() => scrollToSection('services')} 
+                className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
+              >
+                Services
+              </button>
+              <button 
+                onClick={() => scrollToSection('calculator')} 
+                className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
+              >
+                Calculator
+              </button>
+              <button 
+                onClick={() => scrollToSection('portfolio')} 
+                className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
+              >
+                Portfolio
+              </button>
+              <a 
+                href="/our-team" 
+                className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
+              >
+                Our Team
+              </a>
+            </>
+          )}
         </div>
 
-        {/* Desktop CTA Button - Unchanged */}
+        {/* Desktop CTA Button */}
         <Button 
-  onClick={openBookingModal}
-  className="hidden lg:inline-flex items-center justify-center bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-lg font-semibold text-base leading-none transition-all duration-200 shadow-[0_4px_14px_rgba(29,168,150,0.35)] hover:shadow-[0_6px_20px_rgba(29,168,150,0.45)] hover:-translate-y-[1px]"
->
-  Book A Free Call
-</Button>
+          onClick={openBookingModal}
+          className="hidden lg:inline-flex items-center justify-center bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-lg font-semibold text-base leading-none transition-all duration-200 shadow-[0_4px_14px_rgba(29,168,150,0.35)] hover:shadow-[0_6px_20px_rgba(29,168,150,0.45)] hover:-translate-y-[1px]"
+        >
+          Book A Free Call
+        </Button>
 
-        {/* Mobile Menu Button - Unchanged */}
+        {/* Mobile Menu Button */}
         <button
           onClick={() => {
             const mobileMenu = document.getElementById('mobile-menu');
@@ -101,46 +111,57 @@ const Header = ({ openBookingModal }) => {
         </button>
       </nav>
 
-      {/* Mobile Menu - Unchanged */}
+      {/* Mobile Menu */}
       <div id="mobile-menu" className="hidden lg:hidden mt-2 pt-2 border-t border-white/30">
         <div className="flex flex-col gap-1.5">
-          <button 
-            onClick={() => { scrollToSection('home'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
-            className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
-          >
-            Home
-          </button>
-          <button 
-            onClick={() => { scrollToSection('services'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
-            className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
-          >
-            Services
-          </button>
-          <button 
-            onClick={() => { scrollToSection('calculator'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
-            className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
-          >
-            Calculator
-          </button>
-          <button 
-            onClick={() => { scrollToSection('portfolio'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
-            className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
-          >
-            Portfolio
-          </button>
-          
-          <button 
-            onClick={() => { scrollToSection('team'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
-            className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
-          >
-            <a href="/our-team" className="block w-full">Our Team</a>
-          </button>
+          {showOnlyHome ? (
+            <a 
+              href="/"
+              className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
+            >
+              Home
+            </a>
+          ) : (
+            <>
+              <button 
+                onClick={() => { scrollToSection('home'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
+                className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
+              >
+                Home
+              </button>
+              <button 
+                onClick={() => { scrollToSection('services'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
+                className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
+              >
+                Services
+              </button>
+              <button 
+                onClick={() => { scrollToSection('calculator'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
+                className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
+              >
+                Calculator
+              </button>
+              <button 
+                onClick={() => { scrollToSection('portfolio'); document.getElementById('mobile-menu')?.classList.add('hidden'); }} 
+                className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors"
+              >
+                Portfolio
+              </button>
+              <a 
+                href="/our-team" 
+                className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors block w-full"
+              >
+                Our Team
+              </a>
+            </>
+          )}
+
           <Button 
-  onClick={openBookingModal}
-  className="w-full bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium inline-flex items-center justify-center leading-none py-2.5"
->
-  Book A Call
-</Button>
+            onClick={openBookingModal}
+            className="w-full bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium inline-flex items-center justify-center leading-none py-2.5 mt-1"
+          >
+            Book A Call
+          </Button>
         </div>
       </div>
     </header>

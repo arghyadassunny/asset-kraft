@@ -123,14 +123,9 @@ export const team = [
     role: "Director",
     image: "https://www.assetkraft.com/Untitled%20design%20-3-.png"
   },
+
   {
     id: 2,
-    name: "Ashis Kumar Dey",
-    role: "Managing Director & CEO",
-    image: "https://www.assetkraft.com/20.jpg"
-  },
-  {
-    id: 3,
     name: "Amit Rathi",
     role: "Director",
     image: "https://www.assetkraft.com/IMG_9587%20-1-.PNG"
