@@ -38,7 +38,7 @@ const Header = ({ openBookingModal }) => {
           className="flex items-center group"
         >
           <img 
-            src={"https://res.cloudinary.com/djm5rsjwl/image/upload/v1787600727/Asset_Kraft_Logo_3_pnhmoh.png"} 
+            src={"https://res.cloudinary.com/djm5rsjwl/image/upload/v1775998066/Asset_kraft_logo_krtwkg.png"} 
             alt="AssetKraft - AMFI Registered Mutual Fund Distributor" 
             className="h-5 lg:h-8 w-auto transition-all"
           />
@@ -84,7 +84,7 @@ const Header = ({ openBookingModal }) => {
   onClick={openBookingModal}
   className="hidden lg:inline-flex items-center justify-center bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-lg font-semibold text-base leading-none transition-all duration-200 shadow-[0_4px_14px_rgba(29,168,150,0.35)] hover:shadow-[0_6px_20px_rgba(29,168,150,0.45)] hover:-translate-y-[1px]"
 >
-  Book A Call
+  Book A Free Call
 </Button>
 
         {/* Mobile Menu Button - Unchanged */}

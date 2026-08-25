@@ -36,10 +36,10 @@ const Hero = ({ openBookingModal }) => {
             
             {/* Main Heading */}
             <h1 className="text-teal-700 text-center lg:text-left tracking-tight">
-              <span className="block text-lg sm:text-2xl lg:text-3xl font-medium mt-1 lg:mt-2 text-teal-600/90">
+              <span className="block text-lg sm:text-2xl lg:text-4xl font-medium mt-2 lg:mt-3 text-teal-600/90 mb-2">
                 You Enjoy, While We
               </span>
-              <span className="block text-5xl sm:text-5xl lg:text-7xl font-extrabold leading-tight text-teal-700">
+              <span style={{ lineHeight: 0.85 }} className="block text-5xl sm:text-5xl lg:text-8xl font-extrabold leading-[0.25] text-teal-700 -mb-4">
                 Craft Your Wealth!
               </span>
             </h1>
@@ -52,20 +52,20 @@ const Hero = ({ openBookingModal }) => {
             {/* Subheading & Description */}
             <div className="space-y-3 lg:space-y-4 text-center lg:text-left">
               <p className="text-[11px] lg:text-sm text-teal-800/80 leading-relaxed max-w-md lg:max-w-none mx-auto lg:mx-0">
-                We are an AMFI-registered mutual fund distributor helping 5,000+ families build wealth through goal-based mutual fund investing, insurance, and financial planning.
+                We are an AMFI-registered mutual fund distributor helping 5,000+ families build <br></br> wealth through goal-based mutual fund investing, insurance, and financial planning.
               </p>
 
               {/* Bullet Points */}
               <ul className="space-y-2.5 pt-1 text-left inline-block">
-                <li className="flex items-center gap-2.5 text-sm sm:text-base font-medium text-teal-800">
+                <li className="flex items-center gap-2.5 text-sm sm:text-base font-semibold text-teal-800">
                   <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 shrink-0" />
                   <span>Helps in achieving your financial goals</span>
                 </li>
-                <li className="flex items-center gap-2.5 text-sm sm:text-base font-medium text-teal-800">
+                <li className="flex items-center gap-2.5 text-sm sm:text-base font-semibold text-teal-800">
                   <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 shrink-0" />
                   <span>End-to-End Wealth Management</span>
                 </li>
-                <li className="flex items-center gap-2.5 text-sm sm:text-base font-medium text-teal-800">
+                <li className="flex items-center gap-2.5 text-sm sm:text-base font-semibold text-teal-800">
                   <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 shrink-0" />
                   <span>Personalised Investment Strategies</span>
                 </li>
