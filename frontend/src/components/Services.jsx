@@ -102,46 +102,52 @@ const Services = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-24">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 px-2">Where Our Value <span className="text-yellow-600">Meets Your Vision</span></h2>
-          </div>
-          {(() => {
-            const doValues = values.filter(v => v.type === 'do');
-            const dontValues = values.filter(v => v.type === 'dont');
-            const rows = Math.max(doValues.length, dontValues.length);
-            return (
-              <div className="space-y-4 lg:space-y-6">
-                {Array.from({ length: rows }).map((_, i) => (
-                  <div key={i} className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-stretch">
-                    {doValues[i] && (
-                      <div className="bg-teal-50/50 rounded-xl p-4 lg:p-5 border border-teal-200 w-full max-w-[300px] lg:max-w-none mx-auto transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col">
-                        <div className="flex items-start gap-3 lg:gap-4 h-full">
-                          <Check className="text-teal-600 mt-1 flex-shrink-0" size={16} />
-                          <div className="flex flex-col h-full">
-                            <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">{doValues[i].title}</h3>
-                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed flex-grow">{doValues[i].description}</p>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    {dontValues[i] && (
-                      <div className="bg-slate-50 rounded-xl p-4 lg:p-5 border border-slate-200 w-full max-w-[300px] lg:max-w-none mx-auto transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col">
-                        <div className="flex items-start gap-3 lg:gap-4 h-full">
-                          <X className="text-slate-600 mt-1 flex-shrink-0" size={16} />
-                          <div className="flex flex-col h-full">
-                            <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">{dontValues[i].title}</h3>
-                            <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed flex-grow">{dontValues[i].description}</p>
-                          </div>
-                        </div>
-                      </div>
-                    )}
+  <div className="mb-24">
+    <div className="text-center mb-12 lg:mb-16">
+      <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 px-2">
+        Where Our Value <span className="text-teal-600">Meets Your Vision</span>
+      </h2>
+    </div>
+
+    {(() => {
+      const doValues = values.filter(v => v.type === 'do');
+      const dontValues = values.filter(v => v.type === 'dont');
+      const rows = Math.max(doValues.length, dontValues.length);
+
+      return (
+        /* Changed to flex flex-col with direct vertical gaps */
+        <div className="flex flex-col gap-4 lg:gap-8">
+          {Array.from({ length: rows }).map((_, i) => (
+            <div key={i} className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 items-stretch">
+              {doValues[i] && (
+                <div className="bg-teal-50 rounded-xl p-4 lg:p-5 border border-teal-200 w-full max-w-[300px] lg:max-w-none mx-auto transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col">
+                  <div className="flex items-start gap-3 lg:gap-4 h-full">
+                    <Check className="text-teal-600 mt-1 flex-shrink-0" size={16} />
+                    <div className="flex flex-col h-full">
+                      <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">{doValues[i].title}</h3>
+                      <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed flex-grow">{doValues[i].description}</p>
+                    </div>
                   </div>
-                ))}
-              </div>
-            );
-          })()}
+                </div>
+              )}
+              {dontValues[i] && (
+                <div className="bg-slate-50 rounded-xl p-4 lg:p-5 border border-slate-200 w-full max-w-[300px] lg:max-w-none mx-auto transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col">
+                  <div className="flex items-start gap-3 lg:gap-4 h-full">
+                    <X className="text-slate-600 mt-1 flex-shrink-0" size={16} />
+                    <div className="flex flex-col h-full">
+                      <h3 style={{ color: 'red' }} className="text-base lg:text-lg font-bold text-slate-900 mb-1 leading-tight">{dontValues[i].title}</h3>
+                      <p className="text-[13px] lg:text-sm text-slate-700 leading-relaxed flex-grow">{dontValues[i].description}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
+      );
+    })()}
+  </div>
+
 
         {/* ── Philosophy boxes (Centered and Enhanced) ── */}
         <div>

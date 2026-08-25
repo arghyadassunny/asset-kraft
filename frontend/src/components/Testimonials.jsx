@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
-import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Quote, ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
+
 
 const Testimonials = ({ openBookingModal, dynamicData, isLoading }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
@@ -111,13 +112,13 @@ const Testimonials = ({ openBookingModal, dynamicData, isLoading }) => {
               <ChevronRight size={24} />
             </button>
           </div>
-
-          <button
-            onClick={openBookingModal}
-            className="bg-slate-900 text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-teal-600 transition-all duration-300 shadow-lg hover:scale-105"
-          >
-            📞 Book a free call
-          </button>
+<button
+  onClick={openBookingModal}
+  className="inline-flex items-center justify-center bg-slate-900 text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-teal-600 transition-all duration-300 shadow-lg hover:scale-105"
+>
+  <span>Book a free call </span>
+  <Calendar className="ml-2 text-white" size={18} />
+</button>
         </div>
       </div>
     </section>

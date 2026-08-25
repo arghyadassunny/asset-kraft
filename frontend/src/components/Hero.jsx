@@ -39,9 +39,12 @@ const Hero = ({ openBookingModal }) => {
               <span className="block text-lg sm:text-2xl lg:text-4xl font-medium mt-2 lg:mt-3 text-teal-600/90 mb-2">
                 You Enjoy, While We
               </span>
-              <span style={{ lineHeight: 0.85 }} className="block text-5xl sm:text-5xl lg:text-8xl font-extrabold leading-[0.25] text-teal-700 -mb-4">
-                Craft Your Wealth!
-              </span>
+              <span 
+  style={{ lineHeight: 'var(--lh, 1)' }} 
+  className="block text-5xl sm:text-5xl lg:text-8xl font-extrabold [--lh:1] sm:[--lh:0.9] text-teal-700 -mb-4"
+>
+  Craft Your Wealth!
+</span>
             </h1>
 
             {/* Mobile Image */}
