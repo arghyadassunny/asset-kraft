@@ -24,7 +24,7 @@ const Hero = ({ openBookingModal }) => {
   };
 
   return (
-    <section id="home" className="relative bg-white pt-20 lg:pt-32 pb-12 lg:pb-32 overflow-hidden lg:-mb-20 -mb-8">
+    <section id="home" className="relative bg-white pt-20 lg:pt-32 pb-12 lg:pb-32 overflow-hidden lg:-mb-20 -mb-4">
       {/* Background glow effects inverted */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-teal-100/60 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-50/70 rounded-full blur-3xl"></div>

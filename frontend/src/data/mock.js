@@ -19,7 +19,7 @@ export const companyInfo = {
 export const stats = [
   {
     id: 1,
-    value: "700+",
+    value: "340+",
     label: "AUM (Crores)",
     description: "Assets Under Management"
   },
@@ -31,15 +31,16 @@ export const stats = [
   },
   {
     id: 3,
-    value: "1.50+",
-    label: "Insurance Book (Crores)",
-    description: "Total Insurance Portfolio"
+    value: "1.5+",
+    label: "Crores of Insurance",
+    description: "Policies Managed"
   },
   {
     id: 4,
-    value: "30+",
-    label: "Team Members",
-    description: "To Guide & Support each Family"
+    value: "20+",
+    label: "Years of Experience",
+    description: "and Relationship"
+    
   },
   {
     id: 5,
@@ -49,9 +50,9 @@ export const stats = [
   },
   {
     id: 6,
-    value: "20+",
-    label: "Years of Experience",
-    description: "Bonding with Investor Families"
+    value: "30+",
+    label: "Team Members",
+    description: "To Guide & Support each Family"
   }
 ];
 

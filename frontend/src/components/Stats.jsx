@@ -23,6 +23,9 @@ const dbKeyMap = {
 };
 
 const Stats = ({ dynamicStats }) => {
+  // Take only the first 4 items to display in a single line
+  const displayedStats = defaultStats.slice(0, 4);
+
   return (
     <section className="pt-[40px] pb-16 lg:py-20 bg-slate-50 relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,15 +35,14 @@ const Stats = ({ dynamicStats }) => {
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 px-2">
             Trusted Worldwide. <span className="text-teal-600">Powered by Proven Experience</span>
           </h2>
-          {/* Subheading: Smaller on mobile (text-sm), original on desktop (text-lg) */}
           <p className="text-sm lg:text-lg text-slate-600 max-w-2xl mx-auto px-4">
             Numbers that reflect our commitment to your financial success
           </p>
         </div>
 
-        {/* Stats Grid: 2 columns on mobile (grid-cols-2), 3 on desktop (lg:grid-cols-3) */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
-          {defaultStats.map((stat, index) => {
+        {/* Stats Grid: 2 columns on mobile, 4 in 1 single line on desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          {displayedStats.map((stat, index) => {
             const Icon = iconMap[index];
             
             const liveValue = dynamicStats ? dynamicStats[dbKeyMap[stat.id]] : null;
@@ -49,32 +51,31 @@ const Stats = ({ dynamicStats }) => {
             return (
               <div 
                 key={stat.id}
-                className="group bg-white rounded-xl lg:rounded-2xl p-4 lg:p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-teal-200 lg:hover:-translate-y-2"
+                className="group bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-teal-200 lg:hover:-translate-y-2"
               >
-                {/* On mobile, we stack icon and text slightly or keep flex-start with smaller gaps */}
                 <div className="flex flex-col lg:flex-row items-start lg:items-start gap-3 lg:gap-4">
                   
-                  {/* Icon Container: Smaller on mobile */}
+                  {/* Icon Container */}
                   <div className="bg-gradient-to-br from-teal-50 to-yellow-50 rounded-lg lg:rounded-xl p-2 lg:p-3 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="text-teal-600 w-5 h-5 lg:w-7 lg:h-7" />
+                    <Icon className="text-teal-600 w-5 h-5 lg:w-6 lg:h-6" />
                   </div>
                   
                   {/* Content Container */}
                   <div className="flex-1">
-                    {/* Value: text-2xl on mobile, text-4xl on desktop */}
-                    <div className="text-xl lg:text-4xl font-bold text-slate-900 mb-1 lg:mb-2 group-hover:text-teal-600 transition-colors">
+                    <div className="text-xl lg:text-3xl font-bold text-slate-900 mb-1 group-hover:text-teal-600 transition-colors">
                       {displayValue}
                     </div>
-                    {/* Label: text-xs/semibold on mobile, text-lg on desktop */}
-                    <div className="text-[11px] lg:text-lg font-semibold text-slate-700 mb-1 leading-tight">
+                    
+                    <div className="text-[11px] lg:text-base font-semibold text-slate-700 mb-1 leading-tight">
                       {stat.label}
                     </div>
-                    {/* Description: Hidden or extremely small on mobile to save space */}
-                    <div className="hidden lg:block text-sm text-slate-500">
+                    
+                    {/* Description */}
+                    <div className="hidden lg:block text-xs text-slate-500 line-clamp-2">
                       {stat.description}
                     </div>
                     <div className="lg:hidden text-[9px] text-slate-400 leading-tight">
-                      {stat.description.split('.')[0]} {/* Shortened for mobile space */}
+                      {stat.description.split('.')[0]}
                     </div>
                   </div>
                 </div>

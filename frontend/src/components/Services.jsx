@@ -89,7 +89,7 @@ const ServicesCarousel = ({ services, iconComponents }) => {
 
 const Services = () => {
   return (
-    <section id="services" className="pt-6 pb-20 lg:py-24 bg-white">
+    <section id="services" className="pt-6 pb-20 lg:py-24 bg-white lg:-mt-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 lg:mb-12">
         <div className="text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-3">Our <span className="text-teal-600">Services</span></h2>
