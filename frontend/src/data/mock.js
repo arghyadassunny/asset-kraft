@@ -16,6 +16,14 @@ export const companyInfo = {
   }
 };
 
+// Mapping the IDs in your mock data to the keys created in Admin/TiDB
+const dbKeyMap = {
+  1: 'stat_aum',
+  2: 'stat_investors',
+  3: 'stat_insurance',
+  4: 'stat_experience'
+};
+
 export const stats = [
   {
     id: 1,

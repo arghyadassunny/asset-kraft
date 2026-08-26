@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Plus, Trash2, Save, Send, Image as ImageIcon, Loader2, BarChart3, Users, Quote, UserPlus } from 'lucide-react';
+import { Trash2, Save, Send, Image as ImageIcon, Loader2, BarChart3, Users, Quote } from 'lucide-react';
 
 const Admin = () => {
   // --- CONFIGURATION ---
@@ -23,7 +23,7 @@ const Admin = () => {
       const heroRow = data.find(i => i.content_key === 'hero_title');
       if (heroRow) setHeroTitle(heroRow.content_value);
 
-      // 2. Load All 6 Stats
+      // 2. Load Stats (Only stat_ keys)
       const statsMap = {};
       data.forEach(item => {
         if (item.content_key.startsWith('stat_')) statsMap[item.content_key] = item.content_value;
@@ -94,16 +94,14 @@ const Admin = () => {
         </div>
       </section>
 
-      {/* 2. ALL 6 STATISTICS */}
+      {/* 2. 4 STATISTICS */}
       <section className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 mb-10">
         <h2 className="text-2xl font-bold mb-6 text-slate-800 flex items-center gap-2"><BarChart3 className="text-teal-600" /> Statistics & Numbers</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             { label: 'AUM (Crores)', key: 'stat_aum' },
             { label: 'Happy Investors', key: 'stat_investors' },
             { label: 'Insurance Book', key: 'stat_insurance' },
-            { label: 'Team Members', key: 'stat_team' },
-            { label: 'Office Locations', key: 'stat_offices' },
             { label: 'Years of Experience', key: 'stat_experience' }
           ].map((item) => (
             <div key={item.key} className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
@@ -142,7 +140,7 @@ const Admin = () => {
         <button onClick={() => handleUpdate('testimonials_data', testimonials)} className="w-full mt-6 bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-black transition">Save All Testimonials</button>
       </section>
 
-      {/* 4. TEAM MANAGEMENT (WITH LINKEDIN SUPPORT) */}
+      {/* 4. TEAM MANAGEMENT */}
       <section className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2"><Users className="text-teal-600" /> Team Members</h2>
@@ -173,7 +171,7 @@ const Admin = () => {
                   />
                   <input 
                     className="w-full border-2 border-white p-3 rounded-xl shadow-sm outline-none focus:border-teal-500" 
-                    placeholder="LinkedIn Profile URL (e.g., https://linkedin.com/in/...)" 
+                    placeholder="LinkedIn Profile URL" 
                     value={m.linkedin || ''} 
                     onChange={(e) => setTeam(team.map(x => x.id === m.id ? {...x, linkedin: e.target.value} : x))} 
                   />

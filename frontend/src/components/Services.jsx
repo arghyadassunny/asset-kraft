@@ -14,11 +14,10 @@ const slideImages = [
   'https://res.cloudinary.com/djm5rsjwl/image/upload/v1775941241/finance_kvn7zh.png'
 ];
 
-const AUTOPLAY_DELAY = 4000;
+const AUTOPLAY_DELAY = 3000;
 
 const RotatingCardCarousel = ({ services, iconComponents }) => {
   const [current, setCurrent] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
   const total = services.length;
 
   const touchStartX = useRef(0);
@@ -37,10 +36,8 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
     setCurrent((idx + total) % total);
   };
 
-  // Continuous Autoplay Engine: Resumes smoothly even after manual clicks/swipes
+  // Continuous Autoplay Engine (Runs non-stop)
   useEffect(() => {
-    if (isHovered) return;
-
     timerRef.current = setInterval(() => {
       nextSlide();
     }, AUTOPLAY_DELAY);
@@ -48,7 +45,7 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [current, isHovered, nextSlide]);
+  }, [current, nextSlide]);
 
   // Touch Swipe Handlers for Mobile
   const handleTouchStart = (e) => {
@@ -70,7 +67,6 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
       prevSlide();
     }
 
-    // Reset touch coordinates
     touchStartX.current = 0;
     touchEndX.current = 0;
   };
@@ -78,8 +74,6 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
   return (
     <div 
       className="relative w-full max-w-6xl mx-auto px-4 py-8 flex flex-col items-center select-none"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}

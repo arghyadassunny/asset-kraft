@@ -80,7 +80,7 @@ const Header = ({ openBookingModal, showOnlyHome = false }) => {
                 Portfolio
               </button>
               <a 
-                href="/our-team" 
+                href="/#" 
                 className="relative text-[15px] font-medium text-[#2d3e38] hover:text-teal-600 transition-colors after:content-[''] after:absolute after:bottom-[-3px] after:left-0 after:w-0 after:h-[2px] after:bg-teal-600 after:rounded-sm after:transition-all after:duration-250 hover:after:w-full"
               >
                 Our Team
@@ -148,7 +148,7 @@ const Header = ({ openBookingModal, showOnlyHome = false }) => {
                 Portfolio
               </button>
               <a 
-                href="/our-team" 
+                href="/#" 
                 className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors block w-full"
               >
                 Our Team
