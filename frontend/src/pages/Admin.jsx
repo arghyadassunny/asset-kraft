@@ -80,21 +80,8 @@ const Admin = () => {
         </div>
       </header>
 
-      {/* 1. HERO SECTION */}
-      <section className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 mb-10">
-        <h2 className="text-2xl font-bold mb-6 text-slate-800 flex items-center gap-2"><Send className="text-teal-600" /> Hero Section</h2>
-        <div className="flex gap-4">
-          <input 
-            className="border-2 border-slate-100 p-4 flex-grow rounded-2xl focus:border-teal-500 outline-none transition"
-            placeholder="Main Title"
-            value={heroTitle}
-            onChange={(e) => setHeroTitle(e.target.value)}
-          />
-          <button onClick={() => handleUpdate('hero_title', heroTitle)} className="bg-teal-600 text-white px-8 rounded-2xl font-bold hover:bg-teal-700 transition shadow-lg shadow-teal-600/20">Update</button>
-        </div>
-      </section>
 
-      {/* 2. 4 STATISTICS */}
+      {/* 1. 4 STATISTICS */}
       <section className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 mb-10">
         <h2 className="text-2xl font-bold mb-6 text-slate-800 flex items-center gap-2"><BarChart3 className="text-teal-600" /> Statistics & Numbers</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -106,20 +93,25 @@ const Admin = () => {
           ].map((item) => (
             <div key={item.key} className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
               <label className="text-xs font-black text-slate-400 uppercase mb-2 block">{item.label}</label>
-              <div className="flex gap-2">
-                <input 
-                  className="border-2 border-white p-2 flex-grow rounded-xl shadow-inner outline-none focus:border-teal-500"
-                  value={statsData[item.key] || ''}
-                  onChange={(e) => setStatsData({...statsData, [item.key]: e.target.value})}
-                />
-                <button onClick={() => handleUpdate(item.key, statsData[item.key])} className="bg-slate-800 text-white px-3 rounded-xl text-xs font-bold">Save</button>
-              </div>
+              <div className="flex items-center gap-2 min-w-0">
+  <input 
+    className="min-w-0 flex-1 border border-slate-200 bg-white p-2 rounded-xl text-sm outline-none focus:border-teal-500"
+    value={statsData[item.key] || ''}
+    onChange={(e) => setStatsData({...statsData, [item.key]: e.target.value})}
+  />
+  <button 
+    onClick={() => handleUpdate(item.key, statsData[item.key])} 
+    className="shrink-0 bg-slate-800 hover:bg-slate-950 text-white px-3 py-2 rounded-xl text-xs font-bold transition"
+  >
+    Save
+  </button>
+</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 3. TESTIMONIALS */}
+      {/* 2. TESTIMONIALS */}
       <section className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 mb-10">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2"><Quote className="text-teal-600" /> Testimonials</h2>
@@ -140,7 +132,7 @@ const Admin = () => {
         <button onClick={() => handleUpdate('testimonials_data', testimonials)} className="w-full mt-6 bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-black transition">Save All Testimonials</button>
       </section>
 
-      {/* 4. TEAM MANAGEMENT */}
+      {/* 3. TEAM MANAGEMENT */}
       <section className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2"><Users className="text-teal-600" /> Team Members</h2>
