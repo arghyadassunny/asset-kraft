@@ -4,7 +4,7 @@ import { Plus, Trash2, Save, Send, Image as ImageIcon, Loader2, BarChart3, Users
 
 const Admin = () => {
   // --- CONFIGURATION ---
-  const CLOUD_NAME = "djm5rsjwl"; // 👈 PUT YOUR CLOUD NAME HERE
+  const CLOUD_NAME = "djm5rsjwl";
   const UPLOAD_PRESET = "asset_kraft_preset"; 
 
   const [status, setStatus] = useState('');
@@ -72,11 +72,11 @@ const Admin = () => {
     <div className="p-10 max-w-6xl mx-auto font-sans bg-slate-50 min-h-screen pb-40">
       <header className="flex justify-between items-center mb-12 border-b pb-6">
         <div>
-            <h1 className="text-4xl font-black text-slate-900 tracking-tight">Asset Kraft <span className="text-teal-600">CMS</span></h1>
-            <p className="text-slate-500 font-medium">Manage your website content in real-time</p>
+          <h1 className="text-4xl font-black text-slate-900 tracking-tight">Asset Kraft <span className="text-teal-600">CMS</span></h1>
+          <p className="text-slate-500 font-medium">Manage your website content in real-time</p>
         </div>
         <div className="bg-teal-900 text-white px-6 py-3 rounded-2xl shadow-xl font-bold">
-            {status || "System Live"}
+          {status || "System Live"}
         </div>
       </header>
 
@@ -142,11 +142,16 @@ const Admin = () => {
         <button onClick={() => handleUpdate('testimonials_data', testimonials)} className="w-full mt-6 bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-black transition">Save All Testimonials</button>
       </section>
 
-      {/* 4. TEAM MANAGEMENT (WITH CLOUDINARY) */}
+      {/* 4. TEAM MANAGEMENT (WITH LINKEDIN SUPPORT) */}
       <section className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2"><Users className="text-teal-600" /> Team Members</h2>
-          <button onClick={() => setTeam([...team, { id: Date.now(), name: '', role: '', image: '' }])} className="bg-teal-50 text-teal-700 px-4 py-2 rounded-xl font-bold text-sm hover:bg-teal-100">+ Add Member</button>
+          <button 
+            onClick={() => setTeam([...team, { id: Date.now(), name: '', role: '', image: '', linkedin: '' }])} 
+            className="bg-teal-50 text-teal-700 px-4 py-2 rounded-xl font-bold text-sm hover:bg-teal-100"
+          >
+            + Add Member
+          </button>
         </div>
         <div className="space-y-6">
           {team.map(m => (
@@ -154,17 +159,45 @@ const Admin = () => {
               <button onClick={() => setTeam(team.filter(x => x.id !== m.id))} className="absolute top-4 right-4 text-red-400"><Trash2 size={20}/></button>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
-                    <input className="w-full border-2 border-white p-3 rounded-xl shadow-sm outline-none focus:border-teal-500" placeholder="Name" value={m.name} onChange={(e) => setTeam(team.map(x => x.id === m.id ? {...x, name: e.target.value} : x))} />
-                    <input className="w-full border-2 border-white p-3 rounded-xl shadow-sm outline-none focus:border-teal-500" placeholder="Role" value={m.role} onChange={(e) => setTeam(team.map(x => x.id === m.id ? {...x, role: e.target.value} : x))} />
+                  <input 
+                    className="w-full border-2 border-white p-3 rounded-xl shadow-sm outline-none focus:border-teal-500" 
+                    placeholder="Name" 
+                    value={m.name || ''} 
+                    onChange={(e) => setTeam(team.map(x => x.id === m.id ? {...x, name: e.target.value} : x))} 
+                  />
+                  <input 
+                    className="w-full border-2 border-white p-3 rounded-xl shadow-sm outline-none focus:border-teal-500" 
+                    placeholder="Role" 
+                    value={m.role || ''} 
+                    onChange={(e) => setTeam(team.map(x => x.id === m.id ? {...x, role: e.target.value} : x))} 
+                  />
+                  <input 
+                    className="w-full border-2 border-white p-3 rounded-xl shadow-sm outline-none focus:border-teal-500" 
+                    placeholder="LinkedIn Profile URL (e.g., https://linkedin.com/in/...)" 
+                    value={m.linkedin || ''} 
+                    onChange={(e) => setTeam(team.map(x => x.id === m.id ? {...x, linkedin: e.target.value} : x))} 
+                  />
                 </div>
                 <div className="bg-white p-4 rounded-2xl border-2 border-dashed border-slate-200 flex items-center gap-4">
-                  {m.image ? <img src={m.image} className="w-20 h-20 rounded-xl object-cover border-2 border-teal-500 shadow-lg" alt="preview" /> : <div className="w-20 h-20 bg-slate-100 rounded-xl flex items-center justify-center text-slate-300"><ImageIcon size={30} /></div>}
+                  {m.image ? (
+                    <img src={m.image} className="w-20 h-20 rounded-xl object-cover border-2 border-teal-500 shadow-lg" alt="preview" />
+                  ) : (
+                    <div className="w-20 h-20 bg-slate-100 rounded-xl flex items-center justify-center text-slate-300">
+                      <ImageIcon size={30} />
+                    </div>
+                  )}
                   <div className="flex-grow">
-                      <p className="text-xs font-bold text-slate-400 mb-2 uppercase">Upload Profile Photo</p>
-                      <input type="file" className="text-xs file:bg-teal-50 file:border-0 file:rounded-lg file:px-3 file:py-1 file:text-teal-700 file:font-bold" onChange={async (e) => {
-                        const url = await uploadImage(e.target.files[0]);
-                        if (url) setTeam(team.map(x => x.id === m.id ? {...x, image: url} : x));
-                      }} />
+                    <p className="text-xs font-bold text-slate-400 mb-2 uppercase">Upload Profile Photo</p>
+                    <input 
+                      type="file" 
+                      className="text-xs file:bg-teal-50 file:border-0 file:rounded-lg file:px-3 file:py-1 file:text-teal-700 file:font-bold" 
+                      onChange={async (e) => {
+                        if (e.target.files && e.target.files[0]) {
+                          const url = await uploadImage(e.target.files[0]);
+                          if (url) setTeam(team.map(x => x.id === m.id ? {...x, image: url} : x));
+                        }
+                      }} 
+                    />
                   </div>
                 </div>
               </div>
@@ -172,8 +205,8 @@ const Admin = () => {
           ))}
         </div>
         <button onClick={() => handleUpdate('team_data', team)} className="w-full mt-8 bg-teal-600 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-teal-700 transition">
-            {isUploading ? <Loader2 className="animate-spin" /> : <Save size={20} />}
-            {isUploading ? 'Uploading to Cloudinary...' : 'Save All Team Changes'}
+          {isUploading ? <Loader2 className="animate-spin" /> : <Save size={20} />}
+          {isUploading ? 'Uploading to Cloudinary...' : 'Save All Team Changes'}
         </button>
       </section>
     </div>
