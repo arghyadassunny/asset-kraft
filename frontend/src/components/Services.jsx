@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { TrendingUp, Shield, Target, FileText, Handshake, CheckCircle, BookOpen, Lock, Sparkles, Check, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { services, philosophy, values } from '../data/mock';
+import axios from 'axios';
+import { 
+  TrendingUp, Shield, Target, FileText, Handshake, CheckCircle, 
+  BookOpen, Lock, Sparkles, Check, X, ChevronLeft, ChevronRight, Sun 
+} from 'lucide-react';
+import { services as mockServices, philosophy, values } from '../data/mock';
 
 const iconComponents = {
-  TrendingUp, Shield, Target, FileText, Handshake, CheckCircle, BookOpen, Lock, Sparkles
+  TrendingUp, Shield, Target, FileText, Handshake, CheckCircle, BookOpen, Lock, Sparkles, Sun
 };
 
-const slideImages = [
+const defaultSlideImages = [
   'https://res.cloudinary.com/djm5rsjwl/image/upload/v1775941268/mutual_funds_pic_qb9mr4.png',
   'https://res.cloudinary.com/djm5rsjwl/image/upload/v1775941241/insurance_ejewjz.png',
   'https://res.cloudinary.com/djm5rsjwl/image/upload/v1775941241/finance_kvn7zh.png',
@@ -36,7 +40,6 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
     setCurrent((idx + total) % total);
   };
 
-  // Continuous Autoplay Engine (Runs non-stop)
   useEffect(() => {
     timerRef.current = setInterval(() => {
       nextSlide();
@@ -47,7 +50,6 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
     };
   }, [current, nextSlide]);
 
-  // Touch Swipe Handlers for Mobile
   const handleTouchStart = (e) => {
     touchStartX.current = e.targetTouches[0].clientX;
   };
@@ -59,7 +61,7 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
   const handleTouchEnd = () => {
     if (!touchStartX.current || !touchEndX.current) return;
     const diff = touchStartX.current - touchEndX.current;
-    const minSwipeDistance = 45; // Threshold in px
+    const minSwipeDistance = 45;
 
     if (diff > minSwipeDistance) {
       nextSlide();
@@ -71,6 +73,8 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
     touchEndX.current = 0;
   };
 
+  if (!services || services.length === 0) return null;
+
   return (
     <div 
       className="relative w-full max-w-6xl mx-auto px-4 py-8 flex flex-col items-center select-none"
@@ -78,13 +82,12 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* 3D Stage Viewport */}
       <div className="relative w-full h-[480px] sm:h-[500px] flex items-center justify-center [perspective:1200px] overflow-hidden sm:overflow-visible">
         {services.map((service, i) => {
           const Icon = iconComponents[service.icon] || Sparkles;
-          const img = slideImages[i % slideImages.length];
+          // Use the uploaded custom image, or fallback to the standard slideImages
+          const img = service.image || defaultSlideImages[i % defaultSlideImages.length];
 
-          // Compute cyclic relative offset from active card
           let offset = (i - current) % total;
           if (offset > total / 2) offset -= total;
           if (offset < -total / 2) offset += total;
@@ -111,14 +114,12 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
                 filter: isCenter ? 'none' : 'blur(1px)',
               }}
             >
-              {/* Background Image with desktop zoom effect */}
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110" 
                 style={{ backgroundImage: `url(${img})` }} 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-teal-950/80 to-slate-900/40" />
 
-              {/* Card Content */}
               <div className="relative z-10 h-full p-6 sm:p-8 flex flex-col justify-between text-white">
                 <div className="flex items-center justify-between">
                   <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:rotate-6">
@@ -154,7 +155,6 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
         })}
       </div>
 
-      {/* Navigation Controls */}
       <div className="flex items-center gap-6 mt-6 z-40">
         <button
           onClick={prevSlide}
@@ -190,6 +190,22 @@ const RotatingCardCarousel = ({ services, iconComponents }) => {
 };
 
 const Services = () => {
+  const [activeServices, setActiveServices] = useState(mockServices);
+
+  useEffect(() => {
+    axios.get('/api/content')
+      .then(res => {
+        const servicesRow = res.data.find(i => i.content_key === 'services_data');
+        if (servicesRow && servicesRow.content_value) {
+          const parsed = JSON.parse(servicesRow.content_value);
+          if (parsed.length > 0) {
+            setActiveServices(parsed);
+          }
+        }
+      })
+      .catch(err => console.error("Failed to fetch services from DB, falling back to mock", err));
+  }, []);
+
   return (
     <section id="services" className="pt-6 pb-20 lg:py-24 bg-white lg:-mt-10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 lg:mb-12">
@@ -205,7 +221,7 @@ const Services = () => {
 
       {/* Rotating 3D Card Carousel */}
       <div className="mb-16 lg:mb-24">
-        <RotatingCardCarousel services={services} iconComponents={iconComponents} />
+        <RotatingCardCarousel services={activeServices} iconComponents={iconComponents} />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

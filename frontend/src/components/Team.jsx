@@ -108,10 +108,10 @@ const Team = ({ openBookingModal, dynamicData, isLoading }) => {
           </div>
         </div>
 
-        {/* Career CTA Card */}
-        <div className="mt-12 bg-white border border-slate-100 rounded-2xl p-6 md:p-12 text-center text-teal-800 shadow-xl max-w-[340px] mx-auto lg:max-w-none">
+       {/* Career CTA Card */}
+        <div className="mt-12 bg-white border border-slate-200 rounded-2xl p-6 md:p-12 text-center text-teal-800 shadow-[inset_0_8px_32px_rgba(0,0,0,0.15)] max-w-[340px] mx-auto lg:max-w-none">
           <h3 className="text-xl lg:text-3xl font-bold mb-3 lg:mb-4 text-teal-700">
-            Bring your expertise to a fast-growing team redefining how people build lasting wealth
+            Bring your expertise to a fast-growing team <br></br>redefining how people build lasting wealth
           </h3>
           <p className="text-xs lg:text-lg text-teal-600 mb-6 max-w-3xl mx-auto px-2">
             Join our mission to empower thousands of investors—grow your career with us.
