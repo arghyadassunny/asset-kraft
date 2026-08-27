@@ -59,20 +59,20 @@ const Hero = ({ openBookingModal }) => {
   </p>
 
               {/* Bullet Points */}
-              <ul className="space-y-2.5 pt-1 text-left inline-block">
-                <li className="flex items-center gap-2.5 text-sm sm:text-base font-semibold text-teal-800">
-                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 shrink-0" />
-                  <span>Helps in achieving your financial goals</span>
-                </li>
-                <li className="flex items-center gap-2.5 text-sm sm:text-base font-semibold text-teal-800">
-                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 shrink-0" />
-                  <span>End-to-End Wealth Management</span>
-                </li>
-                <li className="flex items-center gap-2.5 text-sm sm:text-base font-semibold text-teal-800">
-                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 shrink-0" />
-                  <span>Personalised Investment Strategies</span>
-                </li>
-              </ul>
+<ul className="space-y-2.5 pt-1 text-left inline-block">
+  <li className="flex items-center gap-2.5 text-xs sm:text-base font-semibold text-teal-800">
+    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 shrink-0" />
+    <span>Helps you to achieve your financial goals</span>
+  </li>
+  <li className="flex items-center gap-2.5 text-xs sm:text-base font-semibold text-teal-800">
+    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 shrink-0" />
+    <span>Tailored investment strategies</span>
+  </li>
+  <li className="flex items-center gap-2.5 text-xs sm:text-base font-semibold text-teal-800">
+    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 shrink-0" />
+    <span>One-stop shop wealth management</span>
+  </li>
+</ul>
             </div>
 
             {/* CTA Buttons */}

@@ -4,9 +4,9 @@ export const companyInfo = {
   name: "Asset Kraft Investments Pvt. Ltd.",
   tagline: "Your Ambitions, Our Blueprint",
   description: "We create Endless Possibilities for your Future.",
-  email: "growth@assetkraft.com",
-  phone: "9230968242",
-  locations: ["Howrah", "Kolkata"],
+  email: "assetkraft@gmail.com",
+  phone: "+91 9147756212",
+  locations: ["Jeevan Deep Building, Kolkata"],
   logo: "https://customer-assets.emergentagent.com/job_craft-wealth/artifacts/wypr3x4u_Screenshot%202026-02-14%20at%201.34.40%E2%80%AFPM.png",
   social: {
     linkedin: "https://www.linkedin.com/company/assetkraft/",

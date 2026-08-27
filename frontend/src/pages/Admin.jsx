@@ -240,6 +240,8 @@ const Admin = () => {
                         value={s.image || ''} 
                         onChange={(e) => setServices(services.map((x, i) => i === idx ? {...x, image: e.target.value} : x))} 
                       />
+                      {/* Added resolution instruction here */}
+                      <p className="text-red-500 text-xs mt-1">Resolution: 1080*1350</p>
                     </div>
                   </div>
                 </div>

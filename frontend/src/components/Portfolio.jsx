@@ -143,15 +143,26 @@ const Portfolio = () => {
           </p>
         </div>
 
-        {/* CTA */}
-        <div className="mt-10 lg:mt-12 text-center">
-          <button
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-lg font-semibold text-base lg:text-lg transition-all duration-300 hover:shadow-xl hover:shadow-teal-600/30 hover:scale-105"
-          >
-            Discuss Your Strategy
-          </button>
+        {/* CTA Card */}
+        <div className="mt-10 lg:mt-12 bg-gradient-to-r from-teal-600 to-teal-700 rounded-2xl p-6 md:p-12 text-center text-white shadow-xl max-w-[340px] mx-auto lg:max-w-none">
+          <h3 className="text-xl lg:text-3xl font-bold mb-3 lg:mb-4">FREE PORTFOLIO REVIEW</h3>
+          <p className="text-xs lg:text-lg text-teal-50 mb-6 max-w-3xl mx-auto px-2">
+            Get your portfolio reviewed by our experts and receive personalized recommendations.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSec_1AggPtH4G94p4dDUlGzSaMtW2ZXAZOKt0BjjJKJfbCapA/viewform"
+              target="_blank"
+              rel="noopener noreferrer" 
+            
+            className="bg-white text-teal-600 px-6 lg:px-8 py-2.5 lg:py-3 rounded-lg text-sm lg:text-base font-semibold hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300 shadow-lg">
+              Upload Your Portfolio
+            </a>
+            
+          </div>
         </div>
+
+      
       </div>
     </section>
   );

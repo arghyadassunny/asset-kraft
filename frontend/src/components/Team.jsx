@@ -94,40 +94,25 @@ const Team = ({ openBookingModal, dynamicData, isLoading }) => {
 
         {/* CTA Card */}
         <div className="bg-gradient-to-r from-teal-600 to-teal-700 rounded-2xl p-6 md:p-12 text-center text-white shadow-xl max-w-[340px] mx-auto lg:max-w-none">
-          <h3 className="text-xl lg:text-3xl font-bold mb-3 lg:mb-4">Join Our Growing Family of 5000+ Happy Investors</h3>
-          <p className="text-xs lg:text-lg text-teal-50 mb-6 max-w-2xl mx-auto px-2">
-            Experience personalized wealth management with a team that truly cares about your financial future
+          <h3 className="text-xl lg:text-3xl font-bold mb-3 lg:mb-4">Bring your expertise to a fast-growing team <br></br>redefining how people build lasting wealth</h3>
+          <p className="text-xs lg:text-lg text-teal-50 mb-6 max-w-3xl mx-auto px-2">
+            Join our mission to empower thousands of investors- grow your career with us.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center">
-            <button onClick={openBookingModal} className="bg-white text-teal-600 px-6 lg:px-8 py-2.5 lg:py-3 rounded-lg text-sm lg:text-base font-semibold hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300 shadow-lg">
-              Schedule a Consultation
-            </button>
-            <button onClick={() => document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' })} className="bg-yellow-400 text-slate-900 px-6 lg:px-8 py-2.5 lg:py-3 rounded-lg text-sm lg:text-base font-semibold hover:bg-yellow-300 transition-all duration-300 shadow-lg">
-              Try Our Calculator
-            </button>
-          </div>
-        </div>
-
-       {/* Career CTA Card */}
-        <div className="mt-12 bg-white border border-slate-200 rounded-2xl p-6 md:p-12 text-center text-teal-800 shadow-[inset_0_8px_32px_rgba(0,0,0,0.15)] max-w-[340px] mx-auto lg:max-w-none">
-          <h3 className="text-xl lg:text-3xl font-bold mb-3 lg:mb-4 text-teal-700">
-            Bring your expertise to a fast-growing team <br></br>redefining how people build lasting wealth
-          </h3>
-          <p className="text-xs lg:text-lg text-teal-600 mb-6 max-w-3xl mx-auto px-2">
-            Join our mission to empower thousands of investors—grow your career with us.
-          </p>
-          <div className="flex justify-center">
-            <a 
+            <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSfzyNjoTESnFMHezp5XSReX7zMCJDfM9Zgm-jlZ3g2XfQGhuQ/viewform"
               target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-teal-600 text-white px-6 lg:px-8 py-2.5 lg:py-3 rounded-lg text-sm lg:text-base font-semibold hover:bg-teal-700 transition-all duration-300 shadow-lg cursor-pointer"
-            >
+              rel="noopener noreferrer" 
+            
+            className="bg-white text-teal-600 px-6 lg:px-8 py-2.5 lg:py-3 rounded-lg text-sm lg:text-base font-semibold hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300 shadow-lg">
               Join Our Team
             </a>
+            
           </div>
         </div>
 
+   
+        
       </div>
     </section>
   );
