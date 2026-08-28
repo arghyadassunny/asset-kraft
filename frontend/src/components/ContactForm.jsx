@@ -36,7 +36,7 @@ const ContactForm = () => {
         Email: formData.email,
         Phone: formData.phone,
         Message: formData.message,
-        _subject: "New Wealth Journey Inquiry"
+        _subject: `New Inquiry from ${formData.name} - ${new Date().toLocaleDateString('en-GB')}`
       });
 
       if (response.status === 200) {
