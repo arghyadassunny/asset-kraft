@@ -55,7 +55,7 @@ const Hero = ({ openBookingModal }) => {
 {/* Subheading & Description */}
 <div className="space-y-3 lg:space-y-4 text-center lg:text-left">
   <p className="text-[9px] px-6 lg:px-0 lg:text-sm text-teal-800/80 leading-relaxed max-w-md lg:max-w-none mx-auto lg:mx-0">
-    We are an AMFI-registered mutual fund distributor helping 5,000+ families build <br className="hidden lg:inline" />wealth through goal-based mutual fund investing, insurance, and financial planning.
+    We are an AMFI-registered mutual fund distributor helping 500+ families build <br className="hidden lg:inline" />wealth through goal-based mutual fund investing, insurance, and financial planning.
   </p>
 
               {/* Bullet Points */}

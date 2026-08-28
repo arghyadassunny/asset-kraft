@@ -40,7 +40,7 @@ const Team = ({ openBookingModal, dynamicData, isLoading }) => {
             Meet the <span className="text-teal-600">Founders</span>
           </h2>
           <p className="text-sm lg:text-lg text-slate-600 max-w-2xl mx-auto px-4">
-            Backed by 20+ years of experience and a passionate team of 30+ professionals
+            Backed by 20+ years of experience and a passionate team of 10+ professionals
           </p>
         </div>
 
