@@ -24,7 +24,7 @@ const BookingModal = ({ isOpen, onClose }) => {
 
         {/* Iframe */}
         <iframe
-          src="https://orufybookings.com/asset-kraft/30-min-intro-call"
+          src="https://orufybookings.com/assetkraft/30-min-intro-call"
           className="w-full h-full border-0"
           title="Book a consultation"
           allow="payment"
