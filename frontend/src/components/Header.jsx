@@ -154,12 +154,18 @@ const Header = ({ openBookingModal, showOnlyHome = false }) => {
               >
                 Portfolio
               </button>
-              <a 
-                href="/#" 
+              <button 
+                onClick={() => scrollToSection('team')} 
                 className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors block w-full"
               >
                 Our Team
-              </a>
+              </button>   
+              <a 
+                href="https://assetkraft.investwell.app/app/#/login" 
+                className="text-left px-4 py-1.5 text-xs font-medium text-[#2d3e38] hover:text-teal-600 hover:bg-teal-50/50 rounded-lg transition-colors block w-full"
+              >
+                Log In
+              </a>           
             </>
           )}
 
