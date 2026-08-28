@@ -148,9 +148,14 @@ const Footer = () => {
         {/* Disclaimer */}
         <div className="border-t border-slate-800 pt-6 mb-6 text-center lg:text-left">
           <p className="text-slate-500 text-[10px] lg:text-xs leading-relaxed max-w-5xl">
-            <strong className="text-slate-400">Disclaimer:</strong> Mutual fund investments are subject to market risks. 
-            Please read all scheme-related documents carefully before investing. Past performance is not indicative of 
-            future returns. Asset Kraft Investments Pvt. Ltd. is an AMFI Registered Mutual Fund Distributor.
+            <strong className="text-slate-400">Disclaimer:</strong> Asset Kraft Investments Pvt. Ltd. is an AMFI-Registered Mutual Fund Distributor bearing ARN No. 322211. We are engaged in the distribution of Mutual Fund products and related financial products/services. We are not a SEBI-registered Investment Adviser unless specifically stated otherwise.
+The information and content provided on this website are for general information, investor education and awareness purposes only. The information should not be construed as investment advice, a recommendation, solicitation or an assurance of returns. Mutual Fund investments are subject to market risks. The value of investments may go up or down depending on market conditions and other factors. Past performance is not indicative of future returns. Investors should read all scheme-related documents carefully before investing and consider their investment objectives, risk appetite, financial circumstances and investment horizon.
+
+Any views, opinions, market commentary, illustrations, examples, calculations or information relating to Mutual Fund schemes or other investment products are provided for informational and educational purposes and should not be construed as a guarantee of performance or returns. Asset Kraft may receive commission/distribution remuneration from Asset Management Companies (AMCs) for the distribution of Mutual Fund schemes. Such commission may vary across products and schemes. Details of commissions paid by AMCs to distributors are disclosed to investors through the applicable regulatory disclosures/CAS. Investors are free to choose whether to invest through a Mutual Fund Distributor or directly through the Mutual Fund/AMC under the Direct Plan. Investors should independently evaluate the suitability of any investment before investing.
+
+Asset Kraft does not guarantee any specific return, appreciation, income or outcome from any investment. Investors are requested to verify all scheme-related information, including investment objective, risk factors, portfolio, expense ratio, exit load and other applicable terms, from the respective Scheme Information Document (SID), Key Information Memorandum (KIM) and other official documents issued by the concerned Mutual Fund/AMC before investing. For any grievance or complaint relating to a Mutual Fund investment, investors may first approach the concerned Mutual Fund/AMC or Asset Kraft Investments Pvt. Ltd. for assistance. If the grievance remains unresolved, investors may approach the appropriate regulatory/grievance redressal mechanism, including SEBI's SCORES platform, as applicable.
+
+Mutual Fund investments are subject to market risks, read all scheme related documents carefully before investing.
           </p>
         </div>
 
