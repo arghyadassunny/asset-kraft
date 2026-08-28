@@ -33,7 +33,7 @@ export const stats = [
   },
   {
     id: 2,
-    value: "5000+",
+    value: "2000+",
     label: "Happy Investors",
     description: "Trust us with their wealth"
   },
