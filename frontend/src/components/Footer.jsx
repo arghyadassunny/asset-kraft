@@ -147,7 +147,7 @@ const Footer = () => {
 
         {/* Disclaimer */}
         <div className="border-t border-slate-800 pt-6 mb-6 text-center lg:text-left">
-          <p className="text-slate-500 text-[10px] lg:text-xs leading-relaxed max-w-5xl">
+          <p className="text-slate-500 text-[10px] lg:text-xs leading-relaxed max-w-7xl">
             <strong className="text-slate-400">Disclaimer:</strong> Asset Kraft Investments Pvt. Ltd. is an AMFI-Registered Mutual Fund Distributor bearing ARN No. 322211. We are engaged in the distribution of Mutual Fund products and related financial products/services. We are not a SEBI-registered Investment Adviser unless specifically stated otherwise.
 The information and content provided on this website are for general information, investor education and awareness purposes only. The information should not be construed as investment advice, a recommendation, solicitation or an assurance of returns. Mutual Fund investments are subject to market risks. The value of investments may go up or down depending on market conditions and other factors. Past performance is not indicative of future returns. Investors should read all scheme-related documents carefully before investing and consider their investment objectives, risk appetite, financial circumstances and investment horizon.
 
