@@ -133,9 +133,9 @@ export const philosophy = [
 export const team = [
   {
     id: 1,
-    name: "Sanjeev Kumar Mundhra",
+    name: "Sanjeev Mundhra",
     role: "Director",
-    image: "https://www.assetkraft.com/Untitled%20design%20-3-.png",
+    image: "https://res.cloudinary.com/djm5rsjwl/image/upload/v1776005073/gx8amuixyjtcexlkaaop.png",
     linkedin: "https://www.linkedin.com/in/sanjeev-mundhra-aa957019/"
   },
 
@@ -143,7 +143,7 @@ export const team = [
     id: 2,
     name: "Amit Rathi",
     role: "Director",
-    image: "https://www.assetkraft.com/IMG_9587%20-1-.PNG",
+    image: "https://res.cloudinary.com/djm5rsjwl/image/upload/v1776005117/dwjva3zcg9eojuypwkzn.png",
     linkedin: "https://www.linkedin.com/in/amit-rathi-9008b8a6/"
   }
 ];
