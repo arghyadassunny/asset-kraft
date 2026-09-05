@@ -202,12 +202,12 @@ const Calculator = () => {
             <CardDescription className="text-xs lg:text-sm">SIP, Lumpsum, or Goal Planner</CardDescription>
           </CardHeader>
           <CardContent className="p-4 lg:p-8">
-            <Tabs defaultValue="sip" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 mb-6 lg:mb-8 bg-slate-100/50 p-1">
-                <TabsTrigger value="sip" className="text-[10px] sm:text-sm lg:text-lg py-2">SIP</TabsTrigger>
-                <TabsTrigger value="lumpsum" className="text-[10px] sm:text-sm lg:text-lg py-2">Lumpsum</TabsTrigger>
-                <TabsTrigger value="goal" className="text-[10px] sm:text-sm lg:text-lg py-2">Goal</TabsTrigger>
-              </TabsList>
+  <Tabs defaultValue="sip" className="w-full">
+    <TabsList className="grid w-full grid-cols-3 mb-6 lg:mb-8 bg-slate-100/50 p-1 h-auto">
+      <TabsTrigger value="sip" className="text-[10px] sm:text-sm lg:text-lg py-2">SIP</TabsTrigger>
+      <TabsTrigger value="lumpsum" className="text-[10px] sm:text-sm lg:text-lg py-2">Lumpsum</TabsTrigger>
+      <TabsTrigger value="goal" className="text-[10px] sm:text-sm lg:text-lg py-2">Goal</TabsTrigger>
+    </TabsList>
 
               {/* SIP Calculator */}
               <TabsContent value="sip" className="space-y-6">
