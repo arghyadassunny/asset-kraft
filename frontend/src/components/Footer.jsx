@@ -1,8 +1,12 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram } from 'lucide-react';
 import { companyInfo } from '../data/mock';
 
 const Footer = () => {
+  const location = useLocation();
+  const showQuickLinks = location.pathname === '/';
+
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -53,25 +57,36 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <h3 className="text-base lg:text-lg font-bold mb-4 lg:mb-5 text-white">Quick Links</h3>
-            <ul className="space-y-2.5 lg:space-y-3">
-              {['home', 'services', 'calculator', 'team', 'contact'].map((id) => (
-                <li key={id}>
-                  <button 
-                    onClick={() => scrollToSection(id)}
-                    className="text-slate-400 text-sm lg:text-base hover:text-teal-400 transition-colors capitalize"
-                  >
-                    {id === 'team' ? 'Our Team' : id === 'contact' ? 'Contact Us' : id}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Quick Links - Only visible on Home Page */}
+          {showQuickLinks && (
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+              <h3 className="text-base lg:text-lg font-bold mb-4 lg:mb-5 text-white">Quick Links</h3>
+              <ul className="space-y-2.5 lg:space-y-3">
+                {['home', 'services', 'calculator', 'disclosures', 'team', 'contact'].map((id) => (
+                  <li key={id}>
+                    {id === 'disclosures' ? (
+                      <a 
+                        href="/disclosures"
+                        className="text-slate-400 text-sm lg:text-base hover:text-teal-400 transition-colors capitalize block"
+                      >
+                        Disclosures
+                      </a>
+                    ) : (
+                      <button 
+                        onClick={() => scrollToSection(id)}
+                        className="text-slate-400 text-sm lg:text-base hover:text-teal-400 transition-colors capitalize"
+                      >
+                        {id === 'team' ? 'Our Team' : id === 'contact' ? 'Contact Us' : id}
+                      </button>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Contact Info */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className={`flex flex-col items-center lg:items-start text-center lg:text-left ${!showQuickLinks ? 'lg:col-span-2' : ''}`}>
             <h3 className="text-base lg:text-lg font-bold mb-4 lg:mb-5 text-white">Contact Us</h3>
             <ul className="space-y-4">
               <li>
@@ -140,22 +155,12 @@ const Footer = () => {
               <p>Mobile Number: +91 9147756211</p>
             </div>
           </div>
-
-          
-
         </div>
 
         {/* Disclaimer */}
         <div className="border-t border-slate-800 pt-6 mb-6 text-center lg:text-left">
           <p className="text-slate-500 text-[10px] lg:text-xs leading-relaxed max-w-7xl">
-            <strong className="text-slate-400">Disclaimer:</strong> Asset Kraft Investments Pvt. Ltd. is an AMFI-Registered Mutual Fund Distributor bearing ARN No. 322211. We are engaged in the distribution of Mutual Fund products and related financial products/services. We are not a SEBI-registered Investment Adviser unless specifically stated otherwise.
-The information and content provided on this website are for general information, investor education and awareness purposes only. The information should not be construed as investment advice, a recommendation, solicitation or an assurance of returns. Mutual Fund investments are subject to market risks. The value of investments may go up or down depending on market conditions and other factors. Past performance is not indicative of future returns. Investors should read all scheme-related documents carefully before investing and consider their investment objectives, risk appetite, financial circumstances and investment horizon.
-
-Any views, opinions, market commentary, illustrations, examples, calculations or information relating to Mutual Fund schemes or other investment products are provided for informational and educational purposes and should not be construed as a guarantee of performance or returns. Asset Kraft may receive commission/distribution remuneration from Asset Management Companies (AMCs) for the distribution of Mutual Fund schemes. Such commission may vary across products and schemes. Details of commissions paid by AMCs to distributors are disclosed to investors through the applicable regulatory disclosures/CAS. Investors are free to choose whether to invest through a Mutual Fund Distributor or directly through the Mutual Fund/AMC under the Direct Plan. Investors should independently evaluate the suitability of any investment before investing.
-
-Asset Kraft does not guarantee any specific return, appreciation, income or outcome from any investment. Investors are requested to verify all scheme-related information, including investment objective, risk factors, portfolio, expense ratio, exit load and other applicable terms, from the respective Scheme Information Document (SID), Key Information Memorandum (KIM) and other official documents issued by the concerned Mutual Fund/AMC before investing. For any grievance or complaint relating to a Mutual Fund investment, investors may first approach the concerned Mutual Fund/AMC or Asset Kraft Investments Pvt. Ltd. for assistance. If the grievance remains unresolved, investors may approach the appropriate regulatory/grievance redressal mechanism, including SEBI's SCORES platform, as applicable.
-
-Mutual Fund investments are subject to market risks, read all scheme related documents carefully before investing.
+            <strong className="text-slate-400">Disclaimer:</strong> Asset Kraft Investments Pvt. Ltd. is an AMFI Registered Mutual Fund Distributor (ARN No. 322211), engaged in the distribution of Mutual Fund and related financial products and services. We are not a SEBI-registered Investment Adviser. All content on the website - including views, market commentary, illustrations, examples and calculations - is provided for general information and investor education only. It does not constitute investment advice, a recommendation or a solicitation, and no specific return, appreciation, income or outcome is guaranteed. Mutual Fund investments are subject to market risks. The value of investments may rise or fall with market conditions and other factors, and past performance is not indicative of future returns. Before investing, investors should independently evaluate suitability against their own investment objectives, risk appetite, financial circumstances and investment horizon, and should read the Scheme Information Document (SID), Key Information Memorandum (KIM) and other official documents issued by the concerned Mutual Fund/AMC, including the scheme's investment objective, risk factors, portfolio, expense ratio and exit load. Asset Kraft may receive commission or distribution remuneration from Asset Management Companies, which varies across products and schemes; such commissions are disclosed on our website. Investors are free to invest either through a Mutual Fund Distributor or directly with the Mutual Fund/AMC under the Direct Plan. For any grievance relating to a Mutual Fund investment, investors may approach Asset Kraft Investments Pvt. Ltd. or the concerned Mutual Fund/AMC.
           </p>
         </div>
 
