@@ -37,6 +37,12 @@ jobs:
           CI: false
         run: npm run build
 
+        # ADD THIS NEW STEP RIGHT HERE
+      - name: Generate 404 Fallback
+        working-directory: frontend
+        # Use 'dist' instead of 'build' if you are using Vite
+        run: cp build/index.html build/404.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
