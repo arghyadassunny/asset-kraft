@@ -20,16 +20,16 @@ const Disclosures = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="mb-12">
-            <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+            <h1 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6">
               Disclosures
             </h1>
-            <p className="text-lg text-slate-600 leading-relaxed mb-6">
+            <p className="text-sm lg:text-lg text-slate-600 leading-relaxed mb-6">
               Asset Kraft Investments Private Limited ("Asset Kraft") is an AMFI-registered Mutual Fund Distributor. We receive commission from Asset Management Companies (AMCs) for mutual fund business sourced under our own ARN code. The commission earned varies from fund house to fund house and from scheme to scheme.
             </p>
-            <p className="text-lg text-slate-600 leading-relaxed mb-8">
+            <p className="text-sm lg:text-lg text-slate-600 leading-relaxed mb-8">
               The table below shows the indicative trail commission rates received from various AMCs under different product categories. Actual commissions may vary slightly across schemes and share classes as per AMC-defined slabs and SEBI regulations.
             </p>
-            <p className="text-sm font-semibold text-slate-500 mb-4 uppercase tracking-wider">
+            <p className="text-xs lg:text-sm font-semibold text-slate-500 mb-4 uppercase tracking-wider">
               All rates are per annum, trail, and exclusive of GST.
             </p>
           </div>
@@ -38,47 +38,47 @@ const Disclosures = () => {
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-teal-50">
-                  <th className="p-5 border-b border-slate-200 text-teal-800 font-bold w-2/3">
+                  <th className="p-4 lg:p-5 border-b border-slate-200 text-teal-800 font-bold w-2/3 text-sm lg:text-base">
                     Fund Category
                   </th>
-                  <th className="p-5 border-b border-slate-200 text-teal-800 font-bold w-1/3">
+                  <th className="p-4 lg:p-5 border-b border-slate-200 text-teal-800 font-bold w-1/3 text-sm lg:text-base">
                     Trail commission per annum
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 <tr className="hover:bg-slate-50 transition-colors">
-                  <td className="p-5 text-slate-700">
+                  <td className="p-4 lg:p-5 text-slate-700 text-sm lg:text-base">
                     <span className="block font-semibold mb-1">Equity Oriented Schemes</span>
-                    <span className="text-sm text-slate-500">(Includes Arbitrage Funds, ELSS Funds, Index Funds, Thematic Funds, all Equity Funds and Equity oriented Hybrid Funds)</span>
+                    <span className="text-xs lg:text-sm text-slate-500">(Includes Arbitrage Funds, ELSS Funds, Index Funds, Thematic Funds, all Equity Funds and Equity oriented Hybrid Funds)</span>
                   </td>
-                  <td className="p-5 text-slate-700 font-medium align-top">
+                  <td className="p-4 lg:p-5 text-slate-700 font-medium align-top text-sm lg:text-base">
                     0.15% to 1.45%
                   </td>
                 </tr>
                 <tr className="hover:bg-slate-50 transition-colors">
-                  <td className="p-5 text-slate-700">
+                  <td className="p-4 lg:p-5 text-slate-700 text-sm lg:text-base">
                     <span className="block font-semibold mb-1">Debt Oriented Schemes</span>
-                    <span className="text-sm text-slate-500">(all debt schemes including Overnight, Liquid Funds)</span>
+                    <span className="text-xs lg:text-sm text-slate-500">(all debt schemes including Overnight, Liquid Funds)</span>
                   </td>
-                  <td className="p-5 text-slate-700 font-medium align-top">
+                  <td className="p-4 lg:p-5 text-slate-700 font-medium align-top text-sm lg:text-base">
                     0.05% to 1.00%
                   </td>
                 </tr>
                 <tr className="hover:bg-slate-50 transition-colors">
-                  <td className="p-5 text-slate-700">
+                  <td className="p-4 lg:p-5 text-slate-700 text-sm lg:text-base">
                     <span className="block font-semibold mb-1">Gold ETF Funds</span>
                   </td>
-                  <td className="p-5 text-slate-700 font-medium align-top">
+                  <td className="p-4 lg:p-5 text-slate-700 font-medium align-top text-sm lg:text-base">
                     0.20% to 1.45%
                   </td>
                 </tr>
                 <tr className="hover:bg-slate-50 transition-colors">
-                  <td className="p-5 text-slate-700">
+                  <td className="p-4 lg:p-5 text-slate-700 text-sm lg:text-base">
                     <span className="block font-semibold mb-1">International Funds</span>
-                    <span className="text-sm text-slate-500">(Index, Fund of Funds)</span>
+                    <span className="text-xs lg:text-sm text-slate-500">(Index, Fund of Funds)</span>
                   </td>
-                  <td className="p-5 text-slate-700 font-medium align-top">
+                  <td className="p-4 lg:p-5 text-slate-700 font-medium align-top text-sm lg:text-base">
                     0.40% - 1.00%
                   </td>
                 </tr>
@@ -87,10 +87,10 @@ const Disclosures = () => {
           </div>
 
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6 pb-2 border-b-2 border-teal-600 inline-block">
+            <h2 className="text-xl lg:text-2xl font-bold text-slate-900 mb-6 pb-2 border-b-2 border-teal-600 inline-block">
               Notes on the rates disclosed above:
             </h2>
-            <ul className="space-y-4 text-slate-600 list-disc list-outside ml-6 marker:text-teal-500 text-lg">
+            <ul className="space-y-4 text-slate-600 list-disc list-outside ml-6 marker:text-teal-500 text-sm lg:text-lg">
               <li className="pl-2">
                 The rates refer to T-30 cities as defined by AMFI. Commission may be higher for inflows from B-30 cities, in line with prevailing AMFI/SEBI provisions and the applicable AMC policy.
               </li>
@@ -119,10 +119,10 @@ const Disclosures = () => {
           </div>
 
           <div className="mb-12">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6 pb-2 border-b-2 border-teal-600 inline-block">
+            <h2 className="text-xl lg:text-2xl font-bold text-slate-900 mb-6 pb-2 border-b-2 border-teal-600 inline-block">
               Key Disclosures
             </h2>
-            <ul className="space-y-4 text-slate-600 list-disc list-outside ml-6 marker:text-teal-500 text-lg">
+            <ul className="space-y-4 text-slate-600 list-disc list-outside ml-6 marker:text-teal-500 text-sm lg:text-lg">
               <li className="pl-2">
                 Asset Kraft Investments Private Limited receives trail commission only. We do not accept upfront commission or one-time payments from any AMC.
               </li>
@@ -146,7 +146,7 @@ const Disclosures = () => {
 
           {/* Important Links Section */}
           <div className="w-full">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6 pb-2 border-b-2 border-teal-600 inline-block">
+            <h2 className="text-xl lg:text-2xl font-bold text-slate-900 mb-6 pb-2 border-b-2 border-teal-600 inline-block">
               Important Links
             </h2>
             {/* Grid ensures 3 equal-width columns on md+ screens spanning the full max-w-6xl container */}
@@ -155,7 +155,7 @@ const Disclosures = () => {
                 href="https://www.sebi.gov.in/filings/mutual-funds.html" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-full flex justify-center items-center bg-teal-50 hover:bg-teal-600 text-teal-700 hover:text-white px-6 py-4 rounded-xl font-semibold transition-all duration-300 border border-teal-200 hover:border-teal-600 shadow-sm text-center"
+                className="w-full flex justify-center items-center bg-teal-50 hover:bg-teal-600 text-teal-700 hover:text-white px-4 py-3 lg:px-6 lg:py-4 rounded-xl font-semibold transition-all duration-300 border border-teal-200 hover:border-teal-600 shadow-sm text-center text-sm lg:text-base"
               >
                 Offer Documents
               </a>
@@ -163,7 +163,7 @@ const Disclosures = () => {
                 href="https://scores.sebi.gov.in/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-full flex justify-center items-center bg-teal-50 hover:bg-teal-600 text-teal-700 hover:text-white px-6 py-4 rounded-xl font-semibold transition-all duration-300 border border-teal-200 hover:border-teal-600 shadow-sm text-center"
+                className="w-full flex justify-center items-center bg-teal-50 hover:bg-teal-600 text-teal-700 hover:text-white px-4 py-3 lg:px-6 lg:py-4 rounded-xl font-semibold transition-all duration-300 border border-teal-200 hover:border-teal-600 shadow-sm text-center text-sm lg:text-base"
               >
                 SEBI SCORES Portal
               </a>
@@ -171,7 +171,7 @@ const Disclosures = () => {
                 href="https://www.amfiindia.com/research-information/commission-disclosure" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-full flex justify-center items-center bg-teal-50 hover:bg-teal-600 text-teal-700 hover:text-white px-6 py-4 rounded-xl font-semibold transition-all duration-300 border border-teal-200 hover:border-teal-600 shadow-sm text-center"
+                className="w-full flex justify-center items-center bg-teal-50 hover:bg-teal-600 text-teal-700 hover:text-white px-4 py-3 lg:px-6 lg:py-4 rounded-xl font-semibold transition-all duration-300 border border-teal-200 hover:border-teal-600 shadow-sm text-center text-sm lg:text-base"
               >
                 Commission Disclosure
               </a>
