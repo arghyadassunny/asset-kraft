@@ -98,20 +98,7 @@ const Testimonials = ({ openBookingModal, dynamicData, isLoading }) => {
 
         {/* Arrows and Controls */}
         <div className="flex flex-col items-center gap-8 mt-12">
-          <div className="flex gap-4">
-            <button 
-              onClick={scrollPrev} 
-              className="p-4 rounded-full bg-white border border-slate-200 hover:bg-teal-600 hover:text-white transition shadow-sm"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button 
-              onClick={scrollNext} 
-              className="p-4 rounded-full bg-white border border-slate-200 hover:bg-teal-600 hover:text-white transition shadow-sm"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
+          
 <button
   onClick={openBookingModal}
   className="inline-flex items-center justify-center bg-slate-900 text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-teal-600 transition-all duration-300 shadow-lg hover:scale-105"
