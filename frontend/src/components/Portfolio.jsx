@@ -8,7 +8,7 @@ const portfolioStrategies = [
     description: "High-growth potential through diversified equity mutual funds",
     icon: TrendingUp,
     riskLevel: "High",
-    returns: "12-15% p.a.",
+    returns: "10-12.5% p.a.",
     suitableFor: "Long-term wealth creation",
     color: "teal"
   },
