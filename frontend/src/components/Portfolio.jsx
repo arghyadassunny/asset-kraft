@@ -48,7 +48,7 @@ const portfolioStrategies = [
     description: "ELSS and tax-efficient instruments for wealth + savings",
     icon: Wallet,
     riskLevel: "Moderate",
-    returns: "10-13% p.a.",
+    returns: "10-12.5% p.a.",
     suitableFor: "Tax planning",
     color: "teal"
   },
@@ -58,7 +58,7 @@ const portfolioStrategies = [
     description: "Long-term corpus building for secure retirement",
     icon: BarChart3,
     riskLevel: "Moderate",
-    returns: "11-14% p.a.",
+    returns: "10-12.5% p.a.",
     suitableFor: "Retirement goals",
     color: "yellow"
   }
